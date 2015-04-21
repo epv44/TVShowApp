@@ -17,6 +17,16 @@
 		2E9F3D681ADC46DE00EB5DAF /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9F3D671ADC46DD00EB5DAF /* gears.png */; };
 		2E9F3D6A1ADC4EDD00EB5DAF /* CurrentShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F3D691ADC4EDD00EB5DAF /* CurrentShowsViewController.swift */; };
 		2E9F3D6E1ADC5DC400EB5DAF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F3D6D1ADC5DC400EB5DAF /* SettingsViewController.swift */; };
+		2EE425601ADEB38700069B32 /* HTTPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE4255F1ADEB38700069B32 /* HTTPHelper.swift */; };
+		2EE425621AE001E400069B32 /* Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EE425611AE001E400069B32 /* Development.plist */; };
+		2EE425641AE0020C00069B32 /* Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EE425631AE0020C00069B32 /* Production.plist */; };
+		2EE425661AE00FED00069B32 /* EnvConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425651AE00FED00069B32 /* EnvConfiguration.swift */; };
+		2EE4256A1AE54BF000069B32 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425691AE54BF000069B32 /* Show.swift */; };
+		2EE4256D1AE5617300069B32 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE4256C1AE5617300069B32 /* Result.swift */; };
+		2EE4256F1AE5838E00069B32 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE4256E1AE5838E00069B32 /* JSONParser.swift */; };
+		2EE425711AE5853B00069B32 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425701AE5853B00069B32 /* Functional.swift */; };
+		2EE425731AE599E400069B32 /* response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425721AE599E400069B32 /* response.swift */; };
+		2EE425751AE5B73000069B32 /* ShowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425741AE5B73000069B32 /* ShowService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +54,16 @@
 		2E9F3D671ADC46DD00EB5DAF /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = "<group>"; };
 		2E9F3D691ADC4EDD00EB5DAF /* CurrentShowsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentShowsViewController.swift; sourceTree = "<group>"; };
 		2E9F3D6D1ADC5DC400EB5DAF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2EE4255F1ADEB38700069B32 /* HTTPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHelper.swift; sourceTree = "<group>"; };
+		2EE425611AE001E400069B32 /* Development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
+		2EE425631AE0020C00069B32 /* Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
+		2EE425651AE00FED00069B32 /* EnvConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvConfiguration.swift; sourceTree = "<group>"; };
+		2EE425691AE54BF000069B32 /* Show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
+		2EE4256C1AE5617300069B32 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		2EE4256E1AE5838E00069B32 /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		2EE425701AE5853B00069B32 /* Functional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
+		2EE425721AE599E400069B32 /* response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = response.swift; sourceTree = "<group>"; };
+		2EE425741AE5B73000069B32 /* ShowService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +87,7 @@
 		2E9F3D271ADC25D700EB5DAF = {
 			isa = PBXGroup;
 			children = (
+				2EE425701AE5853B00069B32 /* Functional.swift */,
 				2E9F3D321ADC25D700EB5DAF /* TvApp */,
 				2E9F3D4A1ADC25D700EB5DAF /* TvAppTests */,
 				2E9F3D311ADC25D700EB5DAF /* Products */,
@@ -87,11 +108,18 @@
 			children = (
 				2E9F3D591ADC27DB00EB5DAF /* images */,
 				2E9F3D351ADC25D700EB5DAF /* AppDelegate.swift */,
+				2EE425651AE00FED00069B32 /* EnvConfiguration.swift */,
+				2EE425761AE5B74100069B32 /* Service Layer */,
 				2E9F3D3B1ADC25D700EB5DAF /* Main.storyboard */,
+				2EE4255C1ADD9F4A00069B32 /* Api Access */,
 				2E9F3D5E1ADC2A5100EB5DAF /* Controllers */,
 				2E9F3D3E1ADC25D700EB5DAF /* Images.xcassets */,
 				2E9F3D401ADC25D700EB5DAF /* LaunchScreen.xib */,
 				2E9F3D331ADC25D700EB5DAF /* Supporting Files */,
+				2EE4256B1AE54C3400069B32 /* Data Objects */,
+				2EE4256C1AE5617300069B32 /* Result.swift */,
+				2EE4256E1AE5838E00069B32 /* JSONParser.swift */,
+				2EE425721AE599E400069B32 /* response.swift */,
 			);
 			path = TvApp;
 			sourceTree = "<group>";
@@ -100,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				2E9F3D341ADC25D700EB5DAF /* Info.plist */,
+				2EE425611AE001E400069B32 /* Development.plist */,
+				2EE425631AE0020C00069B32 /* Production.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -138,6 +168,30 @@
 				2E9F3D6D1ADC5DC400EB5DAF /* SettingsViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		2EE4255C1ADD9F4A00069B32 /* Api Access */ = {
+			isa = PBXGroup;
+			children = (
+				2EE4255F1ADEB38700069B32 /* HTTPHelper.swift */,
+			);
+			name = "Api Access";
+			sourceTree = "<group>";
+		};
+		2EE4256B1AE54C3400069B32 /* Data Objects */ = {
+			isa = PBXGroup;
+			children = (
+				2EE425691AE54BF000069B32 /* Show.swift */,
+			);
+			name = "Data Objects";
+			sourceTree = "<group>";
+		};
+		2EE425761AE5B74100069B32 /* Service Layer */ = {
+			isa = PBXGroup;
+			children = (
+				2EE425741AE5B73000069B32 /* ShowService.swift */,
+			);
+			name = "Service Layer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,7 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E9F3D3D1ADC25D700EB5DAF /* Main.storyboard in Resources */,
+				2EE425641AE0020C00069B32 /* Production.plist in Resources */,
 				2E9F3D581ADC27D500EB5DAF /* niceSnow.png in Resources */,
+				2EE425621AE001E400069B32 /* Development.plist in Resources */,
 				2E9F3D421ADC25D700EB5DAF /* LaunchScreen.xib in Resources */,
 				2E9F3D681ADC46DE00EB5DAF /* gears.png in Resources */,
 				2E9F3D3F1ADC25D700EB5DAF /* Images.xcassets in Resources */,
@@ -243,8 +299,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E9F3D6A1ADC4EDD00EB5DAF /* CurrentShowsViewController.swift in Sources */,
+				2EE425601ADEB38700069B32 /* HTTPHelper.swift in Sources */,
+				2EE425711AE5853B00069B32 /* Functional.swift in Sources */,
+				2EE425661AE00FED00069B32 /* EnvConfiguration.swift in Sources */,
 				2E9F3D361ADC25D700EB5DAF /* AppDelegate.swift in Sources */,
+				2EE425751AE5B73000069B32 /* ShowService.swift in Sources */,
 				2E9F3D601ADC2B6900EB5DAF /* AllShowsViewController.swift in Sources */,
+				2EE4256F1AE5838E00069B32 /* JSONParser.swift in Sources */,
+				2EE4256A1AE54BF000069B32 /* Show.swift in Sources */,
+				2EE4256D1AE5617300069B32 /* Result.swift in Sources */,
+				2EE425731AE599E400069B32 /* response.swift in Sources */,
 				2E9F3D6E1ADC5DC400EB5DAF /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,7 +351,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2E9F3D4F1ADC25D700EB5DAF /* Debug */ = {
+		2E9F3D4F1ADC25D700EB5DAF /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -305,6 +369,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_PLIST = "Development-Config";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -327,9 +392,9 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Debug;
+			name = Development;
 		};
-		2E9F3D501ADC25D700EB5DAF /* Release */ = {
+		2E9F3D501ADC25D700EB5DAF /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -347,6 +412,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_PLIST = "Production-Config";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -362,9 +428,9 @@
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Production;
 		};
-		2E9F3D521ADC25D700EB5DAF /* Debug */ = {
+		2E9F3D521ADC25D700EB5DAF /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -373,9 +439,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Debug;
+			name = Development;
 		};
-		2E9F3D531ADC25D700EB5DAF /* Release */ = {
+		2E9F3D531ADC25D700EB5DAF /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -384,9 +450,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Release;
+			name = Production;
 		};
-		2E9F3D551ADC25D700EB5DAF /* Debug */ = {
+		2E9F3D551ADC25D700EB5DAF /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -403,9 +469,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TvApp.app/TvApp";
 			};
-			name = Debug;
+			name = Development;
 		};
-		2E9F3D561ADC25D700EB5DAF /* Release */ = {
+		2E9F3D561ADC25D700EB5DAF /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -418,7 +484,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TvApp.app/TvApp";
 			};
-			name = Release;
+			name = Production;
 		};
 /* End XCBuildConfiguration section */
 
@@ -426,29 +492,29 @@
 		2E9F3D2B1ADC25D700EB5DAF /* Build configuration list for PBXProject "TvApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2E9F3D4F1ADC25D700EB5DAF /* Debug */,
-				2E9F3D501ADC25D700EB5DAF /* Release */,
+				2E9F3D4F1ADC25D700EB5DAF /* Development */,
+				2E9F3D501ADC25D700EB5DAF /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		2E9F3D511ADC25D700EB5DAF /* Build configuration list for PBXNativeTarget "TvApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2E9F3D521ADC25D700EB5DAF /* Debug */,
-				2E9F3D531ADC25D700EB5DAF /* Release */,
+				2E9F3D521ADC25D700EB5DAF /* Development */,
+				2E9F3D531ADC25D700EB5DAF /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		2E9F3D541ADC25D700EB5DAF /* Build configuration list for PBXNativeTarget "TvAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2E9F3D551ADC25D700EB5DAF /* Debug */,
-				2E9F3D561ADC25D700EB5DAF /* Release */,
+				2E9F3D551ADC25D700EB5DAF /* Development */,
+				2E9F3D561ADC25D700EB5DAF /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 /* End XCConfigurationList section */
 	};

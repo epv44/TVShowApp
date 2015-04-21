@@ -12,6 +12,8 @@ class SettingsViewController: UIViewController {
     
     @IBAction func closeView(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+//        ShowAccess().getAllShows()
+        
     }
     
     override func viewDidLoad() {

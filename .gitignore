@@ -8,3 +8,6 @@ build
 *~.xib
 .DS_Store
 xcuserdata/
+Development.plist
+Production.plist
+
