@@ -1,7 +1,7 @@
 //
 //  Show.swift
 //  TvApp
-//
+//  Show object, also contains the function to decode the json string and place show objects in an array
 //  Created by Eric Vennaro on 4/20/15.
 //  Copyright (c) 2015 Eric Vennaro. All rights reserved.
 //

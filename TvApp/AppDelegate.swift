@@ -15,8 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        //println(launchOptions?["Configuration"])
+        //sets the status bar (very top bar with battery icon) color
+        let appWidth = self.window?.bounds.width
+        var statusBar = UIView()
+        statusBar.frame = CGRectMake(0,0,appWidth!,20)
+        statusBar.backgroundColor = UIColorFromHex(0x61edaf, alpha: 1)
+        self.window?.rootViewController?.view.addSubview(statusBar)
+        
         return true
     }
 
