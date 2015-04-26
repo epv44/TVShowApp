@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let appWidth = self.window?.bounds.width
         var statusBar = UIView()
         statusBar.frame = CGRectMake(0,0,appWidth!,20)
-        statusBar.backgroundColor = UIColorFromHex(0x61edaf, alpha: 1)
+        statusBar.backgroundColor = UIColorFromHex(0x50e2c1, alpha: 1)
         self.window?.rootViewController?.view.addSubview(statusBar)
         
         return true

@@ -17,6 +17,7 @@
 		2E9F3D681ADC46DE00EB5DAF /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9F3D671ADC46DD00EB5DAF /* gears.png */; };
 		2E9F3D6A1ADC4EDD00EB5DAF /* CurrentShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F3D691ADC4EDD00EB5DAF /* CurrentShowsViewController.swift */; };
 		2E9F3D6E1ADC5DC400EB5DAF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F3D6D1ADC5DC400EB5DAF /* SettingsViewController.swift */; };
+		2ED8BF111AEC3D020092F807 /* Threads Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED8BF101AEC3D020092F807 /* Threads Banner.png */; };
 		2EE425601ADEB38700069B32 /* HTTPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE4255F1ADEB38700069B32 /* HTTPHelper.swift */; };
 		2EE425621AE001E400069B32 /* Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EE425611AE001E400069B32 /* Development.plist */; };
 		2EE425641AE0020C00069B32 /* Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EE425631AE0020C00069B32 /* Production.plist */; };
@@ -25,13 +26,19 @@
 		2EE4256D1AE5617300069B32 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE4256C1AE5617300069B32 /* Result.swift */; };
 		2EE4256F1AE5838E00069B32 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE4256E1AE5838E00069B32 /* JSONParser.swift */; };
 		2EE425711AE5853B00069B32 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425701AE5853B00069B32 /* Functional.swift */; };
-		2EE425731AE599E400069B32 /* response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425721AE599E400069B32 /* response.swift */; };
+		2EE425731AE599E400069B32 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425721AE599E400069B32 /* Response.swift */; };
 		2EE425751AE5B73000069B32 /* ShowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425741AE5B73000069B32 /* ShowService.swift */; };
 		2EE425801AE7031500069B32 /* showsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EE4257F1AE7031500069B32 /* showsTableCell.xib */; };
 		2EE425821AE703A000069B32 /* AllShowsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425811AE703A000069B32 /* AllShowsTableViewCell.swift */; };
 		2EE425841AE7196B00069B32 /* ColorFromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425831AE7196B00069B32 /* ColorFromHex.swift */; };
 		2EE425861AE739ED00069B32 /* whiteGear.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EE425851AE739ED00069B32 /* whiteGear.png */; };
 		2EE425881AE73AF000069B32 /* arrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EE425871AE73AF000069B32 /* arrowRight.png */; };
+		2EE4258A1AE8391F00069B32 /* EpisodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425891AE8391F00069B32 /* EpisodeService.swift */; };
+		2EE4258C1AE839A600069B32 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE4258B1AE839A600069B32 /* Episode.swift */; };
+		2EFA03B51AEA676C005CABCA /* ITC Avant Garde Gothic LT Extra Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA03B41AEA6752005CABCA /* ITC Avant Garde Gothic LT Extra Light.ttf */; };
+		2EFA03B61AEA6770005CABCA /* ITC Avant Garde Gothic LT Demi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA03B31AEA6752005CABCA /* ITC Avant Garde Gothic LT Demi.ttf */; };
+		2EFA03B71AEA6772005CABCA /* ITC Avant Garde Gothic LT Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA03B21AEA6752005CABCA /* ITC Avant Garde Gothic LT Book.ttf */; };
+		2EFA03B81AEA6775005CABCA /* ITC Avant Garde Gothic LT Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA03B11AEA6752005CABCA /* ITC Avant Garde Gothic LT Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +66,7 @@
 		2E9F3D671ADC46DD00EB5DAF /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = "<group>"; };
 		2E9F3D691ADC4EDD00EB5DAF /* CurrentShowsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentShowsViewController.swift; sourceTree = "<group>"; };
 		2E9F3D6D1ADC5DC400EB5DAF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2ED8BF101AEC3D020092F807 /* Threads Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Threads Banner.png"; sourceTree = "<group>"; };
 		2EE4255F1ADEB38700069B32 /* HTTPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHelper.swift; sourceTree = "<group>"; };
 		2EE425611AE001E400069B32 /* Development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
 		2EE425631AE0020C00069B32 /* Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
@@ -66,14 +74,20 @@
 		2EE425691AE54BF000069B32 /* Show.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		2EE4256C1AE5617300069B32 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		2EE4256E1AE5838E00069B32 /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
-		2EE425701AE5853B00069B32 /* Functional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
-		2EE425721AE599E400069B32 /* response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = response.swift; sourceTree = "<group>"; };
+		2EE425701AE5853B00069B32 /* Functional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Functional.swift; path = ../Functional.swift; sourceTree = "<group>"; };
+		2EE425721AE599E400069B32 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		2EE425741AE5B73000069B32 /* ShowService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowService.swift; sourceTree = "<group>"; };
 		2EE4257F1AE7031500069B32 /* showsTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = showsTableCell.xib; sourceTree = "<group>"; };
 		2EE425811AE703A000069B32 /* AllShowsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllShowsTableViewCell.swift; sourceTree = "<group>"; };
 		2EE425831AE7196B00069B32 /* ColorFromHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorFromHex.swift; sourceTree = "<group>"; };
 		2EE425851AE739ED00069B32 /* whiteGear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteGear.png; sourceTree = "<group>"; };
 		2EE425871AE73AF000069B32 /* arrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowRight.png; sourceTree = "<group>"; };
+		2EE425891AE8391F00069B32 /* EpisodeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeService.swift; sourceTree = "<group>"; };
+		2EE4258B1AE839A600069B32 /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		2EFA03B11AEA6752005CABCA /* ITC Avant Garde Gothic LT Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITC Avant Garde Gothic LT Bold.ttf"; sourceTree = "<group>"; };
+		2EFA03B21AEA6752005CABCA /* ITC Avant Garde Gothic LT Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITC Avant Garde Gothic LT Book.ttf"; sourceTree = "<group>"; };
+		2EFA03B31AEA6752005CABCA /* ITC Avant Garde Gothic LT Demi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITC Avant Garde Gothic LT Demi.ttf"; sourceTree = "<group>"; };
+		2EFA03B41AEA6752005CABCA /* ITC Avant Garde Gothic LT Extra Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITC Avant Garde Gothic LT Extra Light.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +111,6 @@
 		2E9F3D271ADC25D700EB5DAF = {
 			isa = PBXGroup;
 			children = (
-				2EE425701AE5853B00069B32 /* Functional.swift */,
 				2E9F3D321ADC25D700EB5DAF /* TvApp */,
 				2E9F3D4A1ADC25D700EB5DAF /* TvAppTests */,
 				2E9F3D311ADC25D700EB5DAF /* Products */,
@@ -116,7 +129,7 @@
 		2E9F3D321ADC25D700EB5DAF /* TvApp */ = {
 			isa = PBXGroup;
 			children = (
-				2E9F3D591ADC27DB00EB5DAF /* images */,
+				2EFA03AF1AEA672F005CABCA /* Resources */,
 				2E9F3D351ADC25D700EB5DAF /* AppDelegate.swift */,
 				2EE4257F1AE7031500069B32 /* showsTableCell.xib */,
 				2EE425811AE703A000069B32 /* AllShowsTableViewCell.swift */,
@@ -132,7 +145,8 @@
 				2EE4256C1AE5617300069B32 /* Result.swift */,
 				2EE425831AE7196B00069B32 /* ColorFromHex.swift */,
 				2EE4256E1AE5838E00069B32 /* JSONParser.swift */,
-				2EE425721AE599E400069B32 /* response.swift */,
+				2EE425721AE599E400069B32 /* Response.swift */,
+				2EE425701AE5853B00069B32 /* Functional.swift */,
 			);
 			path = TvApp;
 			sourceTree = "<group>";
@@ -164,15 +178,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2E9F3D591ADC27DB00EB5DAF /* images */ = {
+		2E9F3D591ADC27DB00EB5DAF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2ED8BF101AEC3D020092F807 /* Threads Banner.png */,
 				2EE425871AE73AF000069B32 /* arrowRight.png */,
 				2EE425851AE739ED00069B32 /* whiteGear.png */,
 				2E9F3D671ADC46DD00EB5DAF /* gears.png */,
 				2E9F3D571ADC27D500EB5DAF /* niceSnow.png */,
 			);
-			name = images;
+			name = Images;
 			sourceTree = "<group>";
 		};
 		2E9F3D5E1ADC2A5100EB5DAF /* Controllers */ = {
@@ -197,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				2EE425691AE54BF000069B32 /* Show.swift */,
+				2EE4258B1AE839A600069B32 /* Episode.swift */,
 			);
 			name = "Data Objects";
 			sourceTree = "<group>";
@@ -205,8 +221,29 @@
 			isa = PBXGroup;
 			children = (
 				2EE425741AE5B73000069B32 /* ShowService.swift */,
+				2EE425891AE8391F00069B32 /* EpisodeService.swift */,
 			);
 			name = "Service Layer";
+			sourceTree = "<group>";
+		};
+		2EFA03AF1AEA672F005CABCA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2EFA03B01AEA673D005CABCA /* Fonts */,
+				2E9F3D591ADC27DB00EB5DAF /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2EFA03B01AEA673D005CABCA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2EFA03B11AEA6752005CABCA /* ITC Avant Garde Gothic LT Bold.ttf */,
+				2EFA03B21AEA6752005CABCA /* ITC Avant Garde Gothic LT Book.ttf */,
+				2EFA03B31AEA6752005CABCA /* ITC Avant Garde Gothic LT Demi.ttf */,
+				2EFA03B41AEA6752005CABCA /* ITC Avant Garde Gothic LT Extra Light.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,12 +326,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ED8BF111AEC3D020092F807 /* Threads Banner.png in Resources */,
+				2EFA03B61AEA6770005CABCA /* ITC Avant Garde Gothic LT Demi.ttf in Resources */,
 				2E9F3D3D1ADC25D700EB5DAF /* Main.storyboard in Resources */,
 				2EE425641AE0020C00069B32 /* Production.plist in Resources */,
 				2E9F3D581ADC27D500EB5DAF /* niceSnow.png in Resources */,
+				2EFA03B81AEA6775005CABCA /* ITC Avant Garde Gothic LT Bold.ttf in Resources */,
+				2EFA03B71AEA6772005CABCA /* ITC Avant Garde Gothic LT Book.ttf in Resources */,
 				2EE425861AE739ED00069B32 /* whiteGear.png in Resources */,
 				2EE425621AE001E400069B32 /* Development.plist in Resources */,
 				2E9F3D421ADC25D700EB5DAF /* LaunchScreen.xib in Resources */,
+				2EFA03B51AEA676C005CABCA /* ITC Avant Garde Gothic LT Extra Light.ttf in Resources */,
 				2E9F3D681ADC46DE00EB5DAF /* gears.png in Resources */,
 				2E9F3D3F1ADC25D700EB5DAF /* Images.xcassets in Resources */,
 				2EE425881AE73AF000069B32 /* arrowRight.png in Resources */,
@@ -317,8 +359,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E9F3D6A1ADC4EDD00EB5DAF /* CurrentShowsViewController.swift in Sources */,
+				2EE4258C1AE839A600069B32 /* Episode.swift in Sources */,
 				2EE425601ADEB38700069B32 /* HTTPHelper.swift in Sources */,
 				2EE425711AE5853B00069B32 /* Functional.swift in Sources */,
+				2EE4258A1AE8391F00069B32 /* EpisodeService.swift in Sources */,
 				2EE425841AE7196B00069B32 /* ColorFromHex.swift in Sources */,
 				2EE425661AE00FED00069B32 /* EnvConfiguration.swift in Sources */,
 				2E9F3D361ADC25D700EB5DAF /* AppDelegate.swift in Sources */,
@@ -328,7 +372,7 @@
 				2EE425821AE703A000069B32 /* AllShowsTableViewCell.swift in Sources */,
 				2EE4256A1AE54BF000069B32 /* Show.swift in Sources */,
 				2EE4256D1AE5617300069B32 /* Result.swift in Sources */,
-				2EE425731AE599E400069B32 /* response.swift in Sources */,
+				2EE425731AE599E400069B32 /* Response.swift in Sources */,
 				2E9F3D6E1ADC5DC400EB5DAF /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,7 +1,7 @@
 //
 //  AllShowsViewController.swift
 //  TvApp
-//  
+//
 //  Created by Eric Vennaro on 4/13/15.
 //  Copyright (c) 2015 Eric Vennaro. All rights reserved.
 //
@@ -29,14 +29,21 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
         var nib = UINib(nibName: "showsTableCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         //populate view with all shows
+        let progressIndicatorView = UIProgressView(frame: CGRect(x: 0.0, y: 80.0, width: self.view.bounds.width, height: 10.0))
+        progressIndicatorView.tintColor = UIColorFromHex(0x61edaf, alpha: 1)
+        self.view.addSubview(progressIndicatorView)
+        
+        progressIndicatorView.setProgress(80.0 / 100.0, animated: true)
         getAllShows() { either in
             switch either {
             case let .Error(error):
                 //                let httpHelper = HTTPHelper()
                 //                let errorMessage = httpHelper.getErrorMessage(error)
                 let errorAlert = UIAlertView(title: "Error", message:"Error", delegate:nil, cancelButtonTitle:"OK")
+                progressIndicatorView.removeFromSuperview()
                 errorAlert.show()
             case let .Value(boxedAllShows):
+                progressIndicatorView.removeFromSuperview()
                 self.processResults(boxedAllShows.value)
                 
             }
@@ -54,7 +61,6 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
     
     func processResults(array: JSONShowArray){
         self.showArray = array
-        println(self.showArray[0].name)
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.tableView.reloadData()
         })
@@ -63,7 +69,7 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         updateHeaderView()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

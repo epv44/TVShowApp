@@ -10,6 +10,7 @@
 
 import Foundation
 
+//Get all shows in the database
 func getAllShows(callback: (Result<JSONShowArray>) -> ()){
     //create http request using the HTTPHelper Struct
     let httpHelper = HTTPHelper()

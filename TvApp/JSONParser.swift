@@ -11,6 +11,7 @@ import Foundation
 
 typealias JSON = AnyObject
 typealias JSONShowArray = Array<Show>
+typealias JSONEpisodeArray = Array<Episode>
 typealias JSONDictionary = Dictionary<String, AnyObject>
 typealias JSONArray = NSArray
 
