@@ -18,6 +18,7 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         //set background color
         self.view.backgroundColor = UIColorFromHex(0xF2F2F2, alpha: 1)
+        
         //set header image
         headerView = tableView.tableHeaderView
         tableView.tableHeaderView = nil

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="ITC Avant Garde Gothic LT Book.ttf">
+            <string>AvantGardeLT-Book</string>
             <string>AvantGardeLT-Book</string>
         </mutableArray>
         <mutableArray key="ITC Avant Garde Gothic LT Demi.ttf">
@@ -82,7 +83,13 @@
                             <outlet property="delegate" destination="YIQ-gC-etN" id="iP7-WO-xId"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Current Shows" id="UUd-7b-Rkx"/>
+                    <tabBarItem key="tabBarItem" title="Current Shows" id="UUd-7b-Rkx">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.31372549019607843" green="0.88627450980392153" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hI-vU-SUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,18 +103,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="g2H-Cs-5P5">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Threads Banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="NMJ-RI-Bnu">
-                                    <rect key="frame" x="0.0" y="23" width="600" height="52"/>
-                                    <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAu-b8-EmB">
-                                    <rect key="frame" x="562" y="34" width="30" height="30"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THREADS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZz-qQ-aP3">
+                                    <rect key="frame" x="215" y="23" width="171" height="40"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="30" id="AXb-TW-BYs"/>
+                                        <constraint firstAttribute="width" constant="171" id="i0o-Nc-9TB"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvantGardeLT-Book" family="AvantGarde LT Book" pointSize="33"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAu-b8-EmB">
+                                    <rect key="frame" x="562" y="28" width="30" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="LMP-Bu-XIF"/>
                                     </constraints>
                                     <state key="normal" backgroundImage="whiteGear.png"/>
                                     <connections>
@@ -117,13 +130,12 @@
                             </subviews>
                             <color key="backgroundColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="NMJ-RI-Bnu" secondAttribute="bottom" id="KQS-eR-Ahv"/>
-                                <constraint firstItem="NMJ-RI-Bnu" firstAttribute="top" secondItem="g2H-Cs-5P5" secondAttribute="top" constant="23" id="TCl-Pd-czl"/>
-                                <constraint firstAttribute="bottom" secondItem="zAu-b8-EmB" secondAttribute="bottom" constant="11" id="Wnf-75-WhQ"/>
-                                <constraint firstAttribute="trailing" secondItem="NMJ-RI-Bnu" secondAttribute="trailing" id="cWB-P2-HYf"/>
-                                <constraint firstItem="zAu-b8-EmB" firstAttribute="trailing" secondItem="g2H-Cs-5P5" secondAttribute="trailingMargin" id="gYX-17-jit"/>
-                                <constraint firstItem="zAu-b8-EmB" firstAttribute="top" secondItem="NMJ-RI-Bnu" secondAttribute="top" constant="11" id="u6Q-vh-3Ec"/>
-                                <constraint firstItem="NMJ-RI-Bnu" firstAttribute="leading" secondItem="g2H-Cs-5P5" secondAttribute="leading" id="x36-Gp-kyI"/>
+                                <constraint firstItem="zAu-b8-EmB" firstAttribute="centerY" secondItem="rZz-qQ-aP3" secondAttribute="centerY" id="1sV-UK-yHg"/>
+                                <constraint firstItem="rZz-qQ-aP3" firstAttribute="centerX" secondItem="g2H-Cs-5P5" secondAttribute="centerX" id="2zP-Al-L6p"/>
+                                <constraint firstItem="zAu-b8-EmB" firstAttribute="trailing" secondItem="g2H-Cs-5P5" secondAttribute="trailingMargin" id="9G0-ZV-dNP"/>
+                                <constraint firstAttribute="bottom" secondItem="zAu-b8-EmB" secondAttribute="bottom" constant="17" id="CLq-ns-i2O"/>
+                                <constraint firstItem="zAu-b8-EmB" firstAttribute="top" secondItem="g2H-Cs-5P5" secondAttribute="top" constant="28" id="Evx-5j-n3O"/>
+                                <constraint firstItem="rZz-qQ-aP3" firstAttribute="top" secondItem="g2H-Cs-5P5" secondAttribute="top" constant="23" id="aTZ-gA-opo"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -139,7 +151,13 @@
                             <outlet property="delegate" destination="MWX-BZ-QE9" id="A1V-Xs-60V"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="All Shows" id="QZv-o9-aPL"/>
+                    <tabBarItem key="tabBarItem" title="All Shows" image="AllShows" id="QZv-o9-aPL">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.31372549019607843" green="0.88627450980392153" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eiv-9p-wkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -220,10 +238,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AllShows" width="60" height="60"/>
         <image name="Threads Banner.png" width="600" height="75"/>
         <image name="whiteGear.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1Ja-Qg-e7R"/>
+        <segue reference="YFk-wi-gdB"/>
     </inferredMetricsTieBreakers>
 </document>

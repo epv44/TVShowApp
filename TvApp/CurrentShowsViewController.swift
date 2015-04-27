@@ -29,7 +29,7 @@ class CurrentShowsViewController: UITableViewController {
         tableView.contentOffset = CGPoint(x: 0, y: -tableHeaderHeight)
         updateHeaderView()
         //set table cell
-        var nib = UINib(nibName: "showsTableCell", bundle: nil)
+        var nib = UINib(nibName: "currentEpisodesTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         //populate view with all shows
         let progressIndicatorView = UIProgressView(frame: CGRect(x: 0.0, y: 80.0, width: self.view.bounds.width, height: 10.0))
@@ -63,7 +63,6 @@ class CurrentShowsViewController: UITableViewController {
         headerView.frame = headerRect
     }
     func displayError(){
-        println("entered")
         emptyTitleLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.width, 100))
         //titleLabel.center = CGPointMake(160, 284)
         emptyTitleLabel.textAlignment = NSTextAlignment.Center
@@ -82,7 +81,6 @@ class CurrentShowsViewController: UITableViewController {
     func removeError(){
         self.emptyTitleLabel.removeFromSuperview()
         self.emptyTextView.removeFromSuperview()
-        println("sentered")
     }
     
     func processResults(array: JSONEpisodeArray){
@@ -119,8 +117,9 @@ class CurrentShowsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as AllShowsTableViewCell
-        cell.showTitle.text = self.episodeArray[indexPath.section].name
+        var cell:CurrentEpisodeViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as CurrentEpisodeViewCell
+        cell.episodeTitle.text = self.episodeArray[indexPath.section].name
+        cell.episodeDescription.text = self.episodeArray[indexPath.section].description
         
         return cell
     }

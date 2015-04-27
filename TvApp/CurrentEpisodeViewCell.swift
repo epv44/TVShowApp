@@ -1,22 +1,22 @@
 //
-//  AllShowsTableViewCell.swift
+//  CurrentEpisodeViewCell.swift
 //  TvApp
-//  Custom table view cell used for displaying all shows
-//  Created by Eric Vennaro on 4/21/15.
+//
+//  Created by Eric Vennaro on 4/27/15.
 //  Copyright (c) 2015 Eric Vennaro. All rights reserved.
 //
 
 import UIKit
 import QuartzCore
 
-class AllShowsTableViewCell: UITableViewCell {
+class CurrentEpisodeViewCell: UITableViewCell {
 
+    @IBOutlet weak var episodeTitle: UILabel!
+    @IBOutlet weak var episodeDescription: UILabel!
+    @IBOutlet weak var episodeImage: UIImageView!
     @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var showImage: UIImageView!
-    @IBOutlet weak var showTitle: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         var layer = cellView.layer
         cellView.layer.shadowColor = UIColor.blackColor().CGColor
         cellView.layer.shadowOffset = CGSize(width:0, height:2)
@@ -29,4 +29,5 @@ class AllShowsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
 }

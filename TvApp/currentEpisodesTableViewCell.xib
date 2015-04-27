@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ITC Avant Garde Gothic LT Book.ttf">
+            <string>AvantGardeLT-Book</string>
+        </mutableArray>
+        <mutableArray key="ITC Avant Garde Gothic LT Demi.ttf">
+            <string>AvantGardeLT-Demi</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="68" id="35j-Dv-Neb" customClass="CurrentEpisodeViewCell" customModule="TvApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="316" height="71"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="35j-Dv-Neb" id="Gjl-Zx-DLB">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4E-Sn-bUc">
+                        <rect key="frame" x="12" y="2" width="292" height="68"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowRight.png" translatesAutoresizingMaskIntoConstraints="NO" id="BtO-A6-FWV">
+                                <rect key="frame" x="244" y="15" width="48" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="4Lp-pT-poL"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gears.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Yb-TJ-Ul5">
+                                <rect key="frame" x="1" y="0.0" width="68" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="i8n-KG-G1J"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnx-Lw-UZj">
+                                <rect key="frame" x="77" y="8" width="166" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="166" id="1RY-HB-PzR"/>
+                                    <constraint firstAttribute="height" constant="21" id="Gxl-WN-Iho"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvantGardeLT-Demi" family="AvantGarde LT Book" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWQ-3W-EE6">
+                                <rect key="frame" x="77" y="37" width="166" height="23"/>
+                                <fontDescription key="fontDescription" name="AvantGardeLT-Book" family="AvantGarde LT Book" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Yb-TJ-Ul5" firstAttribute="leading" secondItem="s4E-Sn-bUc" secondAttribute="leading" constant="1" id="1HF-Rl-JgE"/>
+                            <constraint firstItem="xnx-Lw-UZj" firstAttribute="top" secondItem="s4E-Sn-bUc" secondAttribute="topMargin" id="1Wy-Wl-ouZ"/>
+                            <constraint firstItem="hWQ-3W-EE6" firstAttribute="leading" secondItem="xnx-Lw-UZj" secondAttribute="leading" id="3lx-Pm-l20"/>
+                            <constraint firstItem="3Yb-TJ-Ul5" firstAttribute="top" secondItem="s4E-Sn-bUc" secondAttribute="top" id="6Zp-jw-7Uf"/>
+                            <constraint firstAttribute="trailing" secondItem="BtO-A6-FWV" secondAttribute="trailing" id="B8W-Xc-Hzi"/>
+                            <constraint firstItem="BtO-A6-FWV" firstAttribute="leading" secondItem="hWQ-3W-EE6" secondAttribute="trailing" constant="1" id="Qsj-BE-g6e"/>
+                            <constraint firstItem="BtO-A6-FWV" firstAttribute="top" secondItem="s4E-Sn-bUc" secondAttribute="top" constant="15" id="Woz-1t-ts2"/>
+                            <constraint firstItem="BtO-A6-FWV" firstAttribute="centerY" secondItem="s4E-Sn-bUc" secondAttribute="centerY" id="gnx-50-pAv"/>
+                            <constraint firstItem="xnx-Lw-UZj" firstAttribute="leading" secondItem="3Yb-TJ-Ul5" secondAttribute="trailing" constant="8" symbolic="YES" id="kLo-H9-76B"/>
+                            <constraint firstItem="hWQ-3W-EE6" firstAttribute="bottom" secondItem="s4E-Sn-bUc" secondAttribute="bottomMargin" id="l8d-Fh-HOR"/>
+                            <constraint firstItem="hWQ-3W-EE6" firstAttribute="top" secondItem="xnx-Lw-UZj" secondAttribute="bottom" constant="8" symbolic="YES" id="ruY-IQ-Lfd"/>
+                            <constraint firstItem="BtO-A6-FWV" firstAttribute="centerY" secondItem="3Yb-TJ-Ul5" secondAttribute="centerY" id="zSa-tb-sHn"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="s4E-Sn-bUc" secondAttribute="bottom" constant="-7.5" id="Bra-xJ-GuZ"/>
+                    <constraint firstItem="s4E-Sn-bUc" firstAttribute="leading" secondItem="Gjl-Zx-DLB" secondAttribute="leadingMargin" constant="4" id="JnM-xx-jtN"/>
+                    <constraint firstItem="s4E-Sn-bUc" firstAttribute="top" secondItem="Gjl-Zx-DLB" secondAttribute="topMargin" constant="-6" id="aXI-pf-2Kl"/>
+                    <constraint firstItem="s4E-Sn-bUc" firstAttribute="centerX" secondItem="Gjl-Zx-DLB" secondAttribute="centerX" id="s6g-ws-6rJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellView" destination="s4E-Sn-bUc" id="FuW-z6-Z8q"/>
+                <outlet property="episodeDescription" destination="hWQ-3W-EE6" id="noX-6E-Jj9"/>
+                <outlet property="episodeImage" destination="3Yb-TJ-Ul5" id="Wg8-fa-4tq"/>
+                <outlet property="episodeTitle" destination="xnx-Lw-UZj" id="nC2-U6-Apu"/>
+            </connections>
+            <point key="canvasLocation" x="457" y="239.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrowRight.png" width="128" height="128"/>
+        <image name="gears.png" width="128" height="128"/>
+    </resources>
+</document>
