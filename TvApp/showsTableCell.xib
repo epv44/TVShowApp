@@ -33,7 +33,7 @@
                                     <constraint firstAttribute="width" constant="68" id="LTD-lt-qoz"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowRight.png" translatesAutoresizingMaskIntoConstraints="NO" id="834-BX-bMl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowRight" translatesAutoresizingMaskIntoConstraints="NO" id="834-BX-bMl">
                                 <rect key="frame" x="244" y="15" width="48" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="pkK-nS-v3s"/>
@@ -72,7 +72,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrowRight.png" width="128" height="128"/>
+        <image name="ArrowRight" width="128" height="128"/>
         <image name="gears.png" width="128" height="128"/>
     </resources>
 </document>

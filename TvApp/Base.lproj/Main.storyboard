@@ -7,7 +7,6 @@
     <customFonts key="customFonts">
         <mutableArray key="ITC Avant Garde Gothic LT Book.ttf">
             <string>AvantGardeLT-Book</string>
-            <string>AvantGardeLT-Book</string>
         </mutableArray>
         <mutableArray key="ITC Avant Garde Gothic LT Demi.ttf">
             <string>AvantGardeLT-Demi</string>
@@ -45,15 +44,18 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Threads Banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="R9e-IH-21f">
-                                    <rect key="frame" x="0.0" y="23" width="600" height="52"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThreadsLogo" translatesAutoresizingMaskIntoConstraints="NO" id="R9e-IH-21f">
+                                    <rect key="frame" x="200" y="19" width="200" height="57"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="200" id="r5u-pZ-mM3"/>
+                                    </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6AB-WO-V7H">
-                                    <rect key="frame" x="562" y="34" width="30" height="30"/>
+                                    <rect key="frame" x="562" y="33" width="30" height="30"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="30" id="apE-sh-Sys"/>
+                                        <constraint firstAttribute="width" constant="30" id="lS6-Yt-3mL"/>
                                     </constraints>
-                                    <state key="normal" backgroundImage="whiteGear.png"/>
+                                    <state key="normal" backgroundImage="WhiteGear"/>
                                     <connections>
                                         <segue destination="ohM-Wp-fYT" kind="presentation" id="1Ja-Qg-e7R"/>
                                     </connections>
@@ -61,13 +63,12 @@
                             </subviews>
                             <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstItem="R9e-IH-21f" firstAttribute="leading" secondItem="h2W-Bz-IAp" secondAttribute="leading" id="Nqm-LU-Fub"/>
-                                <constraint firstItem="6AB-WO-V7H" firstAttribute="trailing" secondItem="h2W-Bz-IAp" secondAttribute="trailingMargin" id="ShC-HL-rM4"/>
-                                <constraint firstItem="6AB-WO-V7H" firstAttribute="centerY" secondItem="R9e-IH-21f" secondAttribute="centerY" id="c6K-Bc-Pgw"/>
-                                <constraint firstAttribute="trailing" secondItem="R9e-IH-21f" secondAttribute="trailing" id="cSe-Rs-3OW"/>
-                                <constraint firstAttribute="bottom" secondItem="R9e-IH-21f" secondAttribute="bottom" id="gdj-zD-kbU"/>
-                                <constraint firstItem="R9e-IH-21f" firstAttribute="top" secondItem="h2W-Bz-IAp" secondAttribute="top" constant="23" id="k8n-cO-aAI"/>
-                                <constraint firstItem="6AB-WO-V7H" firstAttribute="top" secondItem="h2W-Bz-IAp" secondAttribute="top" constant="34" id="uLb-CP-3yb"/>
+                                <constraint firstItem="R9e-IH-21f" firstAttribute="top" secondItem="h2W-Bz-IAp" secondAttribute="top" constant="19" id="0Qb-5H-sKn"/>
+                                <constraint firstItem="6AB-WO-V7H" firstAttribute="top" secondItem="h2W-Bz-IAp" secondAttribute="top" constant="33" id="EK6-Ei-Xi8"/>
+                                <constraint firstAttribute="bottom" secondItem="R9e-IH-21f" secondAttribute="bottom" constant="-1" id="Q8f-ff-2N1"/>
+                                <constraint firstItem="R9e-IH-21f" firstAttribute="centerX" secondItem="h2W-Bz-IAp" secondAttribute="centerX" id="fqp-hv-Bsa"/>
+                                <constraint firstItem="6AB-WO-V7H" firstAttribute="trailing" secondItem="h2W-Bz-IAp" secondAttribute="trailingMargin" id="pvI-W2-irs"/>
+                                <constraint firstAttribute="bottom" secondItem="6AB-WO-V7H" secondAttribute="bottom" constant="12" id="yoC-IM-Gjj"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -83,7 +84,7 @@
                             <outlet property="delegate" destination="YIQ-gC-etN" id="iP7-WO-xId"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Current Shows" id="UUd-7b-Rkx">
+                    <tabBarItem key="tabBarItem" title="Current Shows" image="CurrentEpisodes" id="UUd-7b-Rkx">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                 <color key="value" red="0.31372549019607843" green="0.88627450980392153" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
@@ -108,21 +109,18 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THREADS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZz-qQ-aP3">
-                                    <rect key="frame" x="215" y="23" width="171" height="40"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThreadsLogo" translatesAutoresizingMaskIntoConstraints="NO" id="b5J-0q-38G">
+                                    <rect key="frame" x="200" y="19" width="200" height="57"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="171" id="i0o-Nc-9TB"/>
+                                        <constraint firstAttribute="width" constant="200" id="kuw-MX-FvR"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="AvantGardeLT-Book" family="AvantGarde LT Book" pointSize="33"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAu-b8-EmB">
-                                    <rect key="frame" x="562" y="28" width="30" height="30"/>
+                                    <rect key="frame" x="562" y="33" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="LMP-Bu-XIF"/>
                                     </constraints>
-                                    <state key="normal" backgroundImage="whiteGear.png"/>
+                                    <state key="normal" backgroundImage="WhiteGear"/>
                                     <connections>
                                         <segue destination="ohM-Wp-fYT" kind="presentation" id="YFk-wi-gdB"/>
                                     </connections>
@@ -130,12 +128,12 @@
                             </subviews>
                             <color key="backgroundColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstItem="zAu-b8-EmB" firstAttribute="centerY" secondItem="rZz-qQ-aP3" secondAttribute="centerY" id="1sV-UK-yHg"/>
-                                <constraint firstItem="rZz-qQ-aP3" firstAttribute="centerX" secondItem="g2H-Cs-5P5" secondAttribute="centerX" id="2zP-Al-L6p"/>
+                                <constraint firstItem="b5J-0q-38G" firstAttribute="centerX" secondItem="g2H-Cs-5P5" secondAttribute="centerX" id="6IB-tR-slE"/>
                                 <constraint firstItem="zAu-b8-EmB" firstAttribute="trailing" secondItem="g2H-Cs-5P5" secondAttribute="trailingMargin" id="9G0-ZV-dNP"/>
-                                <constraint firstAttribute="bottom" secondItem="zAu-b8-EmB" secondAttribute="bottom" constant="17" id="CLq-ns-i2O"/>
-                                <constraint firstItem="zAu-b8-EmB" firstAttribute="top" secondItem="g2H-Cs-5P5" secondAttribute="top" constant="28" id="Evx-5j-n3O"/>
-                                <constraint firstItem="rZz-qQ-aP3" firstAttribute="top" secondItem="g2H-Cs-5P5" secondAttribute="top" constant="23" id="aTZ-gA-opo"/>
+                                <constraint firstAttribute="bottom" secondItem="zAu-b8-EmB" secondAttribute="bottom" constant="12" id="CLq-ns-i2O"/>
+                                <constraint firstItem="zAu-b8-EmB" firstAttribute="top" secondItem="g2H-Cs-5P5" secondAttribute="top" constant="33" id="Evx-5j-n3O"/>
+                                <constraint firstAttribute="bottom" secondItem="b5J-0q-38G" secondAttribute="bottom" constant="-1" id="kpI-yl-xg2"/>
+                                <constraint firstItem="b5J-0q-38G" firstAttribute="top" secondItem="g2H-Cs-5P5" secondAttribute="top" constant="19" id="lRz-hk-8pn"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -238,11 +236,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AllShows" width="60" height="60"/>
-        <image name="Threads Banner.png" width="600" height="75"/>
-        <image name="whiteGear.png" width="128" height="128"/>
+        <image name="AllShows" width="30" height="30"/>
+        <image name="CurrentEpisodes" width="30" height="30"/>
+        <image name="ThreadsLogo" width="300" height="85"/>
+        <image name="WhiteGear" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YFk-wi-gdB"/>
+        <segue reference="1Ja-Qg-e7R"/>
     </inferredMetricsTieBreakers>
 </document>

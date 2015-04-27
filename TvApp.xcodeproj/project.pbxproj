@@ -13,13 +13,10 @@
 		2E9F3D3F1ADC25D700EB5DAF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E9F3D3E1ADC25D700EB5DAF /* Images.xcassets */; };
 		2E9F3D421ADC25D700EB5DAF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E9F3D401ADC25D700EB5DAF /* LaunchScreen.xib */; };
 		2E9F3D4E1ADC25D700EB5DAF /* TvAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F3D4D1ADC25D700EB5DAF /* TvAppTests.swift */; };
-		2E9F3D581ADC27D500EB5DAF /* niceSnow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9F3D571ADC27D500EB5DAF /* niceSnow.png */; };
 		2E9F3D601ADC2B6900EB5DAF /* AllShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F3D5F1ADC2B6900EB5DAF /* AllShowsViewController.swift */; };
-		2E9F3D681ADC46DE00EB5DAF /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9F3D671ADC46DD00EB5DAF /* gears.png */; };
 		2E9F3D6A1ADC4EDD00EB5DAF /* CurrentShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F3D691ADC4EDD00EB5DAF /* CurrentShowsViewController.swift */; };
 		2E9F3D6E1ADC5DC400EB5DAF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F3D6D1ADC5DC400EB5DAF /* SettingsViewController.swift */; };
 		2EB192131AEECF8800275CB4 /* currentEpisodesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EB192121AEECF8800275CB4 /* currentEpisodesTableViewCell.xib */; };
-		2ED8BF111AEC3D020092F807 /* Threads Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED8BF101AEC3D020092F807 /* Threads Banner.png */; };
 		2EE425601ADEB38700069B32 /* HTTPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE4255F1ADEB38700069B32 /* HTTPHelper.swift */; };
 		2EE425621AE001E400069B32 /* Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EE425611AE001E400069B32 /* Development.plist */; };
 		2EE425641AE0020C00069B32 /* Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EE425631AE0020C00069B32 /* Production.plist */; };
@@ -33,8 +30,6 @@
 		2EE425801AE7031500069B32 /* showsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EE4257F1AE7031500069B32 /* showsTableCell.xib */; };
 		2EE425821AE703A000069B32 /* AllShowsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425811AE703A000069B32 /* AllShowsTableViewCell.swift */; };
 		2EE425841AE7196B00069B32 /* ColorFromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425831AE7196B00069B32 /* ColorFromHex.swift */; };
-		2EE425861AE739ED00069B32 /* whiteGear.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EE425851AE739ED00069B32 /* whiteGear.png */; };
-		2EE425881AE73AF000069B32 /* arrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EE425871AE73AF000069B32 /* arrowRight.png */; };
 		2EE4258A1AE8391F00069B32 /* EpisodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE425891AE8391F00069B32 /* EpisodeService.swift */; };
 		2EE4258C1AE839A600069B32 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE4258B1AE839A600069B32 /* Episode.swift */; };
 		2EFA03B51AEA676C005CABCA /* ITC Avant Garde Gothic LT Extra Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA03B41AEA6752005CABCA /* ITC Avant Garde Gothic LT Extra Light.ttf */; };
@@ -64,13 +59,10 @@
 		2E9F3D471ADC25D700EB5DAF /* TvAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TvAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E9F3D4C1ADC25D700EB5DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E9F3D4D1ADC25D700EB5DAF /* TvAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvAppTests.swift; sourceTree = "<group>"; };
-		2E9F3D571ADC27D500EB5DAF /* niceSnow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = niceSnow.png; sourceTree = "<group>"; };
 		2E9F3D5F1ADC2B6900EB5DAF /* AllShowsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllShowsViewController.swift; sourceTree = "<group>"; };
-		2E9F3D671ADC46DD00EB5DAF /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = "<group>"; };
 		2E9F3D691ADC4EDD00EB5DAF /* CurrentShowsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentShowsViewController.swift; sourceTree = "<group>"; };
 		2E9F3D6D1ADC5DC400EB5DAF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2EB192121AEECF8800275CB4 /* currentEpisodesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = currentEpisodesTableViewCell.xib; sourceTree = "<group>"; };
-		2ED8BF101AEC3D020092F807 /* Threads Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Threads Banner.png"; sourceTree = "<group>"; };
 		2EE4255F1ADEB38700069B32 /* HTTPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHelper.swift; sourceTree = "<group>"; };
 		2EE425611AE001E400069B32 /* Development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
 		2EE425631AE0020C00069B32 /* Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
@@ -84,8 +76,6 @@
 		2EE4257F1AE7031500069B32 /* showsTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = showsTableCell.xib; sourceTree = "<group>"; };
 		2EE425811AE703A000069B32 /* AllShowsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllShowsTableViewCell.swift; sourceTree = "<group>"; };
 		2EE425831AE7196B00069B32 /* ColorFromHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorFromHex.swift; sourceTree = "<group>"; };
-		2EE425851AE739ED00069B32 /* whiteGear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteGear.png; sourceTree = "<group>"; };
-		2EE425871AE73AF000069B32 /* arrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowRight.png; sourceTree = "<group>"; };
 		2EE425891AE8391F00069B32 /* EpisodeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeService.swift; sourceTree = "<group>"; };
 		2EE4258B1AE839A600069B32 /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		2EFA03B11AEA6752005CABCA /* ITC Avant Garde Gothic LT Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITC Avant Garde Gothic LT Bold.ttf"; sourceTree = "<group>"; };
@@ -181,18 +171,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2E9F3D591ADC27DB00EB5DAF /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				2ED8BF101AEC3D020092F807 /* Threads Banner.png */,
-				2EE425871AE73AF000069B32 /* arrowRight.png */,
-				2EE425851AE739ED00069B32 /* whiteGear.png */,
-				2E9F3D671ADC46DD00EB5DAF /* gears.png */,
-				2E9F3D571ADC27D500EB5DAF /* niceSnow.png */,
-			);
-			name = Images;
-			sourceTree = "<group>";
-		};
 		2E9F3D5E1ADC2A5100EB5DAF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				2EFA03B01AEA673D005CABCA /* Fonts */,
-				2E9F3D591ADC27DB00EB5DAF /* Images */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -340,21 +317,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2ED8BF111AEC3D020092F807 /* Threads Banner.png in Resources */,
 				2EFA03B61AEA6770005CABCA /* ITC Avant Garde Gothic LT Demi.ttf in Resources */,
 				2E9F3D3D1ADC25D700EB5DAF /* Main.storyboard in Resources */,
 				2EE425641AE0020C00069B32 /* Production.plist in Resources */,
-				2E9F3D581ADC27D500EB5DAF /* niceSnow.png in Resources */,
 				2EFA03B81AEA6775005CABCA /* ITC Avant Garde Gothic LT Bold.ttf in Resources */,
 				2EB192131AEECF8800275CB4 /* currentEpisodesTableViewCell.xib in Resources */,
 				2EFA03B71AEA6772005CABCA /* ITC Avant Garde Gothic LT Book.ttf in Resources */,
-				2EE425861AE739ED00069B32 /* whiteGear.png in Resources */,
 				2EE425621AE001E400069B32 /* Development.plist in Resources */,
 				2E9F3D421ADC25D700EB5DAF /* LaunchScreen.xib in Resources */,
 				2EFA03B51AEA676C005CABCA /* ITC Avant Garde Gothic LT Extra Light.ttf in Resources */,
-				2E9F3D681ADC46DE00EB5DAF /* gears.png in Resources */,
 				2E9F3D3F1ADC25D700EB5DAF /* Images.xcassets in Resources */,
-				2EE425881AE73AF000069B32 /* arrowRight.png in Resources */,
 				2EE425801AE7031500069B32 /* showsTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
