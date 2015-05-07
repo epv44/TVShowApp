@@ -5,9 +5,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="ITC Avant Garde Gothic LT Book.ttf">
-            <string>AvantGardeLT-Book</string>
-        </mutableArray>
         <mutableArray key="ITC Avant Garde Gothic LT Demi.ttf">
             <string>AvantGardeLT-Demi</string>
         </mutableArray>
@@ -30,13 +27,13 @@
                                     <constraint firstAttribute="width" constant="48" id="4Lp-pT-poL"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gears.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Yb-TJ-Ul5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhiteGear" translatesAutoresizingMaskIntoConstraints="NO" id="3Yb-TJ-Ul5">
                                 <rect key="frame" x="1" y="0.0" width="68" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="68" id="i8n-KG-G1J"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnx-Lw-UZj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnx-Lw-UZj">
                                 <rect key="frame" x="77" y="8" width="166" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="166" id="1RY-HB-PzR"/>
@@ -46,9 +43,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWQ-3W-EE6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWQ-3W-EE6">
                                 <rect key="frame" x="77" y="37" width="166" height="23"/>
-                                <fontDescription key="fontDescription" name="AvantGardeLT-Book" family="AvantGarde LT Book" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -89,6 +86,6 @@
     </objects>
     <resources>
         <image name="ArrowRight" width="128" height="128"/>
-        <image name="gears.png" width="128" height="128"/>
+        <image name="WhiteGear" width="128" height="128"/>
     </resources>
 </document>

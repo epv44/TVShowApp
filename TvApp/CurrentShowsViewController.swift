@@ -33,7 +33,7 @@ class CurrentShowsViewController: UITableViewController {
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         //populate view with all shows
         let progressIndicatorView = UIProgressView(frame: CGRect(x: 0.0, y: 80.0, width: self.view.bounds.width, height: 10.0))
-        progressIndicatorView.tintColor = UIColorFromHex(0x61edaf, alpha: 1)
+        progressIndicatorView.tintColor = GreenBackgroundFromHex()
         self.view.addSubview(progressIndicatorView)
         
         progressIndicatorView.setProgress(80.0 / 100.0, animated: true)

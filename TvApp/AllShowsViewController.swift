@@ -31,7 +31,7 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         //populate view with all shows
         let progressIndicatorView = UIProgressView(frame: CGRect(x: 0.0, y: 80.0, width: self.view.bounds.width, height: 10.0))
-        progressIndicatorView.tintColor = UIColorFromHex(0x61edaf, alpha: 1)
+        progressIndicatorView.tintColor = GreenBackgroundFromHex()
         self.view.addSubview(progressIndicatorView)
         
         progressIndicatorView.setProgress(80.0 / 100.0, animated: true)
@@ -51,6 +51,7 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
         }
         
     }
+    
     func updateHeaderView() {
         var headerRect = CGRect(x: 0, y: -tableHeaderHeight, width: tableView.bounds.width, height: tableHeaderHeight)
         if tableView.contentOffset.y < -tableHeaderHeight {
@@ -67,6 +68,12 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
         })
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.barTintColor = GreenBackgroundFromHex()
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    }
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         updateHeaderView()
     }
@@ -91,9 +98,13 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
         return 10
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        performSegueWithIdentifier("showSegue", sender: cell)
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //        let cell = tableView.dequeueReusableCellWithIdentifier("allShows", forIndexPath: indexPath) as UITableViewCell
-        //        cell.textLabel?.text = self.showArray[indexPath.row].name
         var cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as AllShowsTableViewCell
         cell.showTitle.text = self.showArray[indexPath.section].name
         return cell
@@ -133,14 +144,26 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
     }
     */
     
-    /*
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "showSegue"{
+            if let navbar = segue.destinationViewController as? UINavigationController{
+                if let destinationVC = navbar.topViewController as? ShowViewController{
+                    let indexPath = self.tableView?.indexPathForCell(sender as AllShowsTableViewCell)
+                    let sectionId = indexPath!.section
+                    destinationVC.titleString = self.showArray[sectionId].name
+                    destinationVC.descriptionString = self.showArray[sectionId].description
+                    destinationVC.seasonList = self.showArray[sectionId].seasons
+                    //println(self.showArray[sectionId].seasons)
+                    //destinationVC.seasonsArray = getSeasonsForShow(self.showArray[sectionId].seasons
+                }
+            }else{
+                println("error")
+            }
+        }
     }
-    */
-    
 }

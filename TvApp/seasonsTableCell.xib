@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ITC Avant Garde Gothic LT Demi.ttf">
+            <string>AvantGardeLT-Demi</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="21" reuseIdentifier="cell" rowHeight="67" id="ejF-yA-X9X" customClass="SeasonsTableViewCell" customModule="TvApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="316" height="67"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ejF-yA-X9X" id="YwP-NE-JhD">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Pj-Fd-wZ3">
+                        <rect key="frame" x="12" y="-1" width="292" height="72"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v7I-1u-tQM">
+                                <rect key="frame" x="1" y="0.0" width="68" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="WvZ-nm-O69"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlV-BY-a58">
+                                <rect key="frame" x="77" y="32" width="166" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowRight" translatesAutoresizingMaskIntoConstraints="NO" id="U5w-95-MeP">
+                                <rect key="frame" x="244" y="16" width="48" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="KTw-Gs-14e"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHY-1B-AmB">
+                                <rect key="frame" x="77" y="0.0" width="166" height="35"/>
+                                <fontDescription key="fontDescription" name="AvantGardeLT-Demi" family="AvantGarde LT Book" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="U5w-95-MeP" firstAttribute="centerY" secondItem="v7I-1u-tQM" secondAttribute="centerY" id="7a2-Bm-j8l"/>
+                            <constraint firstItem="PHY-1B-AmB" firstAttribute="leading" secondItem="v7I-1u-tQM" secondAttribute="trailing" constant="8" symbolic="YES" id="Clm-YK-cg0"/>
+                            <constraint firstItem="PHY-1B-AmB" firstAttribute="top" secondItem="v7I-1u-tQM" secondAttribute="top" id="G2F-G5-2my"/>
+                            <constraint firstItem="VlV-BY-a58" firstAttribute="top" secondItem="8Pj-Fd-wZ3" secondAttribute="top" constant="32" id="IMZ-LH-I20"/>
+                            <constraint firstAttribute="bottom" secondItem="VlV-BY-a58" secondAttribute="bottom" constant="10" id="KmX-Vk-oaT"/>
+                            <constraint firstItem="v7I-1u-tQM" firstAttribute="top" secondItem="8Pj-Fd-wZ3" secondAttribute="top" id="KyO-zj-8Gt"/>
+                            <constraint firstItem="v7I-1u-tQM" firstAttribute="leading" secondItem="8Pj-Fd-wZ3" secondAttribute="leading" constant="1" id="MFy-By-Peh"/>
+                            <constraint firstItem="U5w-95-MeP" firstAttribute="leading" secondItem="PHY-1B-AmB" secondAttribute="trailing" constant="1" id="Zc1-mw-mTM"/>
+                            <constraint firstItem="PHY-1B-AmB" firstAttribute="trailing" secondItem="VlV-BY-a58" secondAttribute="trailing" id="jNs-Q0-OZ3"/>
+                            <constraint firstAttribute="bottom" secondItem="v7I-1u-tQM" secondAttribute="bottom" constant="1" id="jgC-d8-CJ2"/>
+                            <constraint firstItem="VlV-BY-a58" firstAttribute="leading" secondItem="PHY-1B-AmB" secondAttribute="leading" id="u87-Hr-wtZ"/>
+                            <constraint firstItem="U5w-95-MeP" firstAttribute="top" secondItem="8Pj-Fd-wZ3" secondAttribute="top" constant="16" id="vft-c7-iNJ"/>
+                            <constraint firstAttribute="bottom" secondItem="PHY-1B-AmB" secondAttribute="bottom" constant="37" id="wBx-R6-qWP"/>
+                            <constraint firstAttribute="trailing" secondItem="U5w-95-MeP" secondAttribute="trailing" id="xUX-cW-Nrx"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="8Pj-Fd-wZ3" firstAttribute="centerX" secondItem="YwP-NE-JhD" secondAttribute="centerX" id="D6x-Jo-Zg8"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="8Pj-Fd-wZ3" secondAttribute="bottom" constant="-12.5" id="Teg-0K-xvz"/>
+                    <constraint firstItem="8Pj-Fd-wZ3" firstAttribute="leading" secondItem="YwP-NE-JhD" secondAttribute="leadingMargin" constant="4" id="jxh-0X-bOd"/>
+                    <constraint firstItem="8Pj-Fd-wZ3" firstAttribute="top" secondItem="YwP-NE-JhD" secondAttribute="topMargin" constant="-9" id="oQ6-O4-XFS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cellView" destination="8Pj-Fd-wZ3" id="alx-7N-Xn5"/>
+                <outlet property="seasonDescription" destination="VlV-BY-a58" id="ySj-Qj-aIJ"/>
+                <outlet property="seasonImage" destination="v7I-1u-tQM" id="szP-Ul-Qr6"/>
+                <outlet property="seasonTitle" destination="PHY-1B-AmB" id="htQ-Bv-Dvl"/>
+            </connections>
+            <point key="canvasLocation" x="473" y="354.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ArrowRight" width="128" height="128"/>
+    </resources>
+</document>

@@ -16,3 +16,7 @@ func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)-> UIColor {
     
     return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
 }
+
+func GreenBackgroundFromHex() -> UIColor {
+    return UIColorFromHex(0x50e2c1, alpha: 1)
+}

@@ -14,6 +14,7 @@ typealias JSONShowArray = Array<Show>
 typealias JSONEpisodeArray = Array<Episode>
 typealias JSONDictionary = Dictionary<String, AnyObject>
 typealias JSONArray = NSArray
+typealias JSONSeasonArray = Array<Season>
 
 func JSONString(object: JSON) -> String? {
     return object as? String
