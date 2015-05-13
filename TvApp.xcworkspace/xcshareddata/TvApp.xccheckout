@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>66A70FD5-9062-4614-8073-58F19BAC730A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TvApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F0C078351DD442A853832D20E626E536BF0A4ACD</key>
+		<string>https://github.com/epv44/TVShowApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TvApp.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F0C078351DD442A853832D20E626E536BF0A4ACD</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/epv44/TVShowApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F0C078351DD442A853832D20E626E536BF0A4ACD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F0C078351DD442A853832D20E626E536BF0A4ACD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TvApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -11,10 +11,11 @@ import Foundation
 struct Show{
     let name: String
     let description: String
+    let imageUrl: String
     let seasons: JSONArray
     
-    static func create(name: String)(description: String)(seasons: JSONArray) -> Show {
-        return Show(name: name, description: description, seasons: seasons)
+    static func create(name: String)(description: String)(imageUrl: String)(seasons: JSONArray) -> Show {
+        return Show(name: name, description: description, imageUrl: imageUrl, seasons: seasons)
     }
     
     static func decode(json: JSON) -> Result<JSONShowArray> {
@@ -22,9 +23,10 @@ struct Show{
         
         for obj: AnyObject in JSONObject(json) {
             let show = Show.create <^>
-                        obj["title"]       >>> JSONString <*>
-                        obj["description"] >>> JSONString <*>
-                        obj["seasons"]     >>> JSONObject
+                        obj["title"]            >>> JSONString <*>
+                        obj["description"]      >>> JSONString <*>
+                        obj["show_image_url"]   >>> JSONString <*>
+                        obj["seasons"]          >>> JSONObject
             allShows.append(show!)
         }
         return resultFromOptional(allShows, NSError())

@@ -14,13 +14,13 @@ struct Episode {
     let viewingTime: String
 
     static func create(name: String)(description: String)(viewingTime: String) -> Episode {
-        return Episode(name: name, description: description, viewingTime:viewingTime)
+        return Episode(name: name, description: description, viewingTime: viewingTime)
     }
+    
     static func create1(name: String)(description: String) -> Episode {
         var viewingTime: String = "blank" 
         return Episode(name: name, description: description, viewingTime: viewingTime)
     }
-    
     
     static func decode(json: JSON) -> Result<JSONEpisodeArray> {
         var allEpisodes : JSONEpisodeArray = []

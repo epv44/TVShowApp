@@ -13,6 +13,7 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
     private var showArray : JSONShowArray = []
     let tableHeaderHeight: CGFloat = 75.0
     var headerView: UIView!
+    private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +39,6 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
         getAllShows() { either in
             switch either {
             case let .Error(error):
-                //                let httpHelper = HTTPHelper()
-                //                let errorMessage = httpHelper.getErrorMessage(error)
                 let errorAlert = UIAlertView(title: "Error", message:"Error", delegate:nil, cancelButtonTitle:"OK")
                 progressIndicatorView.removeFromSuperview()
                 errorAlert.show()
@@ -49,7 +48,6 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
                 
             }
         }
-        
     }
     
     func updateHeaderView() {
@@ -107,6 +105,51 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as AllShowsTableViewCell
         cell.showTitle.text = self.showArray[indexPath.section].name
+        cell.showImage.image = nil
+        
+        var urlString = self.showArray[indexPath.section].imageUrl
+        if let img = imageCache[urlString]{
+            cell.imageView?.image = img
+        }else{
+            let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
+            getPreSignedURLRequest.bucket = S3BucketName
+            getPreSignedURLRequest.key = urlString
+            getPreSignedURLRequest.HTTPMethod = AWSHTTPMethod.GET
+            getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
+            
+            //check if URL is in array, if not then perform async request to get the urls set url string outside of this block
+            AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:BFTask!) -> (AnyObject!) in
+                if (task.error != nil) {
+                    NSLog("Error: %@", task.error)
+                } else {
+                    let presignedURL = task.result as NSURL!
+                    if (presignedURL != nil) {
+                        NSLog("download presignedURL is: \n%@", presignedURL)
+                        let mainQueue = NSOperationQueue.mainQueue()
+                        let request = NSURLRequest(URL: presignedURL)
+                        NSURLConnection.sendAsynchronousRequest(request, queue: mainQueue, completionHandler: { (response, data, error) -> Void in
+                            if error == nil {
+                                // Convert the downloaded data in to a UIImage object
+                                let image = UIImage(data: data)
+                                // Store the image in to our cache
+                                self.imageCache[urlString] = image
+                                // Update the cell
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
+                                        cellToUpdate.imageView?.image = image
+                                        self.tableView.reloadData()
+                                    }
+                                })
+                            }
+                            else {
+                                println("Error: \(error.localizedDescription)")
+                            }
+                        })
+                    }
+                }
+                return nil;
+            }
+        }
         return cell
     }
     /*
@@ -158,8 +201,8 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
                     destinationVC.titleString = self.showArray[sectionId].name
                     destinationVC.descriptionString = self.showArray[sectionId].description
                     destinationVC.seasonList = self.showArray[sectionId].seasons
-                    //println(self.showArray[sectionId].seasons)
-                    //destinationVC.seasonsArray = getSeasonsForShow(self.showArray[sectionId].seasons
+                    destinationVC.imageUrl = self.showArray[sectionId].imageUrl
+                    destinationVC.showImage = self.imageCache[self.showArray[sectionId].imageUrl]
                 }
             }else{
                 println("error")

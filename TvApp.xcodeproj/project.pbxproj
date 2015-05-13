@@ -10,6 +10,7 @@
 		2E1610501AEFEC73009C3E74 /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E16104F1AEFEC73009C3E74 /* ShowViewController.swift */; };
 		2E1610521AF173AD009C3E74 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1610511AF173AD009C3E74 /* Season.swift */; };
 		2E4C0F841AEED3EA00722052 /* CurrentEpisodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4C0F831AEED3EA00722052 /* CurrentEpisodeViewCell.swift */; };
+		2E7FC3D21AFE74C0001F3BDA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7FC3D11AFE74C0001F3BDA /* Constants.swift */; };
 		2E9B944A1AF17E9F0034A9D3 /* SeasonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9B94491AF17E9F0034A9D3 /* SeasonService.swift */; };
 		2E9B94521AF2B4B60034A9D3 /* SeasonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9B94511AF2B4B60034A9D3 /* SeasonsTableViewCell.swift */; };
 		2E9B94541AF2E5F00034A9D3 /* seasonsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E9B94531AF2E5F00034A9D3 /* seasonsTableCell.xib */; };
@@ -21,6 +22,7 @@
 		2E9F3D601ADC2B6900EB5DAF /* AllShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F3D5F1ADC2B6900EB5DAF /* AllShowsViewController.swift */; };
 		2E9F3D6A1ADC4EDD00EB5DAF /* CurrentShowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F3D691ADC4EDD00EB5DAF /* CurrentShowsViewController.swift */; };
 		2E9F3D6E1ADC5DC400EB5DAF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F3D6D1ADC5DC400EB5DAF /* SettingsViewController.swift */; };
+		2EA2EF2F1B01680A0064471C /* StringManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA2EF2E1B01680A0064471C /* StringManipulation.swift */; };
 		2EA691C01AFAB71400364A96 /* SeasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA691BF1AFAB71400364A96 /* SeasonViewController.swift */; };
 		2EB192131AEECF8800275CB4 /* currentEpisodesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EB192121AEECF8800275CB4 /* currentEpisodesTableViewCell.xib */; };
 		2EE425601ADEB38700069B32 /* HTTPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE4255F1ADEB38700069B32 /* HTTPHelper.swift */; };
@@ -42,6 +44,7 @@
 		2EFA03B61AEA6770005CABCA /* ITC Avant Garde Gothic LT Demi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA03B31AEA6752005CABCA /* ITC Avant Garde Gothic LT Demi.ttf */; };
 		2EFA03B71AEA6772005CABCA /* ITC Avant Garde Gothic LT Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA03B21AEA6752005CABCA /* ITC Avant Garde Gothic LT Book.ttf */; };
 		2EFA03B81AEA6775005CABCA /* ITC Avant Garde Gothic LT Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EFA03B11AEA6752005CABCA /* ITC Avant Garde Gothic LT Bold.ttf */; };
+		847B0F9709E4E2E72FF7CDBD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9921AFDF95E9EB8D1F7BB83 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,8 @@
 		2E16104F1AEFEC73009C3E74 /* ShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
 		2E1610511AF173AD009C3E74 /* Season.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		2E4C0F831AEED3EA00722052 /* CurrentEpisodeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentEpisodeViewCell.swift; sourceTree = "<group>"; };
+		2E7FC3D01AFD1D02001F3BDA /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		2E7FC3D11AFE74C0001F3BDA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2E9B94491AF17E9F0034A9D3 /* SeasonService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonService.swift; sourceTree = "<group>"; };
 		2E9B94511AF2B4B60034A9D3 /* SeasonsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonsTableViewCell.swift; sourceTree = "<group>"; };
 		2E9B94531AF2E5F00034A9D3 /* seasonsTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = seasonsTableCell.xib; sourceTree = "<group>"; };
@@ -73,6 +78,7 @@
 		2E9F3D5F1ADC2B6900EB5DAF /* AllShowsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllShowsViewController.swift; sourceTree = "<group>"; };
 		2E9F3D691ADC4EDD00EB5DAF /* CurrentShowsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentShowsViewController.swift; sourceTree = "<group>"; };
 		2E9F3D6D1ADC5DC400EB5DAF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2EA2EF2E1B01680A0064471C /* StringManipulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringManipulation.swift; sourceTree = "<group>"; };
 		2EA691BF1AFAB71400364A96 /* SeasonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeasonViewController.swift; sourceTree = "<group>"; };
 		2EB192121AEECF8800275CB4 /* currentEpisodesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = currentEpisodesTableViewCell.xib; sourceTree = "<group>"; };
 		2EE4255F1ADEB38700069B32 /* HTTPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHelper.swift; sourceTree = "<group>"; };
@@ -94,6 +100,9 @@
 		2EFA03B21AEA6752005CABCA /* ITC Avant Garde Gothic LT Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITC Avant Garde Gothic LT Book.ttf"; sourceTree = "<group>"; };
 		2EFA03B31AEA6752005CABCA /* ITC Avant Garde Gothic LT Demi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITC Avant Garde Gothic LT Demi.ttf"; sourceTree = "<group>"; };
 		2EFA03B41AEA6752005CABCA /* ITC Avant Garde Gothic LT Extra Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ITC Avant Garde Gothic LT Extra Light.ttf"; sourceTree = "<group>"; };
+		31BE989EF9F6C81E7E983491 /* Pods.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.development.xcconfig; path = "Pods/Target Support Files/Pods/Pods.development.xcconfig"; sourceTree = "<group>"; };
+		AD65FC7F7EDABC88CAA7D033 /* Pods.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.production.xcconfig; path = "Pods/Target Support Files/Pods/Pods.production.xcconfig"; sourceTree = "<group>"; };
+		B9921AFDF95E9EB8D1F7BB83 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847B0F9709E4E2E72FF7CDBD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,12 +124,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		298421119671A7574BAAAED4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				31BE989EF9F6C81E7E983491 /* Pods.development.xcconfig */,
+				AD65FC7F7EDABC88CAA7D033 /* Pods.production.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2E9F3D271ADC25D700EB5DAF = {
 			isa = PBXGroup;
 			children = (
 				2E9F3D321ADC25D700EB5DAF /* TvApp */,
 				2E9F3D4A1ADC25D700EB5DAF /* TvAppTests */,
 				2E9F3D311ADC25D700EB5DAF /* Products */,
+				298421119671A7574BAAAED4 /* Pods */,
+				C28E771A4F58A96A3FD76EB5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +158,7 @@
 			children = (
 				2EFA03AF1AEA672F005CABCA /* Resources */,
 				2E9F3D351ADC25D700EB5DAF /* AppDelegate.swift */,
+				2E7FC3D11AFE74C0001F3BDA /* Constants.swift */,
 				2EB192111AEECF5D00275CB4 /* CustomTableCells */,
 				2EE425651AE00FED00069B32 /* EnvConfiguration.swift */,
 				2EE425761AE5B74100069B32 /* Service Layer */,
@@ -149,6 +171,8 @@
 				2EE4256B1AE54C3400069B32 /* Data Objects */,
 				2EE4256C1AE5617300069B32 /* Result.swift */,
 				2EE425831AE7196B00069B32 /* ColorFromHex.swift */,
+				2EA2EF2E1B01680A0064471C /* StringManipulation.swift */,
+				2E7FC3D01AFD1D02001F3BDA /* BridgingHeader.h */,
 				2EE4256E1AE5838E00069B32 /* JSONParser.swift */,
 				2EE425721AE599E400069B32 /* Response.swift */,
 				2EE425701AE5853B00069B32 /* Functional.swift */,
@@ -255,6 +279,14 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		C28E771A4F58A96A3FD76EB5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9921AFDF95E9EB8D1F7BB83 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -262,9 +294,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E9F3D511ADC25D700EB5DAF /* Build configuration list for PBXNativeTarget "TvApp" */;
 			buildPhases = (
+				24D12267E2908F63BFB0CF49 /* Check Pods Manifest.lock */,
 				2E9F3D2C1ADC25D700EB5DAF /* Sources */,
 				2E9F3D2D1ADC25D700EB5DAF /* Frameworks */,
 				2E9F3D2E1ADC25D700EB5DAF /* Resources */,
+				5D45FCE5BDBB2C089FE78FE3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -359,6 +393,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		24D12267E2908F63BFB0CF49 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5D45FCE5BDBB2C089FE78FE3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2E9F3D2C1ADC25D700EB5DAF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -369,6 +436,7 @@
 				2EE425601ADEB38700069B32 /* HTTPHelper.swift in Sources */,
 				2E1610521AF173AD009C3E74 /* Season.swift in Sources */,
 				2EE425711AE5853B00069B32 /* Functional.swift in Sources */,
+				2E7FC3D21AFE74C0001F3BDA /* Constants.swift in Sources */,
 				2EE4258A1AE8391F00069B32 /* EpisodeService.swift in Sources */,
 				2E1610501AEFEC73009C3E74 /* ShowViewController.swift in Sources */,
 				2EE425841AE7196B00069B32 /* ColorFromHex.swift in Sources */,
@@ -382,6 +450,7 @@
 				2EE425821AE703A000069B32 /* AllShowsTableViewCell.swift in Sources */,
 				2EE4256A1AE54BF000069B32 /* Show.swift in Sources */,
 				2E9B94521AF2B4B60034A9D3 /* SeasonsTableViewCell.swift in Sources */,
+				2EA2EF2F1B01680A0064471C /* StringManipulation.swift in Sources */,
 				2EE4256D1AE5617300069B32 /* Result.swift in Sources */,
 				2EA691C01AFAB71400364A96 /* SeasonViewController.swift in Sources */,
 				2EE425731AE599E400069B32 /* Response.swift in Sources */,
@@ -508,22 +577,26 @@
 		};
 		2E9F3D521ADC25D700EB5DAF /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31BE989EF9F6C81E7E983491 /* Pods.development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TvApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = TvApp/BridgingHeader.h;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Development;
 		};
 		2E9F3D531ADC25D700EB5DAF /* Production */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD65FC7F7EDABC88CAA7D033 /* Pods.production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TvApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = TvApp/BridgingHeader.h;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Production;

@@ -11,11 +11,11 @@ import Foundation
 struct Season {
     let name: String
     let description: String
+    let seasonImage: String
     let episodes: JSONArray
     
-    static func create(name: String)(description: String)(episodes: JSONArray) -> Season {
-        //var timeStamp : NSDate = convertToNSDateTime(viewTime)
-        return Season(name: name, description: description, episodes:episodes)
+    static func create(name: String)(description: String)(seasonImage: String)(episodes: JSONArray) -> Season {
+        return Season(name: name, description: description, seasonImage: seasonImage, episodes: episodes)
     }
     
     static func decode(json: JSON) -> Result<JSONSeasonArray> {
@@ -23,9 +23,10 @@ struct Season {
         
         for obj: AnyObject in JSONObject(json) {
             let season = Season.create <^>
-                obj["title"]        >>> JSONString <*>
-                obj["description"]  >>> JSONString <*>
-                obj["episodes"]     >>> JSONObject
+                obj["title"]                >>> JSONString <*>
+                obj["description"]          >>> JSONString <*>
+                obj["season_image_url"]     >>> JSONString <*>
+                obj["episodes"]             >>> JSONObject
             allSeasons.append(season!)
         }
         return resultFromOptional(allSeasons, NSError())

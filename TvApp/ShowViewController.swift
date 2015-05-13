@@ -9,17 +9,34 @@
 import UIKit
 import QuartzCore
 
-class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDownloadDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var showDescription: UITextView!
     var titleString: String!
     var descriptionString: String!
+    var imageUrl: String!
+    var showImage: UIImage!
     var seasonList: JSONArray = []
     var seasonArray : JSONSeasonArray = []
+    private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
+    var downloadTask: NSURLSessionDownloadTask?
+    var session: NSURLSession?
     override func viewDidLoad() {
         super.viewDidLoad()
+        struct Static {
+            static var session: NSURLSession?
+            static var token: dispatch_once_t = 0
+        }
+        
+        dispatch_once(&Static.token) {
+            let configuration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(BackgroundSessionDownloadIdentifier)
+            Static.session = NSURLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+        }
+        
+        self.session = Static.session;
+        
         var nib = UINib(nibName: "seasonsTableCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         self.tableView.backgroundColor = UIColorFromHex(0xF2F2F2, alpha: 1)
@@ -40,8 +57,117 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 obj["episodes"]     >>> JSONObject
             seasonArray.append(season!)
         }
+        self.imageView.image = showImage
+//        if let img = imageCache[imageUrl]{
+//            self.imageView.image = img
+//        }else{
+//            startDownload()
+//        }
     }
     
+    func startDownload(){
+        
+        if (self.downloadTask != nil) {
+            return;
+        }
+        
+        self.imageView.image = nil;
+        
+        let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
+        getPreSignedURLRequest.bucket = S3BucketName
+        getPreSignedURLRequest.key = imageUrl
+        getPreSignedURLRequest.HTTPMethod = AWSHTTPMethod.GET
+        getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
+        
+        
+        AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:BFTask!) -> (AnyObject!) in
+            if (task.error != nil) {
+                NSLog("Error: %@", task.error)
+            } else {
+                
+                let presignedURL = task.result as NSURL!
+                if (presignedURL != nil) {
+                    NSLog("download presignedURL is: \n%@", presignedURL)
+                    
+                    let request = NSURLRequest(URL: presignedURL)
+                    self.downloadTask = self.session?.downloadTaskWithRequest(request)
+                    self.downloadTask?.resume()
+                }
+            }
+            return nil;
+        }
+    }
+    
+    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        
+        let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        NSLog("DownloadTask progress: %lf", progress)
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            println("Downloading...")
+        }
+        
+    }
+    
+    
+    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
+        
+        NSLog("[%@ %@]", reflect(self).summary, __FUNCTION__)
+        
+        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        
+        let documentsPath = paths.first as? String
+        var fileName = getImageNameFromUrl(imageUrl)
+        
+        let filePath = documentsPath! + fileName
+        
+        //move the downloaded file to docs directory
+        if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
+            NSFileManager.defaultManager().removeItemAtPath(filePath, error: nil)
+        }
+        
+        NSFileManager.defaultManager().moveItemAtURL(location, toURL: NSURL.fileURLWithPath(filePath)!, error: nil)
+        
+        
+        //update UI elements
+        dispatch_async(dispatch_get_main_queue()) {
+            self.imageCache[self.imageUrl] = UIImage(contentsOfFile: filePath)
+            self.imageView.image = UIImage(contentsOfFile: filePath)
+        }
+    }
+    
+    
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+        
+        if (error == nil) {
+            dispatch_async(dispatch_get_main_queue()) {
+                println("Download Successfully")
+            }
+            NSLog("S3 DownloadTask: %@ completed successfully", task);
+        } else {
+            dispatch_async(dispatch_get_main_queue()) {
+                println("Download Failed")
+            }
+            NSLog("S3 DownloadTask: %@ completed with error: %@", task, error!.localizedDescription);
+        }
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            //self.progressView.progress = Float(task.countOfBytesReceived) / Float(task.countOfBytesExpectedToReceive)
+        }
+        self.downloadTask = nil
+    }
+    
+    func URLSessionDidFinishEventsForBackgroundURLSession(session: NSURLSession) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        if ((appDelegate.backgroundDownloadSessionCompletionHandler) != nil) {
+            let completionHandler:() = appDelegate.backgroundDownloadSessionCompletionHandler!;
+            appDelegate.backgroundDownloadSessionCompletionHandler = nil
+            completionHandler
+        }
+        
+        NSLog("Completion Handler has been invoked, background download task has finished.");
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -68,11 +194,12 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("allEpisodes", forIndexPath: indexPath) as UITableViewCell
-//        cell.textLabel?.text = self.seasonArray[indexPath.section].name
+        //        let cell = tableView.dequeueReusableCellWithIdentifier("allEpisodes", forIndexPath: indexPath) as UITableViewCell
+        //        cell.textLabel?.text = self.seasonArray[indexPath.section].name
         var cell:SeasonsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as SeasonsTableViewCell
         cell.seasonTitle.text = self.seasonArray[indexPath.section].name
         cell.seasonDescription.text = self.seasonArray[indexPath.section].description
+        
         return cell
     }
     
