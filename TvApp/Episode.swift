@@ -11,15 +11,18 @@ import Foundation
 struct Episode {
     let name: String
     let description: String
+    let episodeImage: String
     let viewingTime: String
+    let episodeId: String
+    let characters: JSONArray
 
-    static func create(name: String)(description: String)(viewingTime: String) -> Episode {
-        return Episode(name: name, description: description, viewingTime: viewingTime)
+    static func create(name: String)(description: String)(episodeImage: String)(viewingTime: String)(episodeId: String)(characters: JSONArray) -> Episode {
+        return Episode(name: name, description: description, episodeImage: episodeImage, viewingTime: viewingTime, episodeId: episodeId, characters: characters)
     }
     
-    static func create1(name: String)(description: String) -> Episode {
+    static func create1(name: String)(description: String)(episodeImage: String)(episodeId: String)(characters: JSONArray) -> Episode {
         var viewingTime: String = "blank" 
-        return Episode(name: name, description: description, viewingTime: viewingTime)
+        return Episode(name: name, description: description, episodeImage: episodeImage, viewingTime: viewingTime, episodeId: episodeId, characters: characters)
     }
     
     static func decode(json: JSON) -> Result<JSONEpisodeArray> {
@@ -27,9 +30,12 @@ struct Episode {
         
         for obj: AnyObject in JSONObject(json) {
             let episode = Episode.create <^>
-                obj["title"]        >>> JSONString <*>
-                obj["description"]  >>> JSONString <*>
-                obj["viewing_time"] >>> JSONString
+                obj["title"]                >>> JSONString <*>
+                obj["description"]          >>> JSONString <*>
+                obj["episode_image_url"]    >>> JSONString <*>
+                obj["viewing_time"]         >>> JSONString <*>
+                obj["id"]                   >>> JSONString <*>
+                obj["characters"]           >>> JSONObject
             allEpisodes.append(episode!)
         }
         return resultFromOptional(allEpisodes, NSError())

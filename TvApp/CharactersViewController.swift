@@ -1,24 +1,25 @@
 //
-//  SeasonViewController.swift
+//  CharactersViewController.swift
 //  TvApp
 //
-//  Created by Eric Vennaro on 5/6/15.
+//  Created by Eric Vennaro on 5/20/15.
 //  Copyright (c) 2015 Eric Vennaro. All rights reserved.
 //
 
 import UIKit
-import QuartzCore   
 
-class SeasonViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CharactersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     var titleString: String!
     var descriptionString: String!
-    var episodeList: JSONArray = []
-    var episodeArray : JSONEpisodeArray = []
-    var imageForSeason: UIImage!
+    var outfitList: JSONArray = []
+    var outfitArray : JSONOutfitArray = []
+    var currentEpisode: String!
+    var imageForCharacter: UIImage!
     private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var seasonImage: UIImageView!
-    @IBOutlet weak var seasonDescription: UITextView!
+    @IBOutlet weak var characterImage: UIImageView!
+    @IBOutlet weak var characterDescription: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundColor = UIColorFromHex(0xF2F2F2, alpha: 1)
@@ -27,34 +28,35 @@ class SeasonViewController: UIViewController, UITableViewDataSource, UITableView
         titleLabel.text = titleString
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.font = UIFont(name: "AvantGardeLT-Demi", size: 18)
-        var nib = UINib(nibName: "seasonsTableCell", bundle: nil)
+        var nib = UINib(nibName: "showsTableCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         navigationItem.titleView = titleLabel
-        seasonDescription.text=descriptionString
-        for obj: AnyObject in episodeList{
-            let episode = Episode.create1 <^>
-                obj["title"]                >>> JSONString <*>
-                obj["description"]          >>> JSONString <*>
-                obj["episode_image_url"]    >>> JSONString <*>
-                obj["viewing_time"]         >>> JSONString <*>
-                obj["episode_id"]           >>> JSONString <*>
-                obj["characters"]           >>> JSONObject
-            episodeArray.append(episode!)
+        //outfit list
+        self.characterDescription.scrollRangeToVisible(NSMakeRange(0,0))
+        self.characterImage.image = imageForCharacter
+        for obj: AnyObject in outfitList {
+            //if outfit is for the current episode then add it to the outfit array, otherwise skip it.
+            if obj["episode_id"] == currentEpisode {
+                let outfit = Outfit.create <^>
+                    obj["outfit_name"]      >>> JSONString <*>
+                    obj["description"]      >>> JSONString <*>
+                    obj["outfit_image_url"] >>> JSONString <*>
+                    obj["episode_id"]       >>> JSONString <*>
+                    obj["pieces"]           >>> JSONObject
+                outfitArray.append(outfit!)
+            }
         }
-        self.seasonDescription.scrollRangeToVisible(NSMakeRange(0,0))
-        self.seasonImage.image = imageForSeason
-        // Do any additional setup after loading the view.
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     // MARK: - Table view data source
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.episodeArray.count
+        return self.outfitArray.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,16 +66,13 @@ class SeasonViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         return 10
     }
-    
+    //switch to outfit
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("episodeCell", forIndexPath: indexPath) as UITableViewCell
-//        cell.textLabel?.text = self.episodeArray[indexPath.section].name
-        var cell:SeasonsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! SeasonsTableViewCell
-        cell.seasonTitle.text = self.episodeArray[indexPath.section].name
-        cell.seasonDescription.text = self.episodeArray[indexPath.section].description
-        cell.seasonImage.image = nil
+        var cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! AllShowsTableViewCell
+        cell.showTitle.text = self.outfitArray[indexPath.section].outfitName
+        cell.showImage.image = nil
         
-        var urlString = self.episodeArray[indexPath.section].episodeImage
+        var urlString = self.outfitArray[indexPath.section].outfitImage
         if let img = imageCache[urlString]{
             cell.imageView?.image = img
         }else{
@@ -99,7 +98,7 @@ class SeasonViewController: UIViewController, UITableViewDataSource, UITableView
                                 let image = UIImage(data: data)
                                 // Store the image in to our cache, if it is missing set it to the show image
                                 if urlString.rangeOfString("missing.png") != nil {
-                                    self.imageCache[urlString] = self.seasonImage.image
+                                    self.imageCache[urlString] = self.characterImage.image
                                 }else{
                                     self.imageCache[urlString] = image
                                 }
@@ -120,37 +119,34 @@ class SeasonViewController: UIViewController, UITableViewDataSource, UITableView
                 return nil;
             }
         }
-
+        
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        performSegueWithIdentifier("episodeSegue", sender: cell)
+        performSegueWithIdentifier("outfitSegue", sender: cell)
     }
-
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-        if segue.identifier == "episodeSegue"{
+        if segue.identifier == "outfitSegue"{
             if let navbar = segue.destinationViewController as? UINavigationController{
-                if let destinationVC = navbar.topViewController as? EpisodeViewController{
-                    let indexPath = self.tableView?.indexPathForCell(sender as! SeasonsTableViewCell)
+                if let destinationVC = navbar.topViewController as? OutfitsViewController{
+                    let indexPath = self.tableView?.indexPathForCell(sender as! AllShowsTableViewCell)
                     let sectionId = indexPath!.section
-                    destinationVC.titleString = self.episodeArray[sectionId].name
-                    destinationVC.descriptionString = self.episodeArray[sectionId].description
-                    destinationVC.characterList = self.episodeArray[sectionId].characters
-                    destinationVC.imageForEpisode = self.imageCache[self.episodeArray[sectionId].episodeImage]
-                    destinationVC.episodeId = self.episodeArray[sectionId].episodeId
+                    destinationVC.titleString = self.outfitArray[sectionId].outfitName
+                    destinationVC.descriptionString = self.outfitArray[sectionId].description
+                    destinationVC.outfitItemsList = self.outfitArray[sectionId].pieces
+                    //destinationVC.imageForCharacter = self.imageCache[self.characterArray[sectionId].characterImage]
                 }
             }else{
                 println("error")
             }
         }
+
     }
 }

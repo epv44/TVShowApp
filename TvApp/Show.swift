@@ -11,11 +11,11 @@ import Foundation
 struct Show{
     let name: String
     let description: String
-    let imageUrl: String
+    let showImage: String
     let seasons: JSONArray
     
-    static func create(name: String)(description: String)(imageUrl: String)(seasons: JSONArray) -> Show {
-        return Show(name: name, description: description, imageUrl: imageUrl, seasons: seasons)
+    static func create(name: String)(description: String)(showImage: String)(seasons: JSONArray) -> Show {
+        return Show(name: name, description: description, showImage: showImage, seasons: seasons)
     }
     
     static func decode(json: JSON) -> Result<JSONShowArray> {

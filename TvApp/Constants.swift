@@ -12,7 +12,6 @@ let CognitoRegionType = AWSRegionType.USEast1
 let DefaultServiceRegionType = AWSRegionType.USEast1
 let CognitoIdentityPoolId: String = "us-east-1:02443252-789b-4643-b163-276824d47242"
 let S3BucketName: String = "threads-development"
-let S3DownloadKeyName: String = "shows/images/000/000/021/original/Eric_Signature.png"
 
 //let S3UploadKeyName: String = "uploadfileswift.txt"
 let BackgroundSessionUploadIdentifier: String = "com.amazon.example.s3BackgroundTransferSwift.uploadSession"

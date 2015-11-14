@@ -117,7 +117,7 @@ class CurrentShowsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:CurrentEpisodeViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as CurrentEpisodeViewCell
+        var cell:CurrentEpisodeViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! CurrentEpisodeViewCell
         cell.episodeTitle.text = self.episodeArray[indexPath.section].name
         cell.episodeDescription.text = self.episodeArray[indexPath.section].description
         

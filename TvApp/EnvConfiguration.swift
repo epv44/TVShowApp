@@ -18,9 +18,9 @@ public class EnvConfiguration{
     
     //constructor, set properties
     init(){
-        self.envName = NSBundle.mainBundle().objectForInfoDictionaryKey("Configuration") as String!
+        self.envName = NSBundle.mainBundle().objectForInfoDictionaryKey("Configuration") as! String!
         if let path = NSBundle.mainBundle().pathForResource(envName, ofType: "plist"){
-            self.configurations = NSDictionary(contentsOfFile: path) as Dictionary<String, AnyObject>!
+            self.configurations = NSDictionary(contentsOfFile: path) as! Dictionary<String, AnyObject>!
         }else{
             println("Error occured when initializing environment")
             self.configurations = NSDictionary()

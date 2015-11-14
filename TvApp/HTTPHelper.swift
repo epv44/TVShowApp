@@ -53,7 +53,7 @@ struct HTTPHelper {
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             case .HTTPMultipartContent:
                 let contentType = NSString(format: "multipart/form-data; boundary=%@", requestBoundary)
-                request.addValue(contentType, forHTTPHeaderField: "Content-Type")
+                request.addValue(contentType as String, forHTTPHeaderField: "Content-Type")
             }
             
             // 3. Set the correct Authorization header.
@@ -88,7 +88,7 @@ struct HTTPHelper {
             }
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                let httpResponse = response as NSHTTPURLResponse
+                let httpResponse = response as! NSHTTPURLResponse
                 
                 if httpResponse.statusCode == 200 {
                     completion(data, response, nil)

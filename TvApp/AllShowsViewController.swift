@@ -39,7 +39,7 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
         getAllShows() { either in
             switch either {
             case let .Error(error):
-                let errorAlert = UIAlertView(title: "Error", message:"Error", delegate:nil, cancelButtonTitle:"OK")
+                let errorAlert = UIAlertView(title: "Error", message:"An error has occured please try to reload the app", delegate:nil, cancelButtonTitle:"OK")
                 progressIndicatorView.removeFromSuperview()
                 errorAlert.show()
             case let .Value(boxedAllShows):
@@ -103,11 +103,11 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as AllShowsTableViewCell
+        var cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! AllShowsTableViewCell
         cell.showTitle.text = self.showArray[indexPath.section].name
         cell.showImage.image = nil
         
-        var urlString = self.showArray[indexPath.section].imageUrl
+        var urlString = self.showArray[indexPath.section].showImage
         if let img = imageCache[urlString]{
             cell.imageView?.image = img
         }else{
@@ -122,7 +122,7 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
                 if (task.error != nil) {
                     NSLog("Error: %@", task.error)
                 } else {
-                    let presignedURL = task.result as NSURL!
+                    let presignedURL = task.result as! NSURL!
                     if (presignedURL != nil) {
                         NSLog("download presignedURL is: \n%@", presignedURL)
                         let mainQueue = NSOperationQueue.mainQueue()
@@ -131,8 +131,12 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
                             if error == nil {
                                 // Convert the downloaded data in to a UIImage object
                                 let image = UIImage(data: data)
-                                // Store the image in to our cache
-                                self.imageCache[urlString] = image
+                                // Store the image in to our cache, if it is missing set it to the default image -- need a default image
+                                if urlString.rangeOfString("missing.png") != nil {
+                                    self.imageCache[urlString] = UIImage(named: "ArrowRight.png")
+                                }else{
+                                    self.imageCache[urlString] = image
+                                }
                                 // Update the cell
                                 dispatch_async(dispatch_get_main_queue(), {
                                     if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
@@ -196,13 +200,13 @@ class AllShowsViewController: UITableViewController, UIScrollViewDelegate {
         if segue.identifier == "showSegue"{
             if let navbar = segue.destinationViewController as? UINavigationController{
                 if let destinationVC = navbar.topViewController as? ShowViewController{
-                    let indexPath = self.tableView?.indexPathForCell(sender as AllShowsTableViewCell)
+                    let indexPath = self.tableView?.indexPathForCell(sender as! AllShowsTableViewCell)
                     let sectionId = indexPath!.section
                     destinationVC.titleString = self.showArray[sectionId].name
                     destinationVC.descriptionString = self.showArray[sectionId].description
                     destinationVC.seasonList = self.showArray[sectionId].seasons
-                    destinationVC.imageUrl = self.showArray[sectionId].imageUrl
-                    destinationVC.showImage = self.imageCache[self.showArray[sectionId].imageUrl]
+                    destinationVC.imageUrl = self.showArray[sectionId].showImage
+                    destinationVC.showImage = self.imageCache[self.showArray[sectionId].showImage]
                 }
             }else{
                 println("error")
