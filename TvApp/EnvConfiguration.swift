@@ -22,7 +22,7 @@ public class EnvConfiguration{
         if let path = NSBundle.mainBundle().pathForResource(envName, ofType: "plist"){
             self.configurations = NSDictionary(contentsOfFile: path) as! Dictionary<String, AnyObject>!
         }else{
-            println("Error occured when initializing environment")
+            print("Error occured when initializing environment")
             self.configurations = NSDictionary()
         }
     }

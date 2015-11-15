@@ -10,7 +10,7 @@
 import UIKit
 
 class CurrentShowsViewController: UITableViewController {
-    private var episodeArray : JSONEpisodeArray = []
+//    private var episodeArray : JSONEpisodeArray = []
     let tableHeaderHeight: CGFloat = 75.0
     var headerView: UIView!
     var emptyTitleLabel: UILabel!
@@ -29,30 +29,34 @@ class CurrentShowsViewController: UITableViewController {
         tableView.contentOffset = CGPoint(x: 0, y: -tableHeaderHeight)
         updateHeaderView()
         //set table cell
-        var nib = UINib(nibName: "currentEpisodesTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "currentEpisodesTableViewCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         //populate view with all shows
-        let progressIndicatorView = UIProgressView(frame: CGRect(x: 0.0, y: 80.0, width: self.view.bounds.width, height: 10.0))
-        progressIndicatorView.tintColor = GreenBackgroundFromHex()
-        self.view.addSubview(progressIndicatorView)
-        
-        progressIndicatorView.setProgress(80.0 / 100.0, animated: true)
-        getCurrentEpisodes() { either in
-            switch either {
-            case let .Error(error):
-                //                let httpHelper = HTTPHelper()
-                //                let errorMessage = httpHelper.getErrorMessage(error)
-                let errorAlert = UIAlertView(title: "Error", message:"Error", delegate:nil, cancelButtonTitle:"OK")
-                progressIndicatorView.removeFromSuperview()
-                errorAlert.show()
-            case let .Value(boxedAllEpisodes):
-                progressIndicatorView.removeFromSuperview()
-                self.processResults(boxedAllEpisodes.value)
-                if(boxedAllEpisodes.value.count == 0){
-                    self.displayError()
-                }
-            }
+        //        let progressIndicatorView = UIProgressView(frame: CGRect(x: 0.0, y: 80.0, width: self.view.bounds.width, height: 10.0))
+        //        progressIndicatorView.tintColor = GreenBackgroundFromHex()
+        //        self.view.addSubview(progressIndicatorView)
+        //
+        //        progressIndicatorView.setProgress(80.0 / 100.0, animated: true)
+        //        progressIndicatorView.removeFromSuperview()
+
+        //need to error check & then output data correctly for nested JSON
+        getAllShows { (a) -> () in
+            
+            print(a.allKeys)
         }
+        //        getAllShows() { either in
+        //            switch either {
+        //            case let .Error(error):
+        //                let errorAlert = UIAlertView(title: "Error", message:"An error has occured please try to reload the app", delegate:nil, cancelButtonTitle:"OK")
+        //                progressIndicatorView.removeFromSuperview()
+        //                errorAlert.show()
+        //            case let .Value(boxedAllShows):
+        //                progressIndicatorView.removeFromSuperview()
+        //                self.processResults(boxedAllShows.value)
+        //                
+        //            }
+        //        }
     }
     func updateHeaderView() {
         var headerRect = CGRect(x: 0, y: -tableHeaderHeight, width: tableView.bounds.width, height: tableHeaderHeight)
@@ -83,15 +87,15 @@ class CurrentShowsViewController: UITableViewController {
         self.emptyTextView.removeFromSuperview()
     }
     
-    func processResults(array: JSONEpisodeArray){
-        self.episodeArray = array
-        if(noCurrentShows && episodeArray.count > 0) {
-            removeError()
-        }
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.tableView.reloadData()
-        })
-    }
+//    func processResults(array: JSONEpisodeArray){
+//        self.episodeArray = array
+//        if(noCurrentShows && episodeArray.count > 0) {
+//            removeError()
+//        }
+//        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//            self.tableView.reloadData()
+//        })
+//    }
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         updateHeaderView()
@@ -109,7 +113,7 @@ class CurrentShowsViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.episodeArray.count
+        return /*self.episodeArray.count*/0
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -118,8 +122,8 @@ class CurrentShowsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:CurrentEpisodeViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! CurrentEpisodeViewCell
-        cell.episodeTitle.text = self.episodeArray[indexPath.section].name
-        cell.episodeDescription.text = self.episodeArray[indexPath.section].description
+        cell.episodeTitle.text = /*self.episodeArray[indexPath.section].name*/ "Fucka You"
+        cell.episodeDescription.text = /*self.episodeArray[indexPath.section].description*/ "Shi tPa Town"
         
         return cell
     }

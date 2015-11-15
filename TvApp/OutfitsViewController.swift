@@ -12,8 +12,8 @@ class OutfitsViewController: UIViewController, UITableViewDataSource, UITableVie
 
     var titleString: String!
     var descriptionString: String!
-    var outfitItemsList: JSONArray = []
-    var outfitItemsArray : JSONOutfitItemArray = []
+//    var outfitItemsList: JSONArray = []
+//    var outfitItemsArray : JSONOutfitItemArray = []
     var imageForOutfit: UIImage!
     private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
     @IBOutlet weak var tableView: UITableView!
@@ -33,14 +33,14 @@ class OutfitsViewController: UIViewController, UITableViewDataSource, UITableVie
         //outfit pieces list
         self.outfitDescription.scrollRangeToVisible(NSMakeRange(0,0))
         self.outfitImage.image = imageForOutfit
-        for obj: AnyObject in outfitItemsList {
-            let piece = OutfitItem.create <^>
-                obj["name"]             >>> JSONString <*>
-                obj["description"]      >>> JSONString <*>
-                obj["price"]            >>> JSONString <*>
-                obj["purchase_url"]     >>> JSONString
-            outfitItemsArray.append(piece!)
-        }
+//        for obj: AnyObject in outfitItemsList {
+//            let piece = OutfitItem.create <^>
+//                obj["name"]             >>> JSONString <*>
+//                obj["description"]      >>> JSONString <*>
+//                obj["price"]            >>> JSONString <*>
+//                obj["purchase_url"]     >>> JSONString
+//            outfitItemsArray.append(piece!)
+//        }
     }
 
 
@@ -52,7 +52,7 @@ class OutfitsViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Table view data source
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.outfitItemsArray.count
+        return /*self.outfitItemsArray.count */ 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,7 +65,7 @@ class OutfitsViewController: UIViewController, UITableViewDataSource, UITableVie
     //switch to outfit
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! AllShowsTableViewCell
-        cell.showTitle.text = self.outfitItemsArray[indexPath.section].name
+        cell.showTitle.text = /*self.outfitItemsArray[indexPath.section].name*/ "GOD WHY"
         cell.showImage.image = nil
         
 //        var urlString = self.outfitItemsArray[indexPath.section].outfitImage
