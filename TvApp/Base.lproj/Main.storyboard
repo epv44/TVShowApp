@@ -877,7 +877,7 @@
         <image name="ThreadsLogo" width="300" height="85"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MJ7-ro-orJ"/>
         <segue reference="2kg-KN-LRf"/>
+        <segue reference="fnS-Gp-TgJ"/>
     </inferredMetricsTieBreakers>
 </document>

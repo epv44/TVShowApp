@@ -8,12 +8,11 @@
 
 import UIKit
 
-class AllShowsViewController: UITableViewController /*, UIScrollViewDelegate*/ {
-    
-    //private var showArray : JSONShowArray = []
+class AllShowsViewController: UITableViewController {
+    private var showArray : JSONShowArray = []
+    private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
     let tableHeaderHeight: CGFloat = 75.0
     var headerView: UIView!
-    private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,28 +30,15 @@ class AllShowsViewController: UITableViewController /*, UIScrollViewDelegate*/ {
         let nib = UINib(nibName: "showsTableCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         //populate view with all shows
-//        let progressIndicatorView = UIProgressView(frame: CGRect(x: 0.0, y: 80.0, width: self.view.bounds.width, height: 10.0))
-//        progressIndicatorView.tintColor = GreenBackgroundFromHex()
-//        self.view.addSubview(progressIndicatorView)
-//        
-//        progressIndicatorView.setProgress(80.0 / 100.0, animated: true)
-//        progressIndicatorView.removeFromSuperview()
-//        getAllShows { (dict) -> () in
-//            
-//            print(dict)
-//        }
-//        getAllShows() { either in
-//            switch either {
-//            case let .Error(error):
-//                let errorAlert = UIAlertView(title: "Error", message:"An error has occured please try to reload the app", delegate:nil, cancelButtonTitle:"OK")
-//                progressIndicatorView.removeFromSuperview()
-//                errorAlert.show()
-//            case let .Value(boxedAllShows):
-//                progressIndicatorView.removeFromSuperview()
-//                self.processResults(boxedAllShows.value)
-//                
-//            }
-//        }
+        let progressIndicatorView = UIProgressView(frame: CGRect(x: 0.0, y: 80.0, width: self.view.bounds.width, height: 10.0))
+        progressIndicatorView.tintColor = GreenBackgroundFromHex()
+        self.view.addSubview(progressIndicatorView)
+        
+        progressIndicatorView.setProgress(80.0 / 100.0, animated: true)
+        progressIndicatorView.removeFromSuperview()
+        getAllShows { (allShows) -> () in
+            self.processResults(allShows)
+        }
     }
     
     func updateHeaderView() {
@@ -64,12 +50,12 @@ class AllShowsViewController: UITableViewController /*, UIScrollViewDelegate*/ {
         headerView.frame = headerRect
     }
     
-//    func processResults(array: JSONShowArray){
-//        self.showArray = array
-//        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//            self.tableView.reloadData()
-//        })
-//    }
+    func processResults(array: JSONShowArray){
+        self.showArray = array
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
+    }
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
@@ -90,7 +76,7 @@ class AllShowsViewController: UITableViewController /*, UIScrollViewDelegate*/ {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // Return the number of sections.
-        return/* self.showArray.count*/0
+        return self.showArray.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,57 +94,57 @@ class AllShowsViewController: UITableViewController /*, UIScrollViewDelegate*/ {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! AllShowsTableViewCell
-//        cell.showTitle.text = self.showArray[indexPath.section].name
+        let cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! AllShowsTableViewCell
+        cell.showTitle.text = self.showArray[indexPath.section].title!
         cell.showImage.image = nil
         
-//        var urlString = self.showArray[indexPath.section].showImage
-//        if let img = imageCache[urlString]{
-//            cell.imageView?.image = img
-//        }else{
-//            let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
-//            getPreSignedURLRequest.bucket = S3BucketName
-//            getPreSignedURLRequest.key = urlString
-//            getPreSignedURLRequest.HTTPMethod = AWSHTTPMethod.GET
-//            getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
-//            
-//            //check if URL is in array, if not then perform async request to get the urls set url string outside of this block
-//            AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:BFTask!) -> (AnyObject!) in
-//                if (task.error != nil) {
-//                    NSLog("Error: %@", task.error)
-//                } else {
-//                    let presignedURL = task.result as! NSURL!
-//                    if (presignedURL != nil) {
-//                        NSLog("download presignedURL is: \n%@", presignedURL)
-//                        let mainQueue = NSOperationQueue.mainQueue()
-//                        let request = NSURLRequest(URL: presignedURL)
-//                        NSURLConnection.sendAsynchronousRequest(request, queue: mainQueue, completionHandler: { (response, data, error) -> Void in
-//                            if error == nil {
-//                                // Convert the downloaded data in to a UIImage object
-//                                let image = UIImage(data: data)
-//                                // Store the image in to our cache, if it is missing set it to the default image -- need a default image
-//                                if urlString.rangeOfString("missing.png") != nil {
-//                                    self.imageCache[urlString] = UIImage(named: "ArrowRight.png")
-//                                }else{
-//                                    self.imageCache[urlString] = image
-//                                }
-//                                // Update the cell
-//                                dispatch_async(dispatch_get_main_queue(), {
-//                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
-//                                        cellToUpdate.imageView?.image = image
-//                                        self.tableView.reloadData()
-//                                    }
-//                                })
-//                            }
-//                            else {
-//                                println("Error: \(error.localizedDescription)")
-//                            }
-//                        })
-//                    }
-//                }
-//                return nil;
-//            }
-//        }
+        let urlString = self.showArray[indexPath.section].showImageURL
+        if let img = imageCache[urlString!]{
+            cell.imageView?.image = img
+        }else{
+            let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
+            getPreSignedURLRequest.bucket = S3BucketName
+            getPreSignedURLRequest.key = urlString
+            getPreSignedURLRequest.HTTPMethod = AWSHTTPMethod.GET
+            getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
+            
+            //check if URL is in array, if not then perform async request to get the urls set url string outside of this block
+            AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:BFTask!) -> (AnyObject!) in
+                if (task.error != nil) {
+                    NSLog("Error: %@", task.error)
+                } else {
+                    let presignedURL = task.result as! NSURL!
+                    if (presignedURL != nil) {
+                        NSLog("download presignedURL is: \n%@", presignedURL)
+                        let mainQueue = NSOperationQueue.mainQueue()
+                        let request = NSURLRequest(URL: presignedURL)
+                        NSURLConnection.sendAsynchronousRequest(request, queue: mainQueue, completionHandler: { (response, data, error) -> Void in
+                            if error == nil {
+                                // Convert the downloaded data in to a UIImage object
+                                let image = UIImage(data: data!)
+                                // Store the image in to our cache, if it is missing set it to the default image -- need a default image
+                                if urlString!.rangeOfString("missing.png") != nil {
+                                    self.imageCache[urlString!] = UIImage(named: "ArrowRight.png")
+                                }else{
+                                    self.imageCache[urlString!] = image
+                                }
+                                // Update the cell
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
+                                        cellToUpdate.imageView?.image = image
+                                        self.tableView.reloadData()
+                                    }
+                                })
+                            }
+                            else {
+                                print("Error: \(error!.localizedDescription)")
+                            }
+                        })
+                    }
+                }
+                return nil;
+            }
+        }
         return cell
     }
     /*
@@ -202,20 +188,20 @@ class AllShowsViewController: UITableViewController /*, UIScrollViewDelegate*/ {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-//        if segue.identifier == "showSegue"{
-//            if let navbar = segue.destinationViewController as? UINavigationController{
-//                if let destinationVC = navbar.topViewController as? ShowViewController{
-//                    let indexPath = self.tableView?.indexPathForCell(sender as! AllShowsTableViewCell)
-//                    let sectionId = indexPath!.section
-//                    destinationVC.titleString = self.showArray[sectionId].name
-//                    destinationVC.descriptionString = self.showArray[sectionId].description
-//                    destinationVC.seasonList = self.showArray[sectionId].seasons
-//                    destinationVC.imageUrl = self.showArray[sectionId].showImage
-//                    destinationVC.showImage = self.imageCache[self.showArray[sectionId].showImage]
-//                }
-//            }else{
-//                print("error")
-//            }
-//        }
+        if segue.identifier == "showSegue"{
+            if let navbar = segue.destinationViewController as? UINavigationController{
+                if let destinationVC = navbar.topViewController as? ShowViewController{
+                    let indexPath = self.tableView?.indexPathForCell(sender as! AllShowsTableViewCell)
+                    let sectionId = indexPath!.section
+                    destinationVC.titleString = self.showArray[sectionId].title
+                    destinationVC.descriptionString = self.showArray[sectionId].description
+                    destinationVC.seasonList = self.showArray[sectionId].seasons!
+                    destinationVC.imageUrl = self.showArray[sectionId].showImageURL
+                    destinationVC.showImage = self.imageCache[self.showArray[sectionId].showImageURL!]
+                }
+            }else{
+                print("error")
+            }
+        }
     }
 }

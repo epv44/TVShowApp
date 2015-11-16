@@ -18,8 +18,8 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var descriptionString: String!
     var imageUrl: String!
     var showImage: UIImage!
- //   var seasonList: JSONArray = []
-  //  var seasonArray : JSONSeasonArray = []
+    var seasonList: JSONArray = []
+    var seasonArray : JSONSeasonArray = []
     private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
     var downloadTask: NSURLSessionDownloadTask?
     var session: NSURLSession?
