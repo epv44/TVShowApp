@@ -38,10 +38,14 @@ class CurrentEpisodesViewController: UITableViewController {
         self.view.addSubview(progressIndicatorView)
         
         progressIndicatorView.setProgress(80.0 / 100.0, animated: true)
-        progressIndicatorView.removeFromSuperview()
+
 
         //need to error check & then output data correctly for nested JSON
         getCurrentEpisodes { (currentEpisodes) -> () in
+            if currentEpisodes.isEmpty {
+                self.displayError()
+            }
+            
             self.processResults(currentEpisodes)
             progressIndicatorView.removeFromSuperview()
         }

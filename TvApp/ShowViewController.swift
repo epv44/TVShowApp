@@ -34,30 +34,16 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let configuration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(BackgroundSessionDownloadIdentifier)
             Static.session = NSURLSession(configuration: configuration, delegate: self, delegateQueue: nil)
         }
-        
         self.session = Static.session;
-        
-        var nib = UINib(nibName: "seasonsTableCell", bundle: nil)
+        let nib = UINib(nibName: "seasonsTableCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         self.tableView.backgroundColor = UIColorFromHex(0xF2F2F2, alpha: 1)
-        self.navigationController?.navigationBarHidden = false
-        self.navigationController?.navigationBar.translucent = true
-        self.navigationController?.navigationBar.backgroundColor = GreenBackgroundFromHex()
-        var titleLabel = UILabel(frame: CGRectMake(0 , 0, 200, 21))
-        titleLabel.textAlignment = NSTextAlignment.Center
-        titleLabel.text = titleString
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.font = UIFont(name: "AvantGardeLT-Demi", size: 18)
-        navigationItem.titleView = titleLabel
-        showDescription.text=descriptionString
-//        for obj: AnyObject in seasonList {
-//            let season = Season.create <^>
-//                obj["title"]            >>> JSONString <*>
-//                obj["description"]      >>> JSONString <*>
-//                obj["season_image_url"] >>> JSONString <*>
-//                obj["episodes"]         >>> JSONObject
-//            seasonArray.append(season!)
-//        }
+
+        showDescription.text = descriptionString
+        
+        for obj: AnyObject in seasonList {
+            seasonArray.append(Season(json: obj as! NSDictionary))
+        }
         self.imageView.image = showImage
         self.showDescription.scrollRangeToVisible(NSMakeRange(0,0))
 //        if let img = imageCache[imageUrl]{
@@ -67,37 +53,48 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+        
+        let titleLabel = UILabel(frame: CGRectMake(0 , 0, 200, 21))
+        titleLabel.textAlignment = NSTextAlignment.Center
+        titleLabel.text = titleString
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.font = UIFont(name: "AvantGardeLT-Demi", size: 18)
+        navigationItem.titleView = titleLabel
+    }
+    
     func startDownload(){
         
-        if (self.downloadTask != nil) {
-            return;
-        }
-        
-        self.imageView.image = nil;
-        
-        let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
-        getPreSignedURLRequest.bucket = S3BucketName
-        getPreSignedURLRequest.key = imageUrl
-        getPreSignedURLRequest.HTTPMethod = AWSHTTPMethod.GET
-        getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
-        
-        
-        AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:BFTask!) -> (AnyObject!) in
-            if (task.error != nil) {
-                NSLog("Error: %@", task.error)
-            } else {
-                
-                let presignedURL = task.result as! NSURL!
-                if (presignedURL != nil) {
-                    NSLog("download presignedURL is: \n%@", presignedURL)
-                    
-                    let request = NSURLRequest(URL: presignedURL)
-                    self.downloadTask = self.session?.downloadTaskWithRequest(request)
-                    self.downloadTask?.resume()
-                }
-            }
-            return nil;
-        }
+//        if (self.downloadTask != nil) {
+//            return;
+//        }
+//        
+//        self.imageView.image = nil;
+//        
+//        let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
+//        getPreSignedURLRequest.bucket = S3BucketName
+//        getPreSignedURLRequest.key = imageUrl
+//        getPreSignedURLRequest.HTTPMethod = AWSHTTPMethod.GET
+//        getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
+//        
+//        
+//        AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:BFTask!) -> (AnyObject!) in
+//            if (task.error != nil) {
+//                NSLog("Error: %@", task.error)
+//            } else {
+//                
+//                let presignedURL = task.result as! NSURL!
+//                if (presignedURL != nil) {
+//                    NSLog("download presignedURL is: \n%@", presignedURL)
+//                    
+//                    let request = NSURLRequest(URL: presignedURL)
+//                    self.downloadTask = self.session?.downloadTaskWithRequest(request)
+//                    self.downloadTask?.resume()
+//                }
+//            }
+//            return nil;
+//        }
     }
     
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
@@ -181,16 +178,12 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
         
     }
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.title = titleString
-        //        self.navigationController?.navigationBar.tintColor = GreenBackgroundFromHex()
-        self.navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-    }
+
     // MARK: - Table view data source
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // Return the number of sections.
-        return /*self.seasonArray.count*/ 0
+        return self.seasonArray.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -198,15 +191,15 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        return 10
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-                let cell = tableView.dequeueReusableCellWithIdentifier("allEpisodes", forIndexPath: indexPath) as UITableViewCell
-                cell.textLabel?.text = /*self.seasonArray[indexPath.section].name */ "fuck"
-//        var cell:SeasonsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! SeasonsTableViewCell
-//        cell.seasonTitle.text = self.seasonArray[indexPath.section].name
-//        cell.seasonDescription.text = self.seasonArray[indexPath.section].description
+//        let cell = tableView.dequeueReusableCellWithIdentifier("allEpisodes", forIndexPath: indexPath) as UITableViewCell
+//        cell.textLabel?.text = self.seasonArray[indexPath.section].name
+        let cell:SeasonsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! SeasonsTableViewCell
+        cell.seasonTitle.text = self.seasonArray[indexPath.section].title
+        cell.seasonDescription.text = self.seasonArray[indexPath.section].description
 //        cell.seasonImage.image = nil
 //        
 //        var urlString = self.seasonArray[indexPath.section].seasonImage

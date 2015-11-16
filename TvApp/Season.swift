@@ -9,5 +9,23 @@
 import Foundation
 
 struct Season {
-   
+    var title: String?
+    var description: String?
+    var seasonImageURL: String?
+    var episodes: JSONArray?
+    
+    init(json: NSDictionary){
+        if let t = json["title"] as? String{
+            title = t
+        }
+        if let d = json["description"] as? String{
+            description = d
+        }
+        if let url = json["season_image_url"] as? String{
+            seasonImageURL = url
+        }
+        if let e = json["episodes"] as? JSONArray{
+            episodes = e
+        }
+    }
 }

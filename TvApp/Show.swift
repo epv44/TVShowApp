@@ -12,6 +12,7 @@ struct Show{
     var title: String?
     var description: String?
     var showImageURL: String?
+    var mainCharacters: String?
     var seasons: JSONArray?
     
     init(json: NSDictionary){
@@ -26,6 +27,9 @@ struct Show{
         }
         if let s = json["seasons"] as? JSONArray{
             self.seasons = s
+        }
+        if let m = json["main_characters_to_string"] as? String{
+            self.mainCharacters = m
         }
     }
 }

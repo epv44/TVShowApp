@@ -35,9 +35,10 @@ class AllShowsViewController: UITableViewController {
         self.view.addSubview(progressIndicatorView)
         
         progressIndicatorView.setProgress(80.0 / 100.0, animated: true)
-        progressIndicatorView.removeFromSuperview()
+
         getAllShows { (allShows) -> () in
             self.processResults(allShows)
+            progressIndicatorView.removeFromSuperview()
         }
     }
     
@@ -84,7 +85,7 @@ class AllShowsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        return 10
+        return 1
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
@@ -96,11 +97,12 @@ class AllShowsViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! AllShowsTableViewCell
         cell.showTitle.text = self.showArray[indexPath.section].title!
+        cell.showCharacters.text = self.showArray[indexPath.section].mainCharacters!
         cell.showImage.image = nil
         
         let urlString = self.showArray[indexPath.section].showImageURL
         if let img = imageCache[urlString!]{
-            cell.imageView?.image = img
+           cell.showImage.image = img
         }else{
             let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
             getPreSignedURLRequest.bucket = S3BucketName
@@ -109,16 +111,17 @@ class AllShowsViewController: UITableViewController {
             getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
             
             //check if URL is in array, if not then perform async request to get the urls set url string outside of this block
-            AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:BFTask!) -> (AnyObject!) in
+            
+            AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest).continueWithBlock { (task:AWSTask!) -> (AnyObject!) in
                 if (task.error != nil) {
                     NSLog("Error: %@", task.error)
                 } else {
                     let presignedURL = task.result as! NSURL!
                     if (presignedURL != nil) {
                         NSLog("download presignedURL is: \n%@", presignedURL)
-                        let mainQueue = NSOperationQueue.mainQueue()
                         let request = NSURLRequest(URL: presignedURL)
-                        NSURLConnection.sendAsynchronousRequest(request, queue: mainQueue, completionHandler: { (response, data, error) -> Void in
+                        
+                        let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
                             if error == nil {
                                 // Convert the downloaded data in to a UIImage object
                                 let image = UIImage(data: data!)
@@ -130,8 +133,8 @@ class AllShowsViewController: UITableViewController {
                                 }
                                 // Update the cell
                                 dispatch_async(dispatch_get_main_queue(), {
-                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
-                                        cellToUpdate.imageView?.image = image
+                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! AllShowsTableViewCell? {
+                                        cellToUpdate.showImage.image = image
                                         self.tableView.reloadData()
                                     }
                                 })
@@ -140,6 +143,7 @@ class AllShowsViewController: UITableViewController {
                                 print("Error: \(error!.localizedDescription)")
                             }
                         })
+                        task.resume()
                     }
                 }
                 return nil;
@@ -189,18 +193,14 @@ class AllShowsViewController: UITableViewController {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == "showSegue"{
-            if let navbar = segue.destinationViewController as? UINavigationController{
-                if let destinationVC = navbar.topViewController as? ShowViewController{
-                    let indexPath = self.tableView?.indexPathForCell(sender as! AllShowsTableViewCell)
-                    let sectionId = indexPath!.section
-                    destinationVC.titleString = self.showArray[sectionId].title
-                    destinationVC.descriptionString = self.showArray[sectionId].description
-                    destinationVC.seasonList = self.showArray[sectionId].seasons!
-                    destinationVC.imageUrl = self.showArray[sectionId].showImageURL
-                    destinationVC.showImage = self.imageCache[self.showArray[sectionId].showImageURL!]
-                }
-            }else{
-                print("error")
+            if let destinationVC = segue.destinationViewController as? ShowViewController{
+                let indexPath = self.tableView?.indexPathForCell(sender as! AllShowsTableViewCell)
+                let sectionId = indexPath!.section
+                destinationVC.titleString = self.showArray[sectionId].title
+                destinationVC.descriptionString = self.showArray[sectionId].description
+                destinationVC.seasonList = self.showArray[sectionId].seasons!
+                destinationVC.imageUrl = self.showArray[sectionId].showImageURL
+                destinationVC.showImage = self.imageCache[self.showArray[sectionId].showImageURL!]
             }
         }
     }
