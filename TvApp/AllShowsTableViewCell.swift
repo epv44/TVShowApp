@@ -17,7 +17,7 @@ class AllShowsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        var layer = cellView.layer
+        _ = cellView.layer
         cellView.layer.shadowColor = UIColor.blackColor().CGColor
         cellView.layer.shadowOffset = CGSize(width:0, height:2)
         cellView.layer.shadowOpacity = 0.1

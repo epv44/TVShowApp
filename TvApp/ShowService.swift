@@ -11,24 +11,24 @@
 import Foundation
 
 //Get all shows in the database
-func getAllShows(callback: NSDictionary -> ()){
+func getAllShows(callback: JSONShowArray -> ()){
     //create http request using the HTTPHelper Struct
     let httpHelper = HTTPHelper()
-    let httpRequest = httpHelper.buildRequest("shows/259", method: "GET", authType: HTTPRequestAuthType.HTTPTokenAuth)
+    let httpRequest = httpHelper.buildRequest("shows", method: "GET", authType: HTTPRequestAuthType.HTTPTokenAuth)
+    //process request
+    var showsArray : JSONShowArray = []
     httpHelper.sendRequest(httpRequest, completion: {(data, response, error) in
-        
-//        //responseResult is Result<Response>
-//        let responseResult = Result(error, Response(data: data, urlResponse: response))
-//        //Result<NSData>
-//        let parsedResponse = responseResult >>> parseResponse
-//        let jsonData = parsedResponse >>> decodeJSON <*>
-        var jsonArray: NSDictionary = [:]
+        var jsonArray: NSArray = []
         do {
-            jsonArray = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
+            jsonArray = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+            //construct models
+            for item: AnyObject in jsonArray {
+                showsArray.append(Show.init(json: item as! NSDictionary))
+            }
         } catch  {
             print("error trying to convert data to JSON")
         }
-        callback(jsonArray)
+        callback(showsArray)
     })
     
 }

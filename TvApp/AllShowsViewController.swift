@@ -37,10 +37,10 @@ class AllShowsViewController: UITableViewController /*, UIScrollViewDelegate*/ {
 //        
 //        progressIndicatorView.setProgress(80.0 / 100.0, animated: true)
 //        progressIndicatorView.removeFromSuperview()
-        getAllShows { (dict) -> () in
-            
-            print(dict)
-        }
+//        getAllShows { (dict) -> () in
+//            
+//            print(dict)
+//        }
 //        getAllShows() { either in
 //            switch either {
 //            case let .Error(error):

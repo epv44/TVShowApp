@@ -30,7 +30,7 @@
         <!--Currently Playing-->
         <scene sceneID="nAz-Gc-sd1">
             <objects>
-                <tableViewController id="YIQ-gC-etN" customClass="CurrentShowsViewController" customModule="TvApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="YIQ-gC-etN" customClass="CurrentEpisodesViewController" customModule="TvApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="68" sectionHeaderHeight="10" sectionFooterHeight="10" id="wSd-5e-A1d">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -877,7 +877,7 @@
         <image name="ThreadsLogo" width="300" height="85"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="MJ7-ro-orJ"/>
         <segue reference="2kg-KN-LRf"/>
-        <segue reference="a84-4L-MO5"/>
     </inferredMetricsTieBreakers>
 </document>
