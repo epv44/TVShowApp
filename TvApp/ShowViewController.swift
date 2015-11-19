@@ -46,11 +46,11 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         self.imageView.image = showImage
         self.showDescription.scrollRangeToVisible(NSMakeRange(0,0))
-//        if let img = imageCache[imageUrl]{
-//            self.imageView.image = img
-//        }else{
-//            startDownload()
-//        }
+        if let img = imageCache[imageUrl]{
+            self.imageView.image = img
+        }else{
+            startDownload()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -66,35 +66,35 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func startDownload(){
         
-//        if (self.downloadTask != nil) {
-//            return;
-//        }
-//        
-//        self.imageView.image = nil;
-//        
-//        let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
-//        getPreSignedURLRequest.bucket = S3BucketName
-//        getPreSignedURLRequest.key = imageUrl
-//        getPreSignedURLRequest.HTTPMethod = AWSHTTPMethod.GET
-//        getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
-//        
-//        
-//        AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:BFTask!) -> (AnyObject!) in
-//            if (task.error != nil) {
-//                NSLog("Error: %@", task.error)
-//            } else {
-//                
-//                let presignedURL = task.result as! NSURL!
-//                if (presignedURL != nil) {
-//                    NSLog("download presignedURL is: \n%@", presignedURL)
-//                    
-//                    let request = NSURLRequest(URL: presignedURL)
-//                    self.downloadTask = self.session?.downloadTaskWithRequest(request)
-//                    self.downloadTask?.resume()
-//                }
-//            }
-//            return nil;
-//        }
+        if (self.downloadTask != nil) {
+            return;
+        }
+        
+        self.imageView.image = nil;
+        
+        let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
+        getPreSignedURLRequest.bucket = S3BucketName
+        getPreSignedURLRequest.key = imageUrl
+        getPreSignedURLRequest.HTTPMethod = AWSHTTPMethod.GET
+        getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
+        
+        
+        AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:AWSTask!) -> (AnyObject!) in
+            if (task.error != nil) {
+                NSLog("Error: %@", task.error)
+            } else {
+                
+                let presignedURL = task.result as! NSURL!
+                if (presignedURL != nil) {
+                    NSLog("download presignedURL is: \n%@", presignedURL)
+                    
+                    let request = NSURLRequest(URL: presignedURL)
+                    self.downloadTask = self.session?.downloadTaskWithRequest(request)
+                    self.downloadTask?.resume()
+                }
+            }
+            return nil;
+        }
     }
     
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
@@ -115,30 +115,30 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         
-        //let documentsPath = paths.first as? String
-//        var fileName = getImageNameFromUrl(imageUrl)
+        let documentsPath = paths.first! as String
+        let fileName = getImageNameFromUrl(imageUrl)
         
-       // let filePath = documentsPath! + fileName
+        let filePath = documentsPath + fileName
         
         //move the downloaded file to docs directory
-//        if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
-//            do {
-//                try NSFileManager.defaultManager().removeItemAtPath(filePath)
-//            } catch _ {
-//            }
-//        }
-//        
-//        do {
-//            try NSFileManager.defaultManager().moveItemAtURL(location, toURL: NSURL.fileURLWithPath(filePath)!)
-//        } catch _ {
-//        }
-//        
+        if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
+            do {
+                try NSFileManager.defaultManager().removeItemAtPath(filePath)
+            } catch _ {
+            }
+        }
+        
+        do {
+            try NSFileManager.defaultManager().moveItemAtURL(location, toURL: NSURL.fileURLWithPath(filePath))
+        } catch _ {
+        }
+        
         
         //update UI elements
-//        dispatch_async(dispatch_get_main_queue()) {
-//            self.imageCache[self.imageUrl] = UIImage(contentsOfFile: filePath)
-//            self.imageView.image = UIImage(contentsOfFile: filePath)
-//        }
+        dispatch_async(dispatch_get_main_queue()) {
+            self.imageCache[self.imageUrl] = UIImage(contentsOfFile: filePath)
+            self.imageView.image = UIImage(contentsOfFile: filePath)
+        }
     }
     
     
@@ -195,60 +195,58 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("allEpisodes", forIndexPath: indexPath) as UITableViewCell
-//        cell.textLabel?.text = self.seasonArray[indexPath.section].name
         let cell:SeasonsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! SeasonsTableViewCell
         cell.seasonTitle.text = self.seasonArray[indexPath.section].title
         cell.seasonDescription.text = self.seasonArray[indexPath.section].description
-//        cell.seasonImage.image = nil
-//        
-//        var urlString = self.seasonArray[indexPath.section].seasonImage
-//        if let img = imageCache[urlString]{
-//            cell.imageView?.image = img
-//        }else{
-//            let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
-//            getPreSignedURLRequest.bucket = S3BucketName
-//            getPreSignedURLRequest.key = urlString
-//            getPreSignedURLRequest.HTTPMethod = AWSHTTPMethod.GET
-//            getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
-//            
-//            //check if URL is in array, if not then perform async request to get the urls set url string outside of this block
-//            AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:BFTask!) -> (AnyObject!) in
-//                if (task.error != nil) {
-//                    NSLog("Error: %@", task.error)
-//                } else {
-//                    let presignedURL = task.result as! NSURL!
-//                    if (presignedURL != nil) {
-//                        NSLog("download presignedURL is: \n%@", presignedURL)
-//                        let mainQueue = NSOperationQueue.mainQueue()
-//                        let request = NSURLRequest(URL: presignedURL)
-//                        NSURLConnection.sendAsynchronousRequest(request, queue: mainQueue, completionHandler: { (response, data, error) -> Void in
-//                            if error == nil {
-//                                // Convert the downloaded data in to a UIImage object
-//                                let image = UIImage(data: data)
-//                                // Store the image in to our cache, if it is missing set it to the show image
-//                                if urlString.rangeOfString("missing.png") != nil {
-//                                    self.imageCache[urlString] = self.imageView.image
-//                                }else{
-//                                    self.imageCache[urlString] = image
-//                                }
-//                                // Update the cell
-//                                dispatch_async(dispatch_get_main_queue(), {
-//                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
-//                                        cellToUpdate.imageView?.image = image
-//                                        self.tableView.reloadData()
-//                                    }
-//                                })
-//                            }
-//                            else {
-//                                println("Error: \(error.localizedDescription)")
-//                            }
-//                        })
-//                    }
-//                }
-//                return nil;
-//            }
-//        }
+        cell.seasonImage.image = nil
+        
+        let urlString = self.seasonArray[indexPath.section].seasonImageURL
+        if let img = imageCache[urlString!]{
+            cell.seasonImage.image = img
+        }else{
+            let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
+            getPreSignedURLRequest.bucket = S3BucketName
+            getPreSignedURLRequest.key = urlString
+            getPreSignedURLRequest.HTTPMethod = AWSHTTPMethod.GET
+            getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
+            
+            //check if URL is in array, if not then perform async request to get the urls set url string outside of this block
+            AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:AWSTask!) -> (AnyObject!) in
+                if (task.error != nil) {
+                    NSLog("Error: %@", task.error)
+                } else {
+                    let presignedURL = task.result as! NSURL!
+                    if (presignedURL != nil) {
+                        NSLog("download presignedURL is: \n%@", presignedURL)
+                        let request = NSURLRequest(URL: presignedURL)
+                        let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+                            if error == nil {
+                                // Convert the downloaded data in to a UIImage object
+                                let image = UIImage(data: data!)
+                                // Store the image in to our cache, if it is missing set it to the show image
+                                if urlString!.rangeOfString("missing.png") != nil {
+                                    self.imageCache[urlString!] = self.imageView.image
+                                }else{
+                                    self.imageCache[urlString!] = image
+                                }
+                                // Update the cell
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! SeasonsTableViewCell?{
+                                        cellToUpdate.seasonImage.image = image
+                                        self.tableView.reloadData()
+                                    }
+                                })
+                            }
+                            else {
+                                print("Error: \(error!.localizedDescription)")
+                            }
+                        })
+                        task.resume()
+                    }
+                }
+                return nil;
+            }
+        }
 
         return cell
     }
@@ -265,19 +263,19 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-//        if segue.identifier == "seasonSegue"{
-//            if let navbar = segue.destinationViewController as? UINavigationController{
-//                if let destinationVC = navbar.topViewController as? SeasonViewController{
-//                    let indexPath = self.tableView?.indexPathForCell(sender as! SeasonsTableViewCell)
-//                    let sectionId = indexPath!.section
-//                    destinationVC.titleString = self.seasonArray[sectionId].name
-//                    destinationVC.descriptionString = self.seasonArray[sectionId].description
+        if segue.identifier == "seasonSegue"{
+            if let navbar = segue.destinationViewController as? UINavigationController{
+                if let destinationVC = navbar.topViewController as? SeasonViewController{
+                    let indexPath = self.tableView?.indexPathForCell(sender as! SeasonsTableViewCell)
+                    let sectionId = indexPath!.section
+                    destinationVC.titleString = self.seasonArray[sectionId].title
+                    destinationVC.descriptionString = self.seasonArray[sectionId].description
 //                    destinationVC.episodeList = self.seasonArray[sectionId].episodes
 //                    destinationVC.imageForSeason = self.imageCache[self.seasonArray[sectionId].seasonImage]
-//                }
-//            }else{
-//                print("error")
-//            }
-//        }
+                }
+            }else{
+                print("error")
+            }
+        }
     }
 }
