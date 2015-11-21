@@ -12,8 +12,8 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
 
     var titleString: String!
     var descriptionString: String!
-//    var outfitList: JSONArray = []
-//    var outfitArray : JSONOutfitArray = []
+    var outfitList: JSONArray = []
+    var outfitArray : JSONOutfitArray = []
     var currentEpisode: String!
     var imageForCharacter: UIImage!
     private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
@@ -23,12 +23,12 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundColor = UIColorFromHex(0xF2F2F2, alpha: 1)
-        var titleLabel = UILabel(frame: CGRectMake(0 , 0, 200, 21))
+        let titleLabel = UILabel(frame: CGRectMake(0 , 0, 200, 21))
         titleLabel.textAlignment = NSTextAlignment.Center
         titleLabel.text = titleString
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.font = UIFont(name: "AvantGardeLT-Demi", size: 18)
-        var nib = UINib(nibName: "showsTableCell", bundle: nil)
+        let nib = UINib(nibName: "showsTableCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         navigationItem.titleView = titleLabel
         //outfit list

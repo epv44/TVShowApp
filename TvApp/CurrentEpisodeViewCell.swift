@@ -17,11 +17,11 @@ class CurrentEpisodeViewCell: UITableViewCell {
     @IBOutlet weak var cellView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        var layer = cellView.layer
-        cellView.layer.shadowColor = UIColor.blackColor().CGColor
-        cellView.layer.shadowOffset = CGSize(width:0, height:2)
-        cellView.layer.shadowOpacity = 0.1
-        cellView.layer.shadowRadius = 5
+//        var layer = cellView.layer
+//        cellView.layer.shadowColor = UIColor.blackColor().CGColor
+//        cellView.layer.shadowOffset = CGSize(width:0, height:2)
+//        cellView.layer.shadowOpacity = 0.1
+//        cellView.layer.shadowRadius = 5
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -100,8 +100,8 @@ class AllShowsViewController: UITableViewController {
         cell.showCharacters.text = self.showArray[indexPath.section].mainCharacters!
         cell.showImage.image = nil
         
-        let urlString = self.showArray[indexPath.section].showImageURL
-        if let img = imageCache[urlString!]{
+        let urlString = self.showArray[indexPath.section].showImageURL!
+        if let img = imageCache[urlString]{
            cell.showImage.image = img
         }else{
             let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
@@ -126,10 +126,10 @@ class AllShowsViewController: UITableViewController {
                                 // Convert the downloaded data in to a UIImage object
                                 let image = UIImage(data: data!)
                                 // Store the image in to our cache, if it is missing set it to the default image -- need a default image
-                                if urlString!.rangeOfString("missing.png") != nil {
-                                    self.imageCache[urlString!] = UIImage(named: "ArrowRight.png")
+                                if urlString.rangeOfString("missing.png") != nil {
+                                    self.imageCache[urlString] = UIImage(named: "ArrowRight.png")
                                 }else{
-                                    self.imageCache[urlString!] = image
+                                    self.imageCache[urlString] = image
                                 }
                                 // Update the cell
                                 dispatch_async(dispatch_get_main_queue(), {

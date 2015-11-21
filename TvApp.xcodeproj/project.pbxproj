@@ -170,6 +170,7 @@
 			children = (
 				2EFA03AF1AEA672F005CABCA /* Resources */,
 				2E9F3D351ADC25D700EB5DAF /* AppDelegate.swift */,
+				2E9F3D3E1ADC25D700EB5DAF /* Images.xcassets */,
 				2E7FC3D11AFE74C0001F3BDA /* Constants.swift */,
 				2EB192111AEECF5D00275CB4 /* CustomTableCells */,
 				2EE425651AE00FED00069B32 /* EnvConfiguration.swift */,
@@ -177,10 +178,9 @@
 				2E9F3D3B1ADC25D700EB5DAF /* Main.storyboard */,
 				2EE4255C1ADD9F4A00069B32 /* Api Access */,
 				2E9F3D5E1ADC2A5100EB5DAF /* Controllers */,
-				2E9F3D3E1ADC25D700EB5DAF /* Images.xcassets */,
+				2EE4256B1AE54C3400069B32 /* Data Objects */,
 				2E9F3D401ADC25D700EB5DAF /* LaunchScreen.xib */,
 				2E9F3D331ADC25D700EB5DAF /* Supporting Files */,
-				2EE4256B1AE54C3400069B32 /* Data Objects */,
 				2EE425831AE7196B00069B32 /* ColorFromHex.swift */,
 				2EA2EF2E1B01680A0064471C /* StringManipulation.swift */,
 				2E13A9AF1BF80BF800CB84B1 /* Functional.swift */,
@@ -658,6 +658,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = "";
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",

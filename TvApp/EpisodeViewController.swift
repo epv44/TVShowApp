@@ -13,8 +13,8 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
     var titleString: String!
     var descriptionString: String!
     var episodeId: String!
-//    var characterList: JSONArray = []
-//    var characterArray : JSONCharacterArray = []
+    var characterList: JSONArray = []
+    var characterArray : JSONCharacterArray = []
     var imageForEpisode: UIImage!
     private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
     @IBOutlet weak var tableView: UITableView!
@@ -23,26 +23,28 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundColor = UIColorFromHex(0xF2F2F2, alpha: 1)
-        var titleLabel = UILabel(frame: CGRectMake(0 , 0, 200, 21))
+        let titleLabel = UILabel(frame: CGRectMake(0 , 0, 200, 21))
         titleLabel.textAlignment = NSTextAlignment.Center
         titleLabel.text = titleString
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.font = UIFont(name: "AvantGardeLT-Demi", size: 18)
-        var nib = UINib(nibName: "showsTableCell", bundle: nil)
+        let nib = UINib(nibName: "showsTableCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         navigationItem.titleView = titleLabel
+        self.episodeDescription.scrollRangeToVisible(NSMakeRange(0,0))
         episodeDescription.text=descriptionString
-//        for obj: AnyObject in characterList{
-//            let character = Character.create <^>
-//                obj["first_name"]      >>> JSONString <*>
-//                obj["last_name"]       >>> JSONString <*>
-//                obj["outfits"]         >>> JSONObject <*>
-//                obj["joins_ids"]       >>> JSONObject <*>
-//                obj["character_image_url"] >>> JSONString
-//            characterArray.append(character!)
-//        }
+        for obj: AnyObject in characterList{
+            characterArray.append(Character(json: obj as! NSDictionary))
+        }
+        
         self.episodeDescription.scrollRangeToVisible(NSMakeRange(0,0))
         self.episodeImage.image = imageForEpisode
+    }
+    
+    //called when the view has just finished laying out, all view should be in the correct places/frames
+    override func viewDidLayoutSubviews() {
+        //ensures that the episodeDescription is scrolled to the top upon loading
+        self.episodeDescription.contentOffset = CGPointZero
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +54,7 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Table view data source
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return /*self.characterArray.count*/ 0
+        return self.characterArray.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,62 +62,62 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        return 10
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! AllShowsTableViewCell
-        cell.showTitle.text = /*self.characterArray[indexPath.section].firstName + ", " + self.characterArray[indexPath.section].lastName*/ "ALMOST THERE..."
+        let cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! AllShowsTableViewCell
+        cell.showTitle.text = self.characterArray[indexPath.section].firstName! + ", " + self.characterArray[indexPath.section].lastName!
         cell.showImage.image = nil
         
-//        var urlString = self.characterArray[indexPath.section].characterImage
-//        if let img = imageCache[urlString]{
-//            cell.imageView?.image = img
-//        }else{
-//            let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
-//            getPreSignedURLRequest.bucket = S3BucketName
-//            getPreSignedURLRequest.key = urlString
-//            getPreSignedURLRequest.HTTPMethod = AWSHTTPMethod.GET
-//            getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
-//            
-//            //check if URL is in array, if not then perform async request to get the urls set url string outside of this block
-//            AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:BFTask!) -> (AnyObject!) in
-//                if (task.error != nil) {
-//                    NSLog("Error: %@", task.error)
-//                } else {
-//                    let presignedURL = task.result as! NSURL!
-//                    if (presignedURL != nil) {
-//                        NSLog("download presignedURL is: \n%@", presignedURL)
-//                        let mainQueue = NSOperationQueue.mainQueue()
-//                        let request = NSURLRequest(URL: presignedURL)
-//                        NSURLConnection.sendAsynchronousRequest(request, queue: mainQueue, completionHandler: { (response, data, error) -> Void in
-//                            if error == nil {
-//                                // Convert the downloaded data in to a UIImage object
-//                                let image = UIImage(data: data)
-//                                // Store the image in to our cache, if it is missing set it to the show image
-//                                if urlString.rangeOfString("missing.png") != nil {
-//                                    self.imageCache[urlString] = self.episodeImage.image
-//                                }else{
-//                                    self.imageCache[urlString] = image
-//                                }
-//                                // Update the cell
-//                                dispatch_async(dispatch_get_main_queue(), {
-//                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
-//                                        cellToUpdate.imageView?.image = image
-//                                        self.tableView.reloadData()
-//                                    }
-//                                })
-//                            }
-//                            else {
-//                                println("Error: \(error.localizedDescription)")
-//                            }
-//                        })
-//                    }
-//                }
-//                return nil;
-//            }
-//        }
-//        
+        let urlString = self.characterArray[indexPath.section].characterImageURL!
+        if let img = imageCache[urlString]{
+            cell.showImage.image = img
+        }else{
+            let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
+            getPreSignedURLRequest.bucket = S3BucketName
+            getPreSignedURLRequest.key = urlString
+            getPreSignedURLRequest.HTTPMethod = AWSHTTPMethod.GET
+            getPreSignedURLRequest.expires = NSDate(timeIntervalSinceNow: 3600)
+            
+            //check if URL is in array, if not then perform async request to get the urls set url string outside of this block
+            AWSS3PreSignedURLBuilder.defaultS3PreSignedURLBuilder().getPreSignedURL(getPreSignedURLRequest) .continueWithBlock { (task:AWSTask!) -> (AnyObject!) in
+                if (task.error != nil) {
+                    NSLog("Error: %@", task.error)
+                } else {
+                    let presignedURL = task.result as! NSURL!
+                    if (presignedURL != nil) {
+                        NSLog("download presignedURL is: \n%@", presignedURL)
+                        let request = NSURLRequest(URL: presignedURL)
+                        let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
+                            if error == nil {
+                                // Convert the downloaded data in to a UIImage object
+                                let image = UIImage(data: data!)
+                                // Store the image in to our cache, if it is missing set it to the show image
+                                if urlString.rangeOfString("missing.png") != nil {
+                                    self.imageCache[urlString] = self.episodeImage.image
+                                }else{
+                                    self.imageCache[urlString] = image
+                                }
+                                // Update the cell
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! AllShowsTableViewCell?{
+                                        cellToUpdate.showImage.image = image
+                                        self.tableView.reloadData()
+                                    }
+                                })
+                            }
+                            else {
+                                print("Error: \(error!.localizedDescription)")
+                            }
+                        })
+                        task.resume()
+                    }
+                }
+                return nil;
+            }
+        }
+        
         return cell
     }
     

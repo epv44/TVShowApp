@@ -13,7 +13,7 @@ import Foundation
 func getCurrentEpisodes(callback: JSONEpisodeArray -> ()){
     var episodesArray: JSONEpisodeArray = []
     var request: String! = "episodes/current"
-    var timeZone: NSString = NSTimeZone.localTimeZone().abbreviation!.lowercaseString
+    let timeZone: NSString = NSTimeZone.localTimeZone().abbreviation!.lowercaseString
 
     if(timeZone.isEqualToString("est") || timeZone.isEqualToString("edt")){
         request = "episodes/current"

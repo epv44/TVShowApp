@@ -38,30 +38,35 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let nib = UINib(nibName: "seasonsTableCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         self.tableView.backgroundColor = UIColorFromHex(0xF2F2F2, alpha: 1)
-
-        showDescription.text = descriptionString
         
         for obj: AnyObject in seasonList {
             seasonArray.append(Season(json: obj as! NSDictionary))
         }
-        self.imageView.image = showImage
         self.showDescription.scrollRangeToVisible(NSMakeRange(0,0))
         if let img = imageCache[imageUrl]{
             self.imageView.image = img
         }else{
             startDownload()
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = false
-        
         let titleLabel = UILabel(frame: CGRectMake(0 , 0, 200, 21))
         titleLabel.textAlignment = NSTextAlignment.Center
         titleLabel.text = titleString
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.font = UIFont(name: "AvantGardeLT-Demi", size: 18)
         navigationItem.titleView = titleLabel
+    }
+    
+    //called when the view has just finished laying out, all view should be in the correct places/frames
+    override func viewDidLayoutSubviews() {
+        //ensures that the episodeDescription is scrolled to the top upon loading
+        self.showDescription.contentOffset = CGPointZero
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+        self.imageView.image = showImage
+        
+        showDescription.text = descriptionString
     }
     
     func startDownload(){
@@ -200,8 +205,8 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.seasonDescription.text = self.seasonArray[indexPath.section].description
         cell.seasonImage.image = nil
         
-        let urlString = self.seasonArray[indexPath.section].seasonImageURL
-        if let img = imageCache[urlString!]{
+        let urlString = self.seasonArray[indexPath.section].seasonImageURL!
+        if let img = imageCache[urlString]{
             cell.seasonImage.image = img
         }else{
             let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
@@ -224,10 +229,10 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 // Convert the downloaded data in to a UIImage object
                                 let image = UIImage(data: data!)
                                 // Store the image in to our cache, if it is missing set it to the show image
-                                if urlString!.rangeOfString("missing.png") != nil {
-                                    self.imageCache[urlString!] = self.imageView.image
+                                if urlString.rangeOfString("missing.png") != nil {
+                                    self.imageCache[urlString] = self.imageView.image
                                 }else{
-                                    self.imageCache[urlString!] = image
+                                    self.imageCache[urlString] = image
                                 }
                                 // Update the cell
                                 dispatch_async(dispatch_get_main_queue(), {
@@ -251,6 +256,8 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -264,17 +271,13 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == "seasonSegue"{
-            if let navbar = segue.destinationViewController as? UINavigationController{
-                if let destinationVC = navbar.topViewController as? SeasonViewController{
-                    let indexPath = self.tableView?.indexPathForCell(sender as! SeasonsTableViewCell)
-                    let sectionId = indexPath!.section
-                    destinationVC.titleString = self.seasonArray[sectionId].title
-                    destinationVC.descriptionString = self.seasonArray[sectionId].description
-//                    destinationVC.episodeList = self.seasonArray[sectionId].episodes
-//                    destinationVC.imageForSeason = self.imageCache[self.seasonArray[sectionId].seasonImage]
-                }
-            }else{
-                print("error")
+            if let destinationVC = segue.destinationViewController as? SeasonViewController{
+                let indexPath = self.tableView?.indexPathForCell(sender as! SeasonsTableViewCell)
+                let sectionId = indexPath!.section
+                destinationVC.titleString = self.seasonArray[sectionId].title
+                destinationVC.descriptionString = self.seasonArray[sectionId].description
+                destinationVC.episodeList = self.seasonArray[sectionId].episodes!
+                destinationVC.imageForSeason = self.imageCache[self.seasonArray[sectionId].seasonImageURL!]
             }
         }
     }
