@@ -13,6 +13,7 @@
 		2E13A9AC1BF8093100CB84B1 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E13A9AB1BF8093100CB84B1 /* Result.swift */; };
 		2E13A9AE1BF80A1900CB84B1 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E13A9AD1BF80A1900CB84B1 /* Response.swift */; };
 		2E13A9B01BF80BF800CB84B1 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E13A9AF1BF80BF800CB84B1 /* Functional.swift */; };
+		2E14D9FC1C02B6E2009395AB /* SettingsEmbededTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E14D9FB1C02B6E2009395AB /* SettingsEmbededTableViewController.swift */; };
 		2E1610501AEFEC73009C3E74 /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E16104F1AEFEC73009C3E74 /* ShowViewController.swift */; };
 		2E1610521AF173AD009C3E74 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1610511AF173AD009C3E74 /* Season.swift */; };
 		2E43D7941B0D0D61005D7FC6 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43D7931B0D0D61005D7FC6 /* Character.swift */; };
@@ -70,6 +71,7 @@
 		2E13A9AB1BF8093100CB84B1 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		2E13A9AD1BF80A1900CB84B1 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		2E13A9AF1BF80BF800CB84B1 /* Functional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
+		2E14D9FB1C02B6E2009395AB /* SettingsEmbededTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsEmbededTableViewController.swift; sourceTree = "<group>"; };
 		2E16104F1AEFEC73009C3E74 /* ShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
 		2E1610511AF173AD009C3E74 /* Season.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		2E43D7931B0D0D61005D7FC6 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				2E9F3D5F1ADC2B6900EB5DAF /* AllShowsViewController.swift */,
+				2E14D9FB1C02B6E2009395AB /* SettingsEmbededTableViewController.swift */,
 				2E9F3D691ADC4EDD00EB5DAF /* CurrentEpisodesViewController.swift */,
 				2E9F3D6D1ADC5DC400EB5DAF /* SettingsViewController.swift */,
 				2E16104F1AEFEC73009C3E74 /* ShowViewController.swift */,
@@ -470,6 +473,7 @@
 			files = (
 				2E9F3D6A1ADC4EDD00EB5DAF /* CurrentEpisodesViewController.swift in Sources */,
 				2EE425601ADEB38700069B32 /* HTTPHelper.swift in Sources */,
+				2E14D9FC1C02B6E2009395AB /* SettingsEmbededTableViewController.swift in Sources */,
 				2E1610521AF173AD009C3E74 /* Season.swift in Sources */,
 				2EDA534D1B06778B00DE0A18 /* EpisodeViewController.swift in Sources */,
 				2E7B0B251B23A15800668FB8 /* Outfit.swift in Sources */,

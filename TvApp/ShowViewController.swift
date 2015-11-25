@@ -37,6 +37,8 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.session = Static.session;
         let nib = UINib(nibName: "seasonsTableCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
+        
+        //is this needed?
         self.tableView.backgroundColor = UIColorFromHex(0xF2F2F2, alpha: 1)
         
         for obj: AnyObject in seasonList {

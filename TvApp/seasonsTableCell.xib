@@ -53,7 +53,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhiteGear" translatesAutoresizingMaskIntoConstraints="NO" id="v7I-1u-tQM">
                                 <rect key="frame" x="0.0" y="0.0" width="68" height="70"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.3803921569" green="0.92941176469999998" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="68" id="luD-qY-qLq"/>
                                 </constraints>

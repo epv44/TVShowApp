@@ -24,7 +24,7 @@ struct Character{
         if let url = json["character_image_url"] as? String{
             self.characterImageURL = url
         }
-        if let oList = json["outfit_list"] as? JSONArray{
+        if let oList = json["outfits"] as? JSONArray{
             self.outfitList = oList
         }
     }

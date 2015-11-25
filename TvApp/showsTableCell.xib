@@ -43,13 +43,6 @@
                                     <constraint firstAttribute="width" constant="48" id="KDN-pG-heX"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhiteGear" translatesAutoresizingMaskIntoConstraints="NO" id="lYn-yC-hT1">
-                                <rect key="frame" x="0.0" y="0.0" width="68" height="70"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="68" id="Rtw-ww-NJn"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kevin Bacon, Forest wittaker" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcz-eN-YTE">
                                 <rect key="frame" x="81" y="37" width="175" height="30"/>
                                 <animations/>
@@ -57,21 +50,28 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhiteGear" translatesAutoresizingMaskIntoConstraints="NO" id="lYn-yC-hT1">
+                                <rect key="frame" x="0.0" y="1" width="68" height="68"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="Rtw-ww-NJn"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xoo-en-2AN" firstAttribute="leading" secondItem="lYn-yC-hT1" secondAttribute="trailing" constant="13" id="3kE-7E-OjD"/>
                             <constraint firstItem="834-BX-bMl" firstAttribute="centerY" secondItem="lYn-yC-hT1" secondAttribute="centerY" id="5Cv-cQ-5Hu"/>
-                            <constraint firstItem="Zcz-eN-YTE" firstAttribute="bottom" secondItem="lYn-yC-hT1" secondAttribute="bottom" constant="-3" id="Ac2-kN-cGp"/>
+                            <constraint firstItem="Zcz-eN-YTE" firstAttribute="bottom" secondItem="lYn-yC-hT1" secondAttribute="bottom" constant="-2" id="Ac2-kN-cGp"/>
                             <constraint firstAttribute="trailing" secondItem="xoo-en-2AN" secondAttribute="trailing" constant="47" id="AsI-WD-uSd"/>
                             <constraint firstAttribute="trailing" secondItem="834-BX-bMl" secondAttribute="trailing" id="DNB-fA-2PY"/>
-                            <constraint firstItem="lYn-yC-hT1" firstAttribute="top" secondItem="7ov-ze-U72" secondAttribute="top" id="QHJ-an-ijE"/>
+                            <constraint firstItem="lYn-yC-hT1" firstAttribute="top" secondItem="7ov-ze-U72" secondAttribute="top" constant="1" id="QHJ-an-ijE"/>
                             <constraint firstItem="Zcz-eN-YTE" firstAttribute="leading" secondItem="xoo-en-2AN" secondAttribute="leading" id="Wfh-HX-9T6"/>
                             <constraint firstItem="834-BX-bMl" firstAttribute="top" secondItem="7ov-ze-U72" secondAttribute="top" constant="16" id="Wus-Co-swo"/>
                             <constraint firstItem="xoo-en-2AN" firstAttribute="top" secondItem="7ov-ze-U72" secondAttribute="topMargin" id="Xzt-aa-h9I"/>
                             <constraint firstAttribute="trailing" secondItem="Zcz-eN-YTE" secondAttribute="trailing" constant="47" id="gNu-T6-hsI"/>
-                            <constraint firstAttribute="bottom" secondItem="lYn-yC-hT1" secondAttribute="bottom" id="xEg-s8-vL5"/>
+                            <constraint firstAttribute="bottom" secondItem="lYn-yC-hT1" secondAttribute="bottom" constant="1" id="xEg-s8-vL5"/>
                             <constraint firstItem="Zcz-eN-YTE" firstAttribute="top" secondItem="xoo-en-2AN" secondAttribute="bottom" constant="-1" id="xlT-HF-ydZ"/>
                             <constraint firstItem="lYn-yC-hT1" firstAttribute="leading" secondItem="7ov-ze-U72" secondAttribute="leading" id="zXY-qp-Fix"/>
                         </constraints>

@@ -134,20 +134,16 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-//        if segue.identifier == "characterSegue"{
-//            if let navbar = segue.destinationViewController as? UINavigationController{
-//                if let destinationVC = navbar.topViewController as? CharactersViewController{
-//                    let indexPath = self.tableView?.indexPathForCell(sender as! AllShowsTableViewCell)
-//                    let sectionId = indexPath!.section
-//                    destinationVC.titleString = self.characterArray[sectionId].firstName + " " + self.characterArray[sectionId].lastName
-//                    destinationVC.descriptionString = "add another image or description"
-//                    destinationVC.outfitList = self.characterArray[sectionId].outfitList
-//                    destinationVC.imageForCharacter = self.imageCache[self.characterArray[sectionId].characterImage]
-//                    destinationVC.currentEpisode = self.episodeId
-//                }
-//            }else{
-//                print("error")
-//            }
-//        }
+        if segue.identifier == "characterSegue"{
+            if let destinationVC = segue.destinationViewController as? CharactersViewController{
+                let indexPath = self.tableView?.indexPathForCell(sender as! AllShowsTableViewCell)
+                let sectionId = indexPath!.section
+                destinationVC.titleString = self.characterArray[sectionId].firstName! + " " + self.characterArray[sectionId].lastName!
+                destinationVC.descriptionString = "add another image or description"
+                destinationVC.outfitList = self.characterArray[sectionId].outfitList!
+                destinationVC.imageForCharacter = self.imageCache[self.characterArray[sectionId].characterImageURL!]
+                destinationVC.currentEpisode = self.episodeId
+            }
+        }
     }
 }
