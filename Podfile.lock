@@ -18,6 +18,8 @@ PODS:
     - AWSCore (= 2.3.0)
   - AWSMachineLearning (2.3.0):
     - AWSCore (= 2.3.0)
+  - AWSMobileAnalytics (2.3.0):
+    - AWSCore (= 2.3.0)
   - AWSS3 (2.3.0):
     - AWSCore (= 2.3.0)
   - AWSSES (2.3.0):
@@ -28,12 +30,6 @@ PODS:
     - AWSCore (= 2.3.0)
   - AWSSQS (2.3.0):
     - AWSCore (= 2.3.0)
-  - Bolts (1.5.0):
-    - Bolts/AppLinks (= 1.5.0)
-    - Bolts/Tasks (= 1.5.0)
-  - Bolts/AppLinks (1.5.0):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.5.0)
 
 DEPENDENCIES:
   - AWSAutoScaling
@@ -46,12 +42,12 @@ DEPENDENCIES:
   - AWSKinesis
   - AWSLambda
   - AWSMachineLearning
+  - AWSMobileAnalytics
   - AWSS3
   - AWSSES
   - AWSSimpleDB
   - AWSSNS
   - AWSSQS
-  - Bolts
 
 SPEC CHECKSUMS:
   AWSAutoScaling: df8e90e5a9a5bd2724498b9d6858666784ee8624
@@ -64,11 +60,11 @@ SPEC CHECKSUMS:
   AWSKinesis: cf1fd517a318d6f70b2b79816d77b3740480d494
   AWSLambda: f161c8004b4d522fe8d6b30dcb292ec6e74ee4f1
   AWSMachineLearning: 317732646d6058f2a1ca04407f16c5206ba65594
+  AWSMobileAnalytics: 5e6809e6339a228bd096fadfb8ccc5491b168b11
   AWSS3: 0185482a8136da9c7542a767567ee18106b38bca
   AWSSES: 48424b2a92cd35571fe91f2a7e80dfce6f46e60d
   AWSSimpleDB: 798c9515722d8abc37bb44414a3dea38a75df0e8
   AWSSNS: 44257e7fbb51d9dea04994b39ff01dda61822643
   AWSSQS: 260ffd6da0d2ab255b903b377f2baa1e7390b3ba
-  Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
 
 COCOAPODS: 0.39.0
