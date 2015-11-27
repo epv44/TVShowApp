@@ -18,25 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //sets the status bar (very top bar with battery icon) color
         let appWidth = self.window?.bounds.width
-        var statusBar = UIView()
+        let statusBar = UIView()
         statusBar.frame = CGRectMake(0,0,appWidth!,20)
-        statusBar.backgroundColor = UIColorFromHex(0x50e2c1, alpha: 1)
+        statusBar.backgroundColor = GreenBackgroundFromHex()
         self.window?.rootViewController?.view.addSubview(statusBar)
-        
+        //UINavigationBar.appearance().backgroundColor = GreenBackgroundFromHex()
         let credentialProvider = AWSCognitoCredentialsProvider(
             regionType: CognitoRegionType,
             identityPoolId: CognitoIdentityPoolId)
         let configuration = AWSServiceConfiguration(
             region: DefaultServiceRegionType,
             credentialsProvider: credentialProvider)
-        
+        AWSLogger.defaultLogger().logLevel = .Verbose
         AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = configuration
 
         return true
     }
     func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {
         
-        NSLog("[%@ %@]", reflect(self).summary, __FUNCTION__)
+       // NSLog("[%@ %@]", reflect(self).summary, __FUNCTION__)
         /*
         Store the completion handler.
         */

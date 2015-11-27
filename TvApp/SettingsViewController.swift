@@ -17,10 +17,19 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.navigationController?.navigationBar.barTintColor = UIColorFromHex(0xF2F2F2, alpha: 1)
+        //remove blue line from under navbar
+        self.navigationController?.navigationBar.clipsToBounds = true
+        
+        let titleLabel = UILabel(frame: CGRectMake(0 , 0, 200, 30))
+        titleLabel.textAlignment = NSTextAlignment.Center
+        titleLabel.text = "Settings"
+        titleLabel.font = UIFont(name: "AvantGardeLT-Demi", size: 18)
+        navigationItem.titleView = titleLabel
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

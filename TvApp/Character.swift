@@ -9,26 +9,24 @@
 import Foundation
 
 struct Character{
-    let firstName: String
-    let lastName: String
-    let outfitList: JSONArray
-    let characterImage: String
+    var firstName: String?
+    var lastName: String?
+    var characterImageURL: String?
+    var outfitList: JSONArray?
     
-    static func create(firstName: String)(lastName: String)(outfitList: JSONArray)(characterImage: String)-> Character {
-        return Character(firstName: firstName, lastName: lastName, outfitList: outfitList, characterImage: characterImage)
-    }
-    
-    static func decode(json: JSON) -> Result<JSONCharacterArray> {
-        var allCharacters : JSONCharacterArray = []
-        
-        for obj: AnyObject in JSONObject(json) {
-            let character = Character.create <^>
-                obj["first_name"]          >>> JSONString <*>
-                obj["last_name"]           >>> JSONString <*>
-                obj["outfits"]             >>> JSONObject <*>
-                obj["character_image_url"] >>> JSONString
-            allCharacters.append(character!)
+    init(json: NSDictionary){
+        if let fname = json["first_name"] as? String{
+            self.firstName = fname
         }
-        return resultFromOptional(allCharacters, NSError())
+        if let lname = json["last_name"] as? String{
+            self.lastName = lname
+        }
+        if let url = json["character_image_url"] as? String{
+            self.characterImageURL = url
+        }
+        if let oList = json["outfits"] as? JSONArray{
+            self.outfitList = oList
+        }
     }
+    
 }

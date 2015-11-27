@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+typealias ServiceResponse = (NSData!, NSError?) -> Void
 enum HTTPRequestAuthType {
     case HTTPBasicAuth
     case HTTPTokenAuth
@@ -15,15 +15,6 @@ enum HTTPRequestAuthType {
 enum HTTPRequestContentType {
     case HTTPJsonContent
     case HTTPMultipartContent
-}
-
-
-func parseResponse(response: Response) -> Result<NSData> {
-    let successRange = 200..<300
-    if !contains(successRange, response.statusCode) {
-        return .Error(NSError()) // customize the error message to your liking
-    }
-    return Result(nil, response.data)
 }
 
 struct HTTPHelper {
@@ -42,7 +33,7 @@ struct HTTPHelper {
             apiToken = configVars["API_TOKEN"] as? String!
             baseUrl = configVars["ROOT_URL"] as? String!
             let requestURL = NSURL(string: "\(baseUrl)/\(path)")
-            var request = NSMutableURLRequest(URL: requestURL!)
+            let request = NSMutableURLRequest(URL: requestURL!)
             
             // Set HTTP request method and Content-Type
             request.HTTPMethod = method
@@ -62,7 +53,7 @@ struct HTTPHelper {
                 // Set BASIC authentication header
                 let basicAuthString = "\(HTTPHelper.API_AUTH_NAME):\(HTTPHelper.API_AUTH_PASSWORD)"
                 let utf8str = basicAuthString.dataUsingEncoding(NSUTF8StringEncoding)
-                let base64EncodedString = utf8str?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(0))
+                let base64EncodedString = utf8str?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
                 
                 request.addValue("Basic \(base64EncodedString!)", forHTTPHeaderField: "Authorization")
             case .HTTPTokenAuth:
@@ -77,8 +68,8 @@ struct HTTPHelper {
     
     
     func sendRequest(request: NSURLRequest, completion:(NSData!, NSURLResponse!, NSError!) -> Void) -> () {
-        // Create a NSURLSession task
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data: NSData!, response: NSURLResponse!, error: NSError!) in
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
             if error != nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     completion(data, response, error)
@@ -95,15 +86,22 @@ struct HTTPHelper {
                 } else {
 //                    var jsonerror:NSError?
 //                    let errorDict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error:&jsonerror) as NSDictionary
-//                    
 //                    let responseError : NSError = NSError(domain: "HTTPHelperError", code: httpResponse.statusCode, userInfo: errorDict)
                     completion(data, response, error)
                 }
             })
-        }
+        });
         
         // start the task
         task.resume()
     }
 }
+
+//func parseResponse(response: Response) -> Result<NSData> {
+//    let successRange = 200..<300
+//    if !contains(successRange, response.statusCode) {
+//        return .Error(NSError()) // customize the error message to your liking
+//    }
+//    return Result(nil, response.data)
+//}
 

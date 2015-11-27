@@ -9,28 +9,28 @@
 import Foundation
 
 struct Outfit {
-    let outfitName: String
-    let description: String
-    let outfitImage: String
-    let episodeId: String
-    let pieces: JSONArray
+    var outfitName: String?
+    var description: String?
+    var outfitImageURL: String?
+    var episodeId: String?
+    var pieces: JSONArray?
     
-    static func create(outfitName: String)(description: String)(outfitImage: String)(episodeId: String)(pieces: JSONArray) -> Outfit {
-        return Outfit(outfitName: outfitName, description: description, outfitImage: outfitImage, episodeId: episodeId, pieces: pieces)
-    }
-    
-    static func decode(json: JSON) -> Result<JSONOutfitArray> {
-        var allOutfits : JSONOutfitArray = []
-        
-        for obj: AnyObject in JSONObject(json) {
-            let outfit = Outfit.create <^>
-                obj["outfit_name"]      >>> JSONString <*>
-                obj["description"]      >>> JSONString <*>
-                obj["outfit_image_url"] >>> JSONString <*>
-                obj["episode_id"]       >>> JSONString <*>
-                obj["pieces"]           >>> JSONObject
-            allOutfits.append(outfit!)
+    init(json: NSDictionary){
+        if let n = json["outfit_name"] as? String{
+            self.outfitName = n
         }
-        return resultFromOptional(allOutfits, NSError())
+        if let d = json["description"] as? String{
+            self.description = d
+        }
+        if let url = json["outfit_image_url"] as? String{
+            self.outfitImageURL = url
+        }
+        if let id = json["episode_id"] as? String{
+            self.episodeId = id
+        }
+        if let p = json["pieces"] as? JSONArray{
+            self.pieces = p
+        }
+        
     }
 }

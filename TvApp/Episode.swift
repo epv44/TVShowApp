@@ -2,42 +2,38 @@
 //  Episode.swift
 //  TvApp
 //
-//  Created by Eric Vennaro on 4/22/15.
-//  Copyright (c) 2015 Eric Vennaro. All rights reserved.
+//  Created by Eric Vennaro on 11/14/15.
+//  Copyright © 2015 Eric Vennaro. All rights reserved.
 //
 
 import Foundation
 
 struct Episode {
-    let name: String
-    let description: String
-    let episodeImage: String
-    let viewingTime: String
-    let episodeId: String
-    let characters: JSONArray
-
-    static func create(name: String)(description: String)(episodeImage: String)(viewingTime: String)(episodeId: String)(characters: JSONArray) -> Episode {
-        return Episode(name: name, description: description, episodeImage: episodeImage, viewingTime: viewingTime, episodeId: episodeId, characters: characters)
-    }
+    var title: String?
+    var description: String?
+    var episodeImageURL: String?
+    var viewingTime: String?
+    var episodeId: String?
+    var characters: JSONArray?
     
-    static func create1(name: String)(description: String)(episodeImage: String)(episodeId: String)(characters: JSONArray) -> Episode {
-        var viewingTime: String = "blank" 
-        return Episode(name: name, description: description, episodeImage: episodeImage, viewingTime: viewingTime, episodeId: episodeId, characters: characters)
-    }
-    
-    static func decode(json: JSON) -> Result<JSONEpisodeArray> {
-        var allEpisodes : JSONEpisodeArray = []
-        
-        for obj: AnyObject in JSONObject(json) {
-            let episode = Episode.create <^>
-                obj["title"]                >>> JSONString <*>
-                obj["description"]          >>> JSONString <*>
-                obj["episode_image_url"]    >>> JSONString <*>
-                obj["viewing_time"]         >>> JSONString <*>
-                obj["id"]                   >>> JSONString <*>
-                obj["characters"]           >>> JSONObject
-            allEpisodes.append(episode!)
+    init(json: NSDictionary){
+        if let t = json["title"] as? String{
+            self.title = t
         }
-        return resultFromOptional(allEpisodes, NSError())
+        if let d = json["description"] as? String{
+            self.description = d
+        }
+        if let url = json["episode_image_url"] as? String{
+            self.episodeImageURL = url
+        }
+        if let v = json["viewing_time"] as? String{
+            self.viewingTime = v
+        }
+        if let id = json["id"] as? String{
+            self.episodeId = id
+        }
+        if let c = json["characters"] as? JSONArray {
+            self.characters = c
+        }
     }
 }

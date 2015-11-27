@@ -9,26 +9,23 @@
 import Foundation
 
 struct Season {
-    let name: String
-    let description: String
-    let seasonImage: String
-    let episodes: JSONArray
+    var title: String?
+    var description: String?
+    var seasonImageURL: String?
+    var episodes: JSONArray?
     
-    static func create(name: String)(description: String)(seasonImage: String)(episodes: JSONArray) -> Season {
-        return Season(name: name, description: description, seasonImage: seasonImage, episodes: episodes)
-    }
-    
-    static func decode(json: JSON) -> Result<JSONSeasonArray> {
-        var allSeasons : JSONSeasonArray = []
-        
-        for obj: AnyObject in JSONObject(json) {
-            let season = Season.create <^>
-                obj["title"]                >>> JSONString <*>
-                obj["description"]          >>> JSONString <*>
-                obj["season_image_url"]     >>> JSONString <*>
-                obj["episodes"]             >>> JSONObject
-            allSeasons.append(season!)
+    init(json: NSDictionary){
+        if let t = json["title"] as? String{
+            title = t
         }
-        return resultFromOptional(allSeasons, NSError())
+        if let d = json["description"] as? String{
+            description = d
+        }
+        if let url = json["season_image_url"] as? String{
+            seasonImageURL = url
+        }
+        if let e = json["episodes"] as? JSONArray{
+            episodes = e
+        }
     }
 }

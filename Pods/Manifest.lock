@@ -1,91 +1,39 @@
 PODS:
-  - AWSAutoScaling (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSCloudWatch (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSCognito (2.1.1):
-    - AWSCore (~> 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-    - Reachability (~> 3.1)
-    - UICKeyChainStore (~> 2.0)
-  - AWSCore (2.1.1):
-    - Bolts (~> 1.1.0)
-    - GZIP (~> 1.0.3)
-    - Mantle (~> 1.4)
-    - Reachability (~> 3.1)
-    - UICKeyChainStore (~> 2.0)
-    - XMLDictionary (~> 1.4.0)
-  - AWSDynamoDB (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSEC2 (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSElasticLoadBalancing (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSKinesis (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - FMDB (~> 2.4)
-    - Mantle (~> 1.4)
-    - TMCache (~> 1.2.1)
-  - AWSLambda (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSMachineLearning (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSS3 (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-    - TMCache (~> 1.2.1)
-  - AWSSES (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSSimpleDB (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSSNS (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - AWSSQS (2.1.1):
-    - AWSCore (= 2.1.1)
-    - Bolts (~> 1.1.0)
-    - Mantle (~> 1.4)
-  - Bolts (1.1.5):
-    - Bolts/AppLinks (= 1.1.5)
-    - Bolts/Tasks (= 1.1.5)
-  - Bolts/AppLinks (1.1.5):
+  - AWSAutoScaling (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSCloudWatch (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSCognito (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSCore (2.3.0)
+  - AWSDynamoDB (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSEC2 (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSElasticLoadBalancing (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSKinesis (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSLambda (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSMachineLearning (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSS3 (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSSES (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSSimpleDB (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSSNS (2.3.0):
+    - AWSCore (= 2.3.0)
+  - AWSSQS (2.3.0):
+    - AWSCore (= 2.3.0)
+  - Bolts (1.5.0):
+    - Bolts/AppLinks (= 1.5.0)
+    - Bolts/Tasks (= 1.5.0)
+  - Bolts/AppLinks (1.5.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.1.5)
-  - FMDB (2.5):
-    - FMDB/standard (= 2.5)
-  - FMDB/common (2.5)
-  - FMDB/standard (2.5):
-    - FMDB/common
-  - GZIP (1.0.3)
-  - Mantle (1.5.4):
-    - Mantle/extobjc (= 1.5.4)
-  - Mantle/extobjc (1.5.4)
-  - Reachability (3.2)
-  - TMCache (1.2.4)
-  - UICKeyChainStore (2.0.4)
-  - XMLDictionary (1.4)
+  - Bolts/Tasks (1.5.0)
 
 DEPENDENCIES:
   - AWSAutoScaling
@@ -103,30 +51,24 @@ DEPENDENCIES:
   - AWSSimpleDB
   - AWSSNS
   - AWSSQS
+  - Bolts
 
 SPEC CHECKSUMS:
-  AWSAutoScaling: 7dce9232ff39ba7261879ebee44e99e20ae19ddf
-  AWSCloudWatch: a71dec2b429d09e7d5baf2959548accf606b5f4e
-  AWSCognito: c251f1f166c74343493451e238ca7157e1e33dda
-  AWSCore: 0e82eabc27a96d765b1e2ad4d30b96c1cd298300
-  AWSDynamoDB: 8afd8c76c9f19adfbd095abd3b6ca0cdb6a8c2e8
-  AWSEC2: 8ffacce17f49dd121ab18d468fae2db5db408500
-  AWSElasticLoadBalancing: a90d47b67609bcf2c1c2e3bccc23b51a9d0240d3
-  AWSKinesis: 4ef3a2c9683d50a4ccc2ecdd173c8b04ca9b6118
-  AWSLambda: aa3a493b5695f4c20e718d4e7642d27e2f03fa17
-  AWSMachineLearning: cf062b1360551574842614d0b9c6b505cf5fff8c
-  AWSS3: 891d269735be0f3c63eab5a2d1ee9d788f2c64ee
-  AWSSES: 04f6db9fcf3792a2374db5692701445df517e5f3
-  AWSSimpleDB: e863f52f11557d8af42e5fd47e702ea01e6446e2
-  AWSSNS: 49d9144ec52c8650ba9207232fdd17c68289fac8
-  AWSSQS: bb6b810a5d9826b4b25ed520e344b71a90d6e48f
-  Bolts: aac24961496d504aa56fc267cde95162a71bac39
-  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
-  GZIP: f0863fda354e8f83316508c0a2c7bbe385e39129
-  Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
-  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  TMCache: a93984b045a5ee84bd8941bd5e0b54296059cc52
-  UICKeyChainStore: 69eb0c3a6f669bccf16ba88de3b9069b71501361
-  XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
+  AWSAutoScaling: df8e90e5a9a5bd2724498b9d6858666784ee8624
+  AWSCloudWatch: c1a3eb78ff4f288129e286d602e91e8a2914dfa9
+  AWSCognito: 71454ddf2b631005292aa2cbbdcc6d079b1b65cb
+  AWSCore: dc200c885c9799f9f5d3ab9ec38a9c4b44d680f9
+  AWSDynamoDB: 015092431c25616fdc519186caa7a8802c053f42
+  AWSEC2: 9c29ffd73b9c58d6c6602640d617c67d2cd79095
+  AWSElasticLoadBalancing: c239907548fcdcd3faf3e54957c1c2542ccde026
+  AWSKinesis: cf1fd517a318d6f70b2b79816d77b3740480d494
+  AWSLambda: f161c8004b4d522fe8d6b30dcb292ec6e74ee4f1
+  AWSMachineLearning: 317732646d6058f2a1ca04407f16c5206ba65594
+  AWSS3: 0185482a8136da9c7542a767567ee18106b38bca
+  AWSSES: 48424b2a92cd35571fe91f2a7e80dfce6f46e60d
+  AWSSimpleDB: 798c9515722d8abc37bb44414a3dea38a75df0e8
+  AWSSNS: 44257e7fbb51d9dea04994b39ff01dda61822643
+  AWSSQS: 260ffd6da0d2ab255b903b377f2baa1e7390b3ba
+  Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.39.0

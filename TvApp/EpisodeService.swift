@@ -10,9 +10,11 @@ import Foundation
 
 //Get currently playing episodes, currently based on EST in API.  API will return a time window for US timezones and
 //app will be narrowed down
-func getCurrentEpisodes(callback: (Result<JSONEpisodeArray>) -> ()){
+func getCurrentEpisodes(callback: JSONEpisodeArray -> ()){
+    var episodesArray: JSONEpisodeArray = []
     var request: String! = "episodes/current"
-    var timeZone: NSString = NSTimeZone.localTimeZone().abbreviation!.lowercaseString
+    let timeZone: NSString = NSTimeZone.localTimeZone().abbreviation!.lowercaseString
+
     if(timeZone.isEqualToString("est") || timeZone.isEqualToString("edt")){
         request = "episodes/current"
     }else if(timeZone.isEqualToString("pst") || timeZone.isEqualToString("pdt")){
@@ -26,14 +28,21 @@ func getCurrentEpisodes(callback: (Result<JSONEpisodeArray>) -> ()){
     }else if(timeZone.isEqualToString("hst") || timeZone.isEqualToString("hst")){
         request = "episodes/current?tzone=hst"
     }
+    
     //create http request using the HTTPHelper Struct
     let httpHelper = HTTPHelper()
     let httpRequest = httpHelper.buildRequest(request, method: "GET", authType: HTTPRequestAuthType.HTTPTokenAuth)
-    httpHelper.sendRequest(httpRequest, completion: {(data:NSData!, response: NSURLResponse!, error:NSError!) in
-        let responseResult = Result(error, Response(data: data, urlResponse: response))
-        let result = responseResult >>> parseResponse
-            >>> decodeJSON
-            >>> Episode.decode
-        callback(result)
+    httpHelper.sendRequest(httpRequest, completion: {(data, response, error) in
+        var jsonArray: NSArray = []
+        do {
+            jsonArray = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+            //construct models
+            for item: AnyObject in jsonArray{
+                episodesArray.append(Episode.init(json: item as! NSDictionary))
+            }
+        }catch {
+            print("error trying to convert data to JSON")
+        }
+        callback(episodesArray)
     })
 }

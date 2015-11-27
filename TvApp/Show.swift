@@ -1,34 +1,35 @@
 //
 //  Show.swift
 //  TvApp
-//  Show object, also contains the function to decode the json string and place show objects in an array
-//  Created by Eric Vennaro on 4/20/15.
-//  Copyright (c) 2015 Eric Vennaro. All rights reserved.
+//
+//  Created by Eric Vennaro on 11/14/15.
+//  Copyright © 2015 Eric Vennaro. All rights reserved.
 //
 
 import Foundation
 
 struct Show{
-    let name: String
-    let description: String
-    let showImage: String
-    let seasons: JSONArray
+    var title: String?
+    var description: String?
+    var showImageURL: String?
+    var mainCharacters: String?
+    var seasons: JSONArray?
     
-    static func create(name: String)(description: String)(showImage: String)(seasons: JSONArray) -> Show {
-        return Show(name: name, description: description, showImage: showImage, seasons: seasons)
-    }
-    
-    static func decode(json: JSON) -> Result<JSONShowArray> {
-        var allShows : JSONShowArray = []
-        
-        for obj: AnyObject in JSONObject(json) {
-            let show = Show.create <^>
-                        obj["title"]            >>> JSONString <*>
-                        obj["description"]      >>> JSONString <*>
-                        obj["show_image_url"]   >>> JSONString <*>
-                        obj["seasons"]          >>> JSONObject
-            allShows.append(show!)
+    init(json: NSDictionary){
+        if let t = json["title"] as? String{
+            self.title = t
         }
-        return resultFromOptional(allShows, NSError())
+        if let d = json["description"] as? String{
+            self.description = d
+        }
+        if let url = json["show_image_url"] as? String{
+            self.showImageURL = url
+        }
+        if let s = json["seasons"] as? JSONArray{
+            self.seasons = s
+        }
+        if let m = json["main_characters_to_string"] as? String{
+            self.mainCharacters = m
+        }
     }
 }

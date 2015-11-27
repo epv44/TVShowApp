@@ -9,14 +9,21 @@
 import Foundation
 import Darwin
 
-func stringLastIndexOf(src:String, target:UnicodeScalar) -> Int? {
-    let c = Int32(bitPattern: target.value)
-    return src.withCString { s -> Int? in
-        let pos = strrchr(s, c)
-        return pos != nil ? pos - s : nil
+func lastIndexOf(src:String, target:String) -> Int? {
+    let characters = Array(src.characters)
+    var index = 0
+    var lastIndexOf = 0
+    
+    for char in characters{
+        if String(char) == target {
+            lastIndexOf = index
+        }
+        index++
     }
+    
+    return lastIndexOf
 }
 
 func getImageNameFromUrl(urlString: String) -> String {
-    return urlString.substringFromIndex(advance(urlString.startIndex, stringLastIndexOf(urlString, "/")!))
+    return urlString.substringFromIndex(urlString.startIndex.advancedBy(lastIndexOf(urlString, target: "/")!))
 }
