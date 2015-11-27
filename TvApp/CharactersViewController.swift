@@ -125,20 +125,16 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "outfitSegue"{
-//            if let navbar = segue.destinationViewController as? UINavigationController{
-//                if let destinationVC = navbar.topViewController as? OutfitsViewController{
-//                    let indexPath = self.tableView?.indexPathForCell(sender as! AllShowsTableViewCell)
-//                    let sectionId = indexPath!.section
-//                    destinationVC.titleString = self.outfitArray[sectionId].outfitName
-//                    destinationVC.descriptionString = self.outfitArray[sectionId].description
-//                    destinationVC.outfitItemsList = self.outfitArray[sectionId].pieces
-//                    //destinationVC.imageForCharacter = self.imageCache[self.characterArray[sectionId].characterImage]
-//                }
-//            }else{
-//                print("error")
-//            }
-//        }
+        if segue.identifier == "outfitSegue"{
+            if let destinationVC = segue.destinationViewController as? OutfitsViewController{
+                let indexPath = self.tableView?.indexPathForCell(sender as! AllShowsTableViewCell)
+                let sectionId = indexPath!.section
+                destinationVC.titleString = self.outfitArray[sectionId].outfitName
+                destinationVC.descriptionString = self.outfitArray[sectionId].description
+                destinationVC.outfitItemsList = self.outfitArray[sectionId].pieces!
+                //destinationVC.imageForCharacter = self.imageCache[self.characterArray[sectionId].characterImage]
+            }
+        }
 
     }
 }

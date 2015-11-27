@@ -14,6 +14,8 @@
 		2E13A9AE1BF80A1900CB84B1 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E13A9AD1BF80A1900CB84B1 /* Response.swift */; };
 		2E13A9B01BF80BF800CB84B1 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E13A9AF1BF80BF800CB84B1 /* Functional.swift */; };
 		2E14D9FC1C02B6E2009395AB /* SettingsEmbededTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E14D9FB1C02B6E2009395AB /* SettingsEmbededTableViewController.swift */; };
+		2E14DA021C068565009395AB /* outfitTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E14DA011C068565009395AB /* outfitTableCell.xib */; };
+		2E14DA041C068602009395AB /* OutfitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E14DA031C068602009395AB /* OutfitTableViewCell.swift */; };
 		2E1610501AEFEC73009C3E74 /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E16104F1AEFEC73009C3E74 /* ShowViewController.swift */; };
 		2E1610521AF173AD009C3E74 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1610511AF173AD009C3E74 /* Season.swift */; };
 		2E43D7941B0D0D61005D7FC6 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43D7931B0D0D61005D7FC6 /* Character.swift */; };
@@ -72,6 +74,8 @@
 		2E13A9AD1BF80A1900CB84B1 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		2E13A9AF1BF80BF800CB84B1 /* Functional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
 		2E14D9FB1C02B6E2009395AB /* SettingsEmbededTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsEmbededTableViewController.swift; sourceTree = "<group>"; };
+		2E14DA011C068565009395AB /* outfitTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = outfitTableCell.xib; sourceTree = "<group>"; };
+		2E14DA031C068602009395AB /* OutfitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutfitTableViewCell.swift; sourceTree = "<group>"; };
 		2E16104F1AEFEC73009C3E74 /* ShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
 		2E1610511AF173AD009C3E74 /* Season.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		2E43D7931B0D0D61005D7FC6 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -243,7 +247,9 @@
 				2EE425811AE703A000069B32 /* AllShowsTableViewCell.swift */,
 				2E4C0F831AEED3EA00722052 /* CurrentEpisodeViewCell.swift */,
 				2E9B94511AF2B4B60034A9D3 /* SeasonsTableViewCell.swift */,
+				2E14DA031C068602009395AB /* OutfitTableViewCell.swift */,
 				2EE4257F1AE7031500069B32 /* showsTableCell.xib */,
+				2E14DA011C068565009395AB /* outfitTableCell.xib */,
 				2EB192121AEECF8800275CB4 /* currentEpisodesTableViewCell.xib */,
 				2E9B94531AF2E5F00034A9D3 /* seasonsTableCell.xib */,
 			);
@@ -398,6 +404,7 @@
 				2E9F3D3D1ADC25D700EB5DAF /* Main.storyboard in Resources */,
 				2EE425641AE0020C00069B32 /* Production.plist in Resources */,
 				2EFA03B81AEA6775005CABCA /* ITC Avant Garde Gothic LT Bold.ttf in Resources */,
+				2E14DA021C068565009395AB /* outfitTableCell.xib in Resources */,
 				2EB192131AEECF8800275CB4 /* currentEpisodesTableViewCell.xib in Resources */,
 				2EFA03B71AEA6772005CABCA /* ITC Avant Garde Gothic LT Book.ttf in Resources */,
 				2EE425621AE001E400069B32 /* Development.plist in Resources */,
@@ -489,6 +496,7 @@
 				2E13A9A61BF7DEA900CB84B1 /* Episode.swift in Sources */,
 				2E9F3D361ADC25D700EB5DAF /* AppDelegate.swift in Sources */,
 				2E43D7941B0D0D61005D7FC6 /* Character.swift in Sources */,
+				2E14DA041C068602009395AB /* OutfitTableViewCell.swift in Sources */,
 				2EE425751AE5B73000069B32 /* ShowService.swift in Sources */,
 				2E9F3D601ADC2B6900EB5DAF /* AllShowsViewController.swift in Sources */,
 				2E13A9AC1BF8093100CB84B1 /* Result.swift in Sources */,
