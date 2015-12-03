@@ -68,6 +68,7 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! AllShowsTableViewCell
         cell.showTitle.text = self.characterArray[indexPath.section].firstName! + ", " + self.characterArray[indexPath.section].lastName!
+        cell.showCharacters.text = "Played by: " + self.characterArray[indexPath.section].actor!
         cell.showImage.image = nil
         
         let urlString = self.characterArray[indexPath.section].characterImageURL!
@@ -139,7 +140,7 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
                 let indexPath = self.tableView?.indexPathForCell(sender as! AllShowsTableViewCell)
                 let sectionId = indexPath!.section
                 destinationVC.titleString = self.characterArray[sectionId].firstName! + " " + self.characterArray[sectionId].lastName!
-                destinationVC.descriptionString = "add another image or description"
+                destinationVC.descriptionString = self.characterArray[sectionId].description
                 destinationVC.outfitList = self.characterArray[sectionId].outfitList!
                 destinationVC.imageForCharacter = self.imageCache[self.characterArray[sectionId].characterImageURL!]
                 destinationVC.currentEpisode = self.episodeId

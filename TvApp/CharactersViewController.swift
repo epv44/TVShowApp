@@ -28,7 +28,7 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
         titleLabel.text = titleString
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.font = UIFont(name: "AvantGardeLT-Demi", size: 18)
-        let nib = UINib(nibName: "showsTableCell", bundle: nil)
+        let nib = UINib(nibName: "characterOutfitsTableCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "cell")
         navigationItem.titleView = titleLabel
         //outfit list
@@ -39,7 +39,6 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,26 +46,33 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: - Table view data source
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.outfitArray.count
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        return 10
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.outfitArray.count
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return tableView.frame.size.height;
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        for cell in tableView.visibleCells as [UITableViewCell] {
+            let point = tableView.convertPoint(cell.frame.origin, toView: tableView.superview)
+            let pointScale = point.y / CGFloat(tableView.superview!.bounds.size.height)
+            cell.contentView.alpha = 1-(pointScale - 0.12)
+        }
+    }
+
     //switch to outfit
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:AllShowsTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! AllShowsTableViewCell
-        cell.showTitle.text = self.outfitArray[indexPath.section].outfitName
-        cell.showCharacters.text = "Classic summer suit with a twist"
-        cell.showImage.image = nil
+        let cell:CharacterOverviewTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! CharacterOverviewTableViewCell
+        cell.loadItem(title: self.outfitArray[indexPath.row].outfitName!, phrase: self.outfitArray[indexPath.row].description!, numFavorites: "53")
         
-        let urlString = self.outfitArray[indexPath.section].outfitImageURL!
+        let urlString = self.outfitArray[indexPath.row].outfitImageURL!
         if let img = imageCache[urlString]{
-            cell.showImage.image = img
+            cell.outfitImage.image = img
         }else{
             let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
             getPreSignedURLRequest.bucket = S3BucketName
@@ -95,8 +101,8 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
                                 }
                                 // Update the cell
                                 dispatch_async(dispatch_get_main_queue(), {
-                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
-                                        cellToUpdate.imageView?.image = image
+                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as? CharacterOverviewTableViewCell{
+                                        cellToUpdate.outfitImage.image = image
                                         self.tableView.reloadData()
                                     }
                                 })
@@ -127,13 +133,13 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "outfitSegue"{
             if let destinationVC = segue.destinationViewController as? OutfitsViewController{
-                let indexPath = self.tableView?.indexPathForCell(sender as! AllShowsTableViewCell)
-                let sectionId = indexPath!.section
-                destinationVC.titleString = self.outfitArray[sectionId].outfitName
-                destinationVC.descriptionString = self.outfitArray[sectionId].description
-                destinationVC.outfitItemsList = self.outfitArray[sectionId].pieces!
+                let indexPath = self.tableView?.indexPathForCell(sender as! CharacterOverviewTableViewCell)
+                let rowId = indexPath!.row
+                destinationVC.titleString = self.outfitArray[rowId].outfitName
+                destinationVC.descriptionString = self.outfitArray[rowId].description
+                destinationVC.outfitItemsList = self.outfitArray[rowId].pieces!
                 //image for character will go to the samll image...
-                destinationVC.imageOfOutfit = self.imageCache[self.outfitArray[sectionId].outfitImageURL!]
+                destinationVC.imageOfOutfit = self.imageCache[self.outfitArray[rowId].outfitImageURL!]
             }
         }
 

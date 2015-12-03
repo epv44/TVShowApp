@@ -13,6 +13,10 @@
             <string>AvantGardeLT-Book</string>
             <string>AvantGardeLT-Book</string>
             <string>AvantGardeLT-Book</string>
+            <string>AvantGardeLT-Book</string>
+            <string>AvantGardeLT-Book</string>
+            <string>AvantGardeLT-Book</string>
+            <string>AvantGardeLT-Book</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -640,7 +644,7 @@
                                 <rect key="frame" x="135" y="84" width="453" height="105"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="AvantGardeLT-Book" family="AvantGarde LT Book" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -791,7 +795,7 @@
                                 <rect key="frame" x="135" y="84" width="453" height="105"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="AvantGardeLT-Book" family="AvantGarde LT Book" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="68" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="IEu-w9-eB4">
@@ -877,7 +881,7 @@
                                 <rect key="frame" x="135" y="84" width="453" height="105"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="AvantGardeLT-Book" family="AvantGarde LT Book" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="68" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bo8-LH-Fr7">
@@ -950,27 +954,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="68" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="ilv-HL-9lD">
-                                <rect key="frame" x="0.0" y="209" width="600" height="342"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="characterCell" id="rNY-vl-FIz">
-                                        <rect key="frame" x="0.0" y="114" width="600" height="68"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rNY-vl-FIz" id="wd7-EN-EW3">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="nnE-J3-S18" id="qJ7-1g-cvb"/>
-                                    <outlet property="delegate" destination="nnE-J3-S18" id="8Bh-qO-u11"/>
-                                </connections>
-                            </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L1r-iW-35x">
                                 <rect key="frame" x="13" y="84" width="105" height="105"/>
                                 <animations/>
@@ -983,16 +966,25 @@
                                 <rect key="frame" x="135" y="84" width="453" height="105"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="AvantGardeLT-Book" family="AvantGarde LT Book" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="ilv-HL-9lD">
+                                <rect key="frame" x="0.0" y="197" width="600" height="351"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nnE-J3-S18" id="qJ7-1g-cvb"/>
+                                    <outlet property="delegate" destination="nnE-J3-S18" id="8Bh-qO-u11"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="G2C-uc-uyZ" firstAttribute="top" secondItem="ilv-HL-9lD" secondAttribute="bottom" constant="5" id="3Gt-Yb-Bet"/>
+                            <constraint firstItem="G2C-uc-uyZ" firstAttribute="top" secondItem="ilv-HL-9lD" secondAttribute="bottom" constant="8" id="3Gt-Yb-Bet"/>
                             <constraint firstItem="L1r-iW-35x" firstAttribute="bottom" secondItem="FGr-QK-KKL" secondAttribute="bottom" id="5Tn-o6-44d"/>
-                            <constraint firstItem="ilv-HL-9lD" firstAttribute="top" secondItem="L1r-iW-35x" secondAttribute="bottom" constant="20" id="Brn-V5-FYy"/>
+                            <constraint firstItem="ilv-HL-9lD" firstAttribute="top" secondItem="L1r-iW-35x" secondAttribute="bottom" constant="8" id="Brn-V5-FYy"/>
                             <constraint firstAttribute="trailing" secondItem="ilv-HL-9lD" secondAttribute="trailing" id="O2g-ht-f4H"/>
                             <constraint firstItem="L1r-iW-35x" firstAttribute="leading" secondItem="ft6-Wt-Xo7" secondAttribute="leadingMargin" constant="-7" id="RSF-jT-yem"/>
                             <constraint firstItem="L1r-iW-35x" firstAttribute="top" secondItem="FGr-QK-KKL" secondAttribute="top" id="Zvn-R1-bdZ"/>
@@ -1125,6 +1117,6 @@
         <image name="ThreadsLogo" width="300" height="85"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cuC-Ki-HXM"/>
+        <segue reference="a84-4L-MO5"/>
     </inferredMetricsTieBreakers>
 </document>

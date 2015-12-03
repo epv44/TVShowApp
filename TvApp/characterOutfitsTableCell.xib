@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ITC Avant Garde Gothic LT Book.ttf">
+            <string>AvantGardeLT-Book</string>
+            <string>AvantGardeLT-Book</string>
+            <string>AvantGardeLT-Book</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="382" id="J5h-7G-Ixg" customClass="CharacterOverviewTableViewCell" customModule="TvApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="238" height="382"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J5h-7G-Ixg" id="w2o-Nx-EKt">
+                <rect key="frame" x="0.0" y="0.0" width="238" height="382"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRn-lp-jmg">
+                        <rect key="frame" x="10" y="0.0" width="218" height="382"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WalterWhiteOutfit" translatesAutoresizingMaskIntoConstraints="NO" id="CUd-b7-gjN">
+                                <rect key="frame" x="0.0" y="0.0" width="218" height="293"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Day Job&quot; Walt " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYU-GI-Zle">
+                                <rect key="frame" x="8" y="313" width="147" height="28"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="AvantGardeLT-Book" family="AvantGarde LT Book" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walt's day job attire" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9c-Wu-yw5">
+                                <rect key="frame" x="8" y="342" width="147" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ldX-rx-S8S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvantGardeLT-Book" family="AvantGarde LT Book" pointSize="13"/>
+                                <color key="textColor" red="0.31372549019607843" green="0.88627450980392153" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="53" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZP9-nx-I0e">
+                                <rect key="frame" x="186" y="331" width="32" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="1oh-Qm-Fhg"/>
+                                    <constraint firstAttribute="height" constant="21" id="jKw-y3-OFC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvantGardeLT-Book" family="AvantGarde LT Book" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3d7-Jg-5S7">
+                                <rect key="frame" x="156" y="331" width="22" height="22"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="Ve5-b2-9X9"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="FavoriteIcon"/>
+                                <connections>
+                                    <action selector="favoriteOutfit:" destination="J5h-7G-Ixg" eventType="touchUpInside" id="dO5-n7-pLp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CUd-b7-gjN" firstAttribute="leading" secondItem="cRn-lp-jmg" secondAttribute="leading" id="9Fs-J0-VaD"/>
+                            <constraint firstAttribute="bottom" secondItem="3d7-Jg-5S7" secondAttribute="bottom" constant="29" id="AU2-31-Rk8"/>
+                            <constraint firstItem="ZP9-nx-I0e" firstAttribute="centerY" secondItem="3d7-Jg-5S7" secondAttribute="centerY" id="MsU-6x-LC2"/>
+                            <constraint firstItem="PYU-GI-Zle" firstAttribute="top" secondItem="CUd-b7-gjN" secondAttribute="bottom" constant="20" id="Nyw-Ub-lh4"/>
+                            <constraint firstItem="ZP9-nx-I0e" firstAttribute="leading" secondItem="3d7-Jg-5S7" secondAttribute="trailing" constant="8" symbolic="YES" id="O5w-Wr-aR1"/>
+                            <constraint firstItem="3d7-Jg-5S7" firstAttribute="leading" secondItem="PYU-GI-Zle" secondAttribute="trailing" constant="1" id="UwN-dZ-7kY"/>
+                            <constraint firstItem="CUd-b7-gjN" firstAttribute="top" secondItem="cRn-lp-jmg" secondAttribute="top" id="WGS-ic-bie"/>
+                            <constraint firstItem="E9c-Wu-yw5" firstAttribute="top" secondItem="PYU-GI-Zle" secondAttribute="bottom" constant="1" id="ZkH-F5-A60"/>
+                            <constraint firstAttribute="trailing" secondItem="ZP9-nx-I0e" secondAttribute="trailing" id="bVl-bt-O6b"/>
+                            <constraint firstItem="ZP9-nx-I0e" firstAttribute="trailing" secondItem="CUd-b7-gjN" secondAttribute="trailing" id="cKD-gD-Vbk"/>
+                            <constraint firstItem="PYU-GI-Zle" firstAttribute="leading" secondItem="E9c-Wu-yw5" secondAttribute="leading" id="jSP-6j-Qze"/>
+                            <constraint firstItem="3d7-Jg-5S7" firstAttribute="top" secondItem="ZP9-nx-I0e" secondAttribute="top" id="o7r-Fi-5pf"/>
+                            <constraint firstAttribute="bottom" secondItem="E9c-Wu-yw5" secondAttribute="bottom" constant="19" id="pgp-bR-uY7"/>
+                            <constraint firstItem="PYU-GI-Zle" firstAttribute="trailing" secondItem="E9c-Wu-yw5" secondAttribute="trailing" id="tPs-Nf-v7R"/>
+                            <constraint firstItem="3d7-Jg-5S7" firstAttribute="top" secondItem="CUd-b7-gjN" secondAttribute="bottom" constant="38" id="zlR-IX-2ph"/>
+                            <constraint firstItem="E9c-Wu-yw5" firstAttribute="leading" secondItem="cRn-lp-jmg" secondAttribute="leadingMargin" id="zzt-Hb-ZKX"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="cRn-lp-jmg" firstAttribute="leading" secondItem="w2o-Nx-EKt" secondAttribute="leadingMargin" constant="2" id="0nz-lO-19k"/>
+                    <constraint firstItem="cRn-lp-jmg" firstAttribute="centerX" secondItem="w2o-Nx-EKt" secondAttribute="centerX" id="HOJ-cM-SGL"/>
+                    <constraint firstItem="cRn-lp-jmg" firstAttribute="top" secondItem="w2o-Nx-EKt" secondAttribute="top" id="jzn-zi-3rv"/>
+                    <constraint firstItem="cRn-lp-jmg" firstAttribute="centerY" secondItem="w2o-Nx-EKt" secondAttribute="centerY" id="rN2-Xb-JHd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="numberOfFavorites" destination="ZP9-nx-I0e" id="Zea-fc-azx"/>
+                <outlet property="outfitImage" destination="CUd-b7-gjN" id="jQ6-z1-pFI"/>
+                <outlet property="outfitPhrase" destination="E9c-Wu-yw5" id="gt6-nC-R5Q"/>
+                <outlet property="outfitTitle" destination="PYU-GI-Zle" id="dA5-mc-pL4"/>
+            </connections>
+            <point key="canvasLocation" x="239" y="333"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="FavoriteIcon" width="25" height="25"/>
+        <image name="WalterWhiteOutfit" width="771" height="1024"/>
+    </resources>
+</document>

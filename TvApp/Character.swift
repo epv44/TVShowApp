@@ -12,6 +12,8 @@ struct Character{
     var firstName: String?
     var lastName: String?
     var characterImageURL: String?
+    var actor: String?
+    var description: String?
     var outfitList: JSONArray?
     
     init(json: NSDictionary){
@@ -23,6 +25,12 @@ struct Character{
         }
         if let url = json["character_image_url"] as? String{
             self.characterImageURL = url
+        }
+        if let a = json["played_by"] as? String{
+            self.actor = a
+        }
+        if let d = json["description"] as? String{
+            self.description = d
         }
         if let oList = json["outfits"] as? JSONArray{
             self.outfitList = oList
