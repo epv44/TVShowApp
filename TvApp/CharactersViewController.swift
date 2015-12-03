@@ -132,7 +132,8 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
                 destinationVC.titleString = self.outfitArray[sectionId].outfitName
                 destinationVC.descriptionString = self.outfitArray[sectionId].description
                 destinationVC.outfitItemsList = self.outfitArray[sectionId].pieces!
-                //destinationVC.imageForCharacter = self.imageCache[self.characterArray[sectionId].characterImage]
+                //image for character will go to the samll image...
+                destinationVC.imageOfOutfit = self.imageCache[self.outfitArray[sectionId].outfitImageURL!]
             }
         }
 

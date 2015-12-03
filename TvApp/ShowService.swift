@@ -30,5 +30,4 @@ func getAllShows(callback: JSONShowArray -> ()){
         }
         callback(showsArray)
     })
-    
 }
