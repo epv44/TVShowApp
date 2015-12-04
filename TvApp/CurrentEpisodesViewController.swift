@@ -9,6 +9,10 @@
 
 import UIKit
 
+struct GlobalVariables{
+        static var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
+}
+
 class CurrentEpisodesViewController: UITableViewController {
     private var episodeArray : JSONEpisodeArray = []
     let tableHeaderHeight: CGFloat = 75.0

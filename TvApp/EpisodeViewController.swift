@@ -16,7 +16,6 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
     var characterList: JSONArray = []
     var characterArray : JSONCharacterArray = []
     var imageForEpisode: UIImage!
-    private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var episodeImage: UIImageView!
     @IBOutlet weak var episodeDescription: UITextView!
@@ -72,7 +71,7 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.showImage.image = nil
         
         let urlString = self.characterArray[indexPath.section].characterImageURL!
-        if let img = imageCache[urlString]{
+        if let img = GlobalVariables.imageCache[urlString]{
             cell.showImage.image = img
         }else{
             let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
@@ -96,9 +95,9 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
                                 let image = UIImage(data: data!)
                                 // Store the image in to our cache, if it is missing set it to the show image
                                 if urlString.rangeOfString("missing.png") != nil {
-                                    self.imageCache[urlString] = self.episodeImage.image
+                                    GlobalVariables.imageCache[urlString] = self.episodeImage.image
                                 }else{
-                                    self.imageCache[urlString] = image
+                                    GlobalVariables.imageCache[urlString] = image
                                 }
                                 // Update the cell
                                 dispatch_async(dispatch_get_main_queue(), {
@@ -142,7 +141,7 @@ class EpisodeViewController: UIViewController, UITableViewDataSource, UITableVie
                 destinationVC.titleString = self.characterArray[sectionId].firstName! + " " + self.characterArray[sectionId].lastName!
                 destinationVC.descriptionString = self.characterArray[sectionId].description
                 destinationVC.outfitList = self.characterArray[sectionId].outfitList!
-                destinationVC.imageForCharacter = self.imageCache[self.characterArray[sectionId].characterImageURL!]
+                destinationVC.imageForCharacter = GlobalVariables.imageCache[self.characterArray[sectionId].characterImageURL!]
                 destinationVC.currentEpisode = self.episodeId
             }
         }

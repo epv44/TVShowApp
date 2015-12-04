@@ -20,7 +20,6 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var showImage: UIImage!
     var seasonList: JSONArray = []
     var seasonArray : JSONSeasonArray = []
-    private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
     var downloadTask: NSURLSessionDownloadTask?
     var session: NSURLSession?
     override func viewDidLoad() {
@@ -45,7 +44,7 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
             seasonArray.append(Season(json: obj as! NSDictionary))
         }
         self.showDescription.scrollRangeToVisible(NSMakeRange(0,0))
-        if let img = imageCache[imageUrl]{
+        if let img = GlobalVariables.imageCache[imageUrl]{
             self.imageView.image = img
         }else{
             startDownload()
@@ -143,7 +142,7 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //update UI elements
         dispatch_async(dispatch_get_main_queue()) {
-            self.imageCache[self.imageUrl] = UIImage(contentsOfFile: filePath)
+            GlobalVariables.imageCache[self.imageUrl] = UIImage(contentsOfFile: filePath)
             self.imageView.image = UIImage(contentsOfFile: filePath)
         }
     }
@@ -208,7 +207,7 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.seasonImage.image = nil
         
         let urlString = self.seasonArray[indexPath.section].seasonImageURL!
-        if let img = imageCache[urlString]{
+        if let img = GlobalVariables.imageCache[urlString]{
             cell.seasonImage.image = img
         }else{
             let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
@@ -232,9 +231,9 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 let image = UIImage(data: data!)
                                 // Store the image in to our cache, if it is missing set it to the show image
                                 if urlString.rangeOfString("missing.png") != nil {
-                                    self.imageCache[urlString] = self.imageView.image
+                                    GlobalVariables.imageCache[urlString] = self.imageView.image
                                 }else{
-                                    self.imageCache[urlString] = image
+                                    GlobalVariables.imageCache[urlString] = image
                                 }
                                 // Update the cell
                                 dispatch_async(dispatch_get_main_queue(), {
@@ -279,7 +278,7 @@ class ShowViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 destinationVC.titleString = self.seasonArray[sectionId].title
                 destinationVC.descriptionString = self.seasonArray[sectionId].description
                 destinationVC.episodeList = self.seasonArray[sectionId].episodes!
-                destinationVC.imageForSeason = self.imageCache[self.seasonArray[sectionId].seasonImageURL!]
+                destinationVC.imageForSeason = GlobalVariables.imageCache[self.seasonArray[sectionId].seasonImageURL!]
             }
         }
     }

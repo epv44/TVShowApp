@@ -16,7 +16,6 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
     var outfitArray : JSONOutfitArray = []
     var currentEpisode: String!
     var imageForCharacter: UIImage!
-    private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var characterImage: UIImageView!
     @IBOutlet weak var characterDescription: UITextView!
@@ -71,7 +70,7 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
         cell.loadItem(title: self.outfitArray[indexPath.row].outfitName!, phrase: self.outfitArray[indexPath.row].description!, numFavorites: "53")
         
         let urlString = self.outfitArray[indexPath.row].outfitImageURL!
-        if let img = imageCache[urlString]{
+        if let img = GlobalVariables.imageCache[urlString]{
             cell.outfitImage.image = img
         }else{
             let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
@@ -95,9 +94,9 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
                                 let image = UIImage(data: data!)
                                 // Store the image in to our cache, if it is missing set it to the show image
                                 if urlString.rangeOfString("missing.png") != nil {
-                                    self.imageCache[urlString] = self.characterImage.image
+                                    GlobalVariables.imageCache[urlString] = self.characterImage.image
                                 }else{
-                                    self.imageCache[urlString] = image
+                                    GlobalVariables.imageCache[urlString] = image
                                 }
                                 // Update the cell
                                 dispatch_async(dispatch_get_main_queue(), {
@@ -138,8 +137,8 @@ class CharactersViewController: UIViewController, UITableViewDataSource, UITable
                 destinationVC.titleString = self.outfitArray[rowId].outfitName
                 destinationVC.descriptionString = self.outfitArray[rowId].description
                 destinationVC.outfitItemsList = self.outfitArray[rowId].pieces!
-                //image for character will go to the samll image...
-                destinationVC.imageOfOutfit = self.imageCache[self.outfitArray[rowId].outfitImageURL!]
+                //image for character will go to the small image...
+                destinationVC.imageOfOutfit = GlobalVariables.imageCache[self.outfitArray[rowId].outfitImageURL!]
             }
         }
 

@@ -9,18 +9,9 @@
 import UIKit
 
 class OutfitsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
-
-    var items: [(String, String)] = [
-        ("Louis Vitton Suit Jacket", "swift 1.jpeg"),
-        ("Bonobos Chino's", "swift 2.jpeg"),
-        ("All Silk Bonobos Tie", "swift 3.jpeg"),
-        ("Gucci 500 Series Watch", "swift 4.jpeg"),
-        ("Johnston Murphy Leather Chukas", "swift 5.jpeg")
-    ]
     
     @IBOutlet weak var tableView: UITableView!
     var titleString: String!
-    
     var descriptionString: String!
     var outfitItemsList: JSONArray = []
     var outfitItemsArray : JSONOutfitItemArray = []
@@ -49,14 +40,9 @@ class OutfitsViewController: UIViewController, UITableViewDataSource, UITableVie
 
         navigationItem.titleView = titleLabel
         
-//        for obj: AnyObject in outfitItemsList {
-//            let piece = OutfitItem.create <^>
-//                obj["name"]             >>> JSONString <*>
-//                obj["description"]      >>> JSONString <*>
-//                obj["price"]            >>> JSONString <*>
-//                obj["purchase_url"]     >>> JSONString
-//            outfitItemsArray.append(piece!)
-//        }
+        for obj: AnyObject in outfitItemsList {
+            outfitItemsArray.append(OutfitItem(json: obj as! NSDictionary))
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,7 +57,7 @@ class OutfitsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
+        return self.outfitItemsArray.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -82,9 +68,8 @@ class OutfitsViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //set up the cell
         let cell:OutfitTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! OutfitTableViewCell
-        let (title, image) = items[indexPath.row]
-        cell.loadItem(title: title, fullscreenImage: image, outfitImage: imageOfOutfit)
-        
+        cell.loadItem(title: self.outfitItemsArray[indexPath.row].itemName!, backgroundImageURL: self.outfitItemsArray[indexPath.row].itemImageURL!, outfitImage: imageOfOutfit, retailer: self.outfitItemsArray[indexPath.row].retailer!, price:  self.outfitItemsArray[indexPath.row].price!, subheader:  self.outfitItemsArray[indexPath.row].description!)
+        cell.gradientView.alpha = 0.0
         //reset object if it hasn't been dequed
         if(!cell.isDequed){
             cell.resetFavoritesAnimations()
@@ -105,6 +90,10 @@ class OutfitsViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.animatePrice()
             cell.itemImage.alpha = 1.0
             
+        }, completion: nil)
+        
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            cell.gradientView.alpha = 0.3
         }, completion: nil)
         //animate favorite button
         UIView.animateWithDuration(1.15, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {

@@ -10,10 +10,8 @@ import UIKit
 
 class AllShowsViewController: UITableViewController {
     private var showArray : JSONShowArray = []
-    private var imageCache: Dictionary<String, UIImage> = [String: UIImage]()
     let tableHeaderHeight: CGFloat = 75.0
     var headerView: UIView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //set background color
@@ -101,7 +99,7 @@ class AllShowsViewController: UITableViewController {
         cell.showImage.image = nil
         
         let urlString = self.showArray[indexPath.section].showImageURL!
-        if let img = imageCache[urlString]{
+        if let img = GlobalVariables.imageCache[urlString]{
            cell.showImage.image = img
         }else{
             let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
@@ -127,9 +125,9 @@ class AllShowsViewController: UITableViewController {
                                 let image = UIImage(data: data!)
                                 // Store the image in to our cache, if it is missing set it to the default image -- need a default image
                                 if urlString.rangeOfString("missing.png") != nil {
-                                    self.imageCache[urlString] = UIImage(named: "ArrowRight.png")
+                                    GlobalVariables.imageCache[urlString] = UIImage(named: "ArrowRight.png")
                                 }else{
-                                    self.imageCache[urlString] = image
+                                    GlobalVariables.imageCache[urlString] = image
                                 }
                                 // Update the cell
                                 dispatch_async(dispatch_get_main_queue(), {
@@ -200,7 +198,7 @@ class AllShowsViewController: UITableViewController {
                 destinationVC.descriptionString = self.showArray[sectionId].description
                 destinationVC.seasonList = self.showArray[sectionId].seasons!
                 destinationVC.imageUrl = self.showArray[sectionId].showImageURL
-                destinationVC.showImage = self.imageCache[self.showArray[sectionId].showImageURL!]
+                destinationVC.showImage = GlobalVariables.imageCache[self.showArray[sectionId].showImageURL!]
             }
         }
     }
